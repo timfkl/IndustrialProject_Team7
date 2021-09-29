@@ -1,0 +1,15 @@
+
+.Login {
+    text-align: left;
+}
+
+.Login-h1 {
+    color: black;
+}
+
+.Container {
+    padding:30px;
+    padding-left:0;
+    align-items:left ;
+    display:block;
+}
