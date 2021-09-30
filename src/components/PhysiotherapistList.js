@@ -21,17 +21,18 @@ function PhysiotherapistList() {
     <React.Fragment>
 
       <h5>
+        {nameList.length > 0 ? "Please choose a client from the list." : "You currently have no clients."}
       </h5>
 
-    <ListGroup>
-      {nameList.map((name, index) => {
-        return (
-          <ListGroup.Item action key={index} href={index}>
-            {name}
-          </ListGroup.Item>
-        );
-      })}
-    </ListGroup>
+      <ListGroup>
+        {nameList.map((name, index) => {
+          return (
+            <ListGroup.Item action key={index} href={index}>
+              {name}
+            </ListGroup.Item>
+          );
+        })}
+      </ListGroup>
     </React.Fragment>
   );
 }
