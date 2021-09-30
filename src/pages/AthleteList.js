@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import NameList from "../components/NameList";
 
 const AthleteList = () => {
@@ -7,7 +8,10 @@ const AthleteList = () => {
   ]
 
   return (
+    <Container>
+
     <NameList list={list} />
+    </Container>
   );
 }
 
