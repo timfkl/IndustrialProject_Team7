@@ -8,6 +8,7 @@ import About from "./pages/About";
 import LoggedIn from "./pages/LoggedIn";
 import Progress from "./pages/Progress"
 import Navbar from "./components/Navbar"; //navbar component
+import CSVUploadButton from './components/CSVUploadButton'
 
 //route the contact and login pages to the js files
 function App() {
