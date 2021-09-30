@@ -4,11 +4,10 @@ import styled from 'styled-components';
 
 //styles and exports a basic menu bar
 const Navbar = () => {
-
     return (
         <StyledMenu>
-            <StyledLink to="/">  Home  </StyledLink>
             <StyledLink to="/login">  Login  </StyledLink>
+            <StyledLink to="/about">  About  </StyledLink>
             <StyledLink to="/contact">  Contact  </StyledLink>
         </StyledMenu>     
     )
@@ -28,7 +27,7 @@ const StyledMenu = styled.div`
     `
 //styling for link
 const StyledLink = styled(Link)`
-    colour: #2A888A;
+    color: #2A888A;
     padding:10px;
     text-decoration:none;
     font-size: clamp(30px, 40px, 70px);
@@ -38,8 +37,10 @@ const StyledLink = styled(Link)`
     
     &:hover{
         tranisiont: 2s all ease-in-out;
-        color: #2A888A;
+        color: #195a5c;
+        background-color: #F26C23;
     }
 `;
+
 
 export default Navbar;

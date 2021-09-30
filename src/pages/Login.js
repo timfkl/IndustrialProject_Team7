@@ -1,19 +1,18 @@
 import React from 'react';
-import  './Login.css';
+import { Link } from 'react-router-dom';
 
 //stylised login page
 const Login = () => {
     return (
        
-        <header> 
-             <div className="Container">
-            <h5>Login Page</h5>
-            <p>Username: enter</p>
-            <p>Password: ****</p>
+        <header>
+            <div className="Container">
+                <h5>Login Page</h5>
+                <p>Username: enter</p>
+                <p>Password: ****</p>
+                <Link to="/loggedin"> Submit </Link> 
             </div>
-        </header>
-
+        </header>      
     )
 }
-
 export default Login
