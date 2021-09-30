@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Common from './Common';
+
 
 //styles and exports a basic menu bar
 const Navbar = () => {
@@ -25,22 +27,16 @@ const StyledMenu = styled.div`
     display:flex;
     flex-direction: row;
     `
-//styling for link
+//use styling from common.js for links
 const StyledLink = styled(Link)`
-    color: #2A888A;
-    padding:10px;
-    text-decoration:none;
-    font-size: clamp(30px, 40px, 70px);
-    transition: .2s all ease-in-out;
-    
-    user-select:none;
-    
+    ${Common}
+    font-size: clamp(20px, 30px, 40px);
+
     &:hover{
         tranisiont: 2s all ease-in-out;
         color: #195a5c;
         background-color: #F26C23;
     }
 `;
-
 
 export default Navbar;
