@@ -4,13 +4,31 @@ import NameList from "../components/NameList";
 const AthleteList = () => {
 
   const list = [
-    "test"
+    "Geoffrey Gould",
+    "Caroline Pena",
+    "Felipe Cooley",
+    "Queen York",
+    "Bennett Koch",
+    "Kristofer Villanueva",
+    "Ivan Logan",
+    "Antwan Watkins",
+    "Dong Conner",
+    "Aldi Lidl"
   ]
 
   return (
     <Container>
 
-    <NameList list={list} />
+      <h3>List of Athletes</h3>
+
+      <h6>
+        {list.length > 0 ? "Please choose an athlete" : "You don't have any athletes to review."}
+      </h6>
+
+      <div>
+        <NameList list={list} />
+      </div>
+      
     </Container>
   );
 }
