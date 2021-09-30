@@ -3,6 +3,7 @@ import NameList from "../components/NameList";
 
 const AthleteList = () => {
 
+  // Test name array. Will be replaced with database call. 
   const list = [
     "Geoffrey Gould",
     "Caroline Pena",
