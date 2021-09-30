@@ -7,7 +7,7 @@ const NameList = ({list}) => {
     <ListGroup>
       {list.map((name, index) => {
         return (
-          <ListGroup.Item action key={index} href={index}>
+          <ListGroup.Item action key={index}>
             {name}
           </ListGroup.Item>
         );
