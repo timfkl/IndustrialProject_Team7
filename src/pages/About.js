@@ -1,9 +1,12 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import { CardGroup } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import './About.css'
 
 const About = () => {
     return (
-        
+        <div>
             <Carousel controls={false}>
                 <Carousel.Item>
                     <img
@@ -45,6 +48,43 @@ const About = () => {
                 </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+
+            <br/>
+
+            <CardGroup>
+                <Card>
+                    <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/assets/image5.jpg`} />
+                    <Card.Body>
+                        <Card.Title>As an injured athlete</Card.Title>
+                        <Card.Text>
+                        This app motivates me to complete my rehabilitation exercises, and visualise my progress. 
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card>
+                    <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/assets/image4.jpg`} />
+                    <Card.Body>
+                        <Card.Title>As a physiotherapist</Card.Title>
+                        <Card.Text>
+                        This app allows me to keep track of all my clients, and gain a greater knowledge of their recovery progress.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card>
+                    <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/assets/image6.jpg`} />
+                    <Card.Body>
+                        <Card.Title>As an athlete</Card.Title>
+                            <Card.Text>
+                            This app helps me see my progress and monitor my personal improvements.
+                            </Card.Text>
+                    </Card.Body>
+                </Card>
+            </CardGroup>
+        </div>
     )
 }
 
