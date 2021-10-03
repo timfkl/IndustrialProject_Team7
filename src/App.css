@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,59 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.LoginPage {
+  display: flex;
+  align-items:center;
+  height: 100vh;
+  justify-content: center;
+  background-color: rgba(224, 224, 224, 0.993);
+}
+
+input {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.form-inner {
+  background-color: orange;
+}
+
+#sketchyID {
+  background-color: orange;
+}
+
+.col-lg-4 {
+  padding: 0;
+}
+
+form {
+  display: block;
+  position: relative;
+}
+
+form .form-inner .form-group input {
+  display:block;
+  width: 89%;
+  margin-left: 20px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 8px;
+}
+
+form .form-inner input[type="submit"] {
+  background-color: rgb(9, 165, 255);
+  border-radius: 8px;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
