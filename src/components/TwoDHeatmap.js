@@ -14,6 +14,36 @@ const DataImage = ({ id, src, onLoad }) => {
 const TwoDHeatmap = () => {
     let heatmapQuadLeft, heatmapQuadRight, heatmapHamsLeft, heatmapHamsRight;
 
+    const playHeatmap = () => {
+
+        if (localStorage.getItem('left_quad')) {
+            simulateDataOnPoint(CSVToArray(localStorage.getItem('left_quad')), heatmapQuadLeft, [210, 220], 'lq');
+        }
+    }
+
+    async function simulateDataOnPoint(array, heatmapInstance, position, name = '') {
+
+        for (let i = 1; i < array.length; i++) {
+
+            heatmapInstance.setData({
+                min: 0,
+                max: 1025,
+                data: [{
+                    x: position[0],
+                    y: position[1],
+                    value: parseInt(array[i][1])
+                }]
+            });
+
+            console.log(`${name}: ${array[i][1]}`);
+
+            await new Promise(resolve => setTimeout(
+                resolve,
+                array[i+1] === undefined ? 0 : Date.parse(array[i+1][0]) - Date.parse(array[i][0])
+            ));
+        }
+    }
+
     const onDataImageLoad = (isFront) => {
         
         if (isFront) {
