@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import imgFront from '../assets/front.jpg';
 import imgBack from '../assets/back.jpg';
+import CSVToArray from '../scripts/CSVToArray';
 import h337 from 'heatmap.js';
 
 const DataImage = ({ id, src, onLoad }) => {
