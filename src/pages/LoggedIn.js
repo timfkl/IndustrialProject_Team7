@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Common from '../components/Common';
 
+import CSVUploadButton from '../components/CSVUploadButton';
 
 const LoggedIn = () => {
     return (
@@ -12,9 +13,13 @@ const LoggedIn = () => {
              <div className="Container">
             <h5>Athlete View</h5>
             <p>View your latest session here</p>
-            <p>heatmap goes here</p> 
-            <p> stats on the session </p>
-            <StyledLink className="LinkContain" to="/progress"> Progress </StyledLink> 
+                <Container>
+                    <Row>
+                        <Col>
+                            <CSVUploadButton/>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         </header>
 
