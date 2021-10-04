@@ -20,6 +20,19 @@ const TwoDHeatmap = () => {
         if (localStorage.getItem('left_quad')) {
             simulateDataOnPoint(CSVToArray(localStorage.getItem('left_quad')), heatmapQuadLeft, [210, 220], 'lq');
         }
+
+        if (localStorage.getItem('right_quad')) {
+            simulateDataOnPoint(CSVToArray(localStorage.getItem('right_quad')), heatmapQuadRight, [330, 220], 'rq');
+        }
+        
+        if (localStorage.getItem('left_hamstring')) {
+            simulateDataOnPoint(CSVToArray(localStorage.getItem('left_hamstring')), heatmapHamsLeft, [220, 210], 'lh');
+        }
+
+        if (localStorage.getItem('right_hamstring')) {
+            simulateDataOnPoint(CSVToArray(localStorage.getItem('right_hamstring')), heatmapHamsRight, [330, 210], 'rh');
+        }
+
     }
 
     async function simulateDataOnPoint(array, heatmapInstance, position, name = '') {
