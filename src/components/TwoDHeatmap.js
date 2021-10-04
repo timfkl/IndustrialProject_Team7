@@ -14,8 +14,11 @@ const DataImage = ({ id, src, onLoad }) => {
 
 const TwoDHeatmap = () => {
     let heatmapQuadLeft, heatmapQuadRight, heatmapHamsLeft, heatmapHamsRight;
+    let isRunning = false;
 
     const playHeatmap = () => {
+
+        if (isRunning) return;
 
         if (localStorage.getItem('left_quad')) {
             simulateDataOnPoint(CSVToArray(localStorage.getItem('left_quad')), heatmapQuadLeft, [210, 220], 'lq');
@@ -33,6 +36,7 @@ const TwoDHeatmap = () => {
             simulateDataOnPoint(CSVToArray(localStorage.getItem('right_hamstring')), heatmapHamsRight, [330, 210], 'rh');
         }
 
+        isRunning = true;
     }
 
     async function simulateDataOnPoint(array, heatmapInstance, position, name = '') {
@@ -97,6 +101,11 @@ const TwoDHeatmap = () => {
                 </Col>
                 <Col sm={6}>
                     <DataImage id={"imageBack"} src={imgBack} onLoad={() => { onDataImageLoad(false) }} />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Button onClick={playHeatmap}>Run</Button>
                 </Col>
             </Row>
         </Container>
