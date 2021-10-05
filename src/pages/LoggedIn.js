@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Common from '../components/Common';
 
 import { Container, Row, Col } from 'react-bootstrap';
-import TwoDHeatmap from '../components/TwoDHeatmap';
-import CSVUploadButton from '../components/CSVUploadButton';
+import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
+import CSVUploadButton from '../components/CSVUploadButton'; // Csv upload button component.
 
 const LoggedIn = () => {
 
@@ -16,6 +16,7 @@ const LoggedIn = () => {
                 <p>View your latest session here</p>
                 
                 <Container>
+                    {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
                     <Row>
                         <Col>
