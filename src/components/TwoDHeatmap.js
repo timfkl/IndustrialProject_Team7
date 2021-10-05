@@ -8,13 +8,7 @@ import h337 from "heatmap.js";
 const DataImage = ({ id, src, onLoad }) => {
     return (
         <div id={id}>
-            <img
-                src={src}
-                alt=""
-                width="100%"
-                style={{ zIndex: -1 }}
-                onLoad={onLoad}
-            />
+            <img src={src} alt="" width="100%" style={{ zIndex: -1 }} onLoad={onLoad} />
         </div>
     );
 };
@@ -24,31 +18,31 @@ const TwoDHeatmap = () => {
     let isRunning = false;
 
     let heatmapConfig = {
-        "quad_left": {
+        quad_left: {
             instance: undefined,
             data: [],
             x: 0,
-            y: 0
+            y: 0,
         },
-        "quad_right": {
+        quad_right: {
             instance: undefined,
             data: [],
             x: 0,
-            y: 0
+            y: 0,
         },
-        "hams_left": {
+        hams_left: {
             instance: undefined,
             data: [],
             x: 0,
-            y: 0
+            y: 0,
         },
-        "hams_right": {
+        hams_right: {
             instance: undefined,
             data: [],
             x: 0,
-            y: 0
+            y: 0,
         },
-    }
+    };
 
     // Simulates data on the heatmap.
     const playHeatmap = () => {
@@ -87,7 +81,6 @@ const TwoDHeatmap = () => {
 
     // Simulates data on each point. Takes in the data array [date, value], the h337 instance and position. Name is for debugging.
     async function simulateDataOnPoint(configName) {
-        
         for (let i = 1; i < heatmapConfig[configName].data.length; i++) {
             // Sets the value and position for the point on the heatmap.
 
@@ -109,10 +102,11 @@ const TwoDHeatmap = () => {
             await new Promise((resolve) =>
                 setTimeout(
                     resolve,
-                    // If reached the end of array do not set delay or else set delay according to milliseconds between current and next timestamps.s
+                    // If reached the end of array do not set delay or else set delay according to milliseconds between current and next timestamps.
                     heatmapConfig[configName].data[i + 1] === undefined
                         ? 0
-                        : Date.parse(heatmapConfig[configName].data[i + 1][0]) - Date.parse(heatmapConfig[configName].data[i][0])
+                        : Date.parse(heatmapConfig[configName].data[i + 1][0]) -
+                              Date.parse(heatmapConfig[configName].data[i][0])
                 )
             );
         }
@@ -136,9 +130,10 @@ const TwoDHeatmap = () => {
             // only container is required, the rest will be defaults
             container: document.getElementById(container),
             blur: 0,
-            radius: 20 ,
+            radius: 20,
             minOpacity: 0.7,
-            gradient: { // From green to red.
+            gradient: {
+                // From green to red.
                 0: "green",
                 0.2: "#EDD74B",
                 0.4: "#F2B62E",
@@ -151,22 +146,27 @@ const TwoDHeatmap = () => {
 
     // Runs when the window resizes so the heatmap can respond to the changes.
     const onImageResize = () => {
-        
-        const imageFrontSize = [ document.querySelector('#imageFront').clientWidth, document.querySelector('#imageFront').clientHeight ];
-        const imageBackSize = [ document.querySelector('#imageBack').clientWidth, document.querySelector('#imageBack').clientHeight ];
+        const imageFrontSize = [
+            document.querySelector("#imageFront").clientWidth,
+            document.querySelector("#imageFront").clientHeight,
+        ];
+        const imageBackSize = [
+            document.querySelector("#imageBack").clientWidth,
+            document.querySelector("#imageBack").clientHeight,
+        ];
 
-        heatmapConfig["quad_left"].x = Math.floor(2/5 * imageFrontSize[0]);
-        heatmapConfig["quad_left"].y = Math.floor(2/5 * imageFrontSize[1]);
+        heatmapConfig["quad_left"].x = Math.floor((2 / 5) * imageFrontSize[0]);
+        heatmapConfig["quad_left"].y = Math.floor((2 / 5) * imageFrontSize[1]);
 
-        heatmapConfig["quad_right"].x = Math.floor(3/5 * imageFrontSize[0]);
-        heatmapConfig["quad_right"].y = Math.floor(2/5 * imageFrontSize[1]);
+        heatmapConfig["quad_right"].x = Math.floor((3 / 5) * imageFrontSize[0]);
+        heatmapConfig["quad_right"].y = Math.floor((2 / 5) * imageFrontSize[1]);
 
-        heatmapConfig["hams_left"].x = Math.floor(2/5 * imageBackSize[0]);
-        heatmapConfig["hams_left"].y = Math.floor(2/5 * imageBackSize[1]);
+        heatmapConfig["hams_left"].x = Math.floor((2 / 5) * imageBackSize[0]);
+        heatmapConfig["hams_left"].y = Math.floor((2 / 5) * imageBackSize[1]);
 
-        heatmapConfig["hams_right"].x = Math.floor(3/5 * imageBackSize[0]);
-        heatmapConfig["hams_right"].y = Math.floor(2/5 * imageBackSize[1]);
-    }
+        heatmapConfig["hams_right"].x = Math.floor((3 / 5) * imageBackSize[0]);
+        heatmapConfig["hams_right"].y = Math.floor((2 / 5) * imageBackSize[1]);
+    };
     window.onresize = onImageResize;
 
     return (
