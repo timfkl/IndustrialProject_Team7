@@ -35,6 +35,7 @@ export default function CSVUploadButton(){
         }
 
         reader.readAsText(file);
+        window.location.reload();
     }
     
     // The html of the component

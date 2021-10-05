@@ -28,6 +28,7 @@ export default function GoalUploadButton(){
         window.location.reload(); 
     }
     
+    
     // The html of the component
     return (
         <>
@@ -41,9 +42,7 @@ export default function GoalUploadButton(){
                 <Modal.Title>What level of muscle activation do you want to achieve?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form action="/action_page.php">
                     <input type="text" id="goal" name="goal"/><br/>
-                </form>
             </Modal.Body>
             <Modal.Footer>
                 {/* Buttons to close the modal, and submit it (which runs the submit method) */}
