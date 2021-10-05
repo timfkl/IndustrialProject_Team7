@@ -21,84 +21,98 @@ const DataImage = ({ id, src, onLoad }) => {
 
 // This component contains the heatmap and methods to run the heatmap.
 const TwoDHeatmap = () => {
-    let heatmapQuadLeft, heatmapQuadRight, heatmapHamsLeft, heatmapHamsRight; // Stores instances of h337 heatmap.
     let isRunning = false;
+
+    let heatmapConfig = {
+        "quad_left": {
+            instance: undefined,
+            data: [],
+            x: 0,
+            y: 0
+        },
+        "quad_right": {
+            instance: undefined,
+            data: [],
+            x: 0,
+            y: 0
+        },
+        "hams_left": {
+            instance: undefined,
+            data: [],
+            x: 0,
+            y: 0
+        },
+        "hams_right": {
+            instance: undefined,
+            data: [],
+            x: 0,
+            y: 0
+        },
+    }
 
     // Simulates data on the heatmap.
     const playHeatmap = () => {
         if (isRunning) return;
 
-        // Simulates data on each point on the heatmap.
-        if (localStorage.getItem("left_quad")) {
+        // Simulates data on each point on the left quad muscle.
+        if (localStorage.getItem("quad_left")) {
             // Gets the specified sensor data saved in localstorage and converts to array.
-            simulateDataOnPoint(
-                CSVToArray(localStorage.getItem("left_quad")),
-                heatmapQuadLeft,
-                [210, 220],
-                "lq"
-            );
+            heatmapConfig["quad_left"].data = CSVToArray(localStorage.getItem("quad_left"));
+            simulateDataOnPoint("quad_left");
         }
 
-        if (localStorage.getItem("right_quad")) {
-            simulateDataOnPoint(
-                CSVToArray(localStorage.getItem("right_quad")),
-                heatmapQuadRight,
-                [330, 220],
-                "rq"
-            );
+        // Simulates data on each point on the right quad muscle.
+        if (localStorage.getItem("quad_right")) {
+            // Gets the specified sensor data saved in localstorage and converts to array.
+            heatmapConfig["quad_right"].data = CSVToArray(localStorage.getItem("quad_right"));
+            simulateDataOnPoint("quad_right");
         }
 
-        if (localStorage.getItem("left_hamstring")) {
-            simulateDataOnPoint(
-                CSVToArray(localStorage.getItem("left_hamstring")),
-                heatmapHamsLeft,
-                [220, 210],
-                "lh"
-            );
+        // Simulates data on each point on the left hamstring.
+        if (localStorage.getItem("hams_left")) {
+            // Gets the specified sensor data saved in localstorage and converts to array.
+            heatmapConfig["hams_left"].data = CSVToArray(localStorage.getItem("hams_left"));
+            simulateDataOnPoint("hams_left");
         }
 
-        if (localStorage.getItem("right_hamstring")) {
-            simulateDataOnPoint(
-                CSVToArray(localStorage.getItem("right_hamstring")),
-                heatmapHamsRight,
-                [330, 210],
-                "rh"
-            );
+        // Simulates data on each point on the right hamstring.
+        if (localStorage.getItem("hams_right")) {
+            // Gets the specified sensor data saved in localstorage and converts to array.
+            heatmapConfig["hams_right"].data = CSVToArray(localStorage.getItem("hams_right"));
+            simulateDataOnPoint("hams_right");
         }
 
         isRunning = true; // To prevent this method from running again when not finished.
     };
 
     // Simulates data on each point. Takes in the data array [date, value], the h337 instance and position. Name is for debugging.
-    async function simulateDataOnPoint(
-        array,
-        heatmapInstance,
-        position,
-        name = ""
-    ) {
-        for (let i = 1; i < array.length; i++) {
+    async function simulateDataOnPoint(configName) {
+        
+        for (let i = 1; i < heatmapConfig[configName].data.length; i++) {
             // Sets the value and position for the point on the heatmap.
-            heatmapInstance.setData({
+
+            heatmapConfig[configName].instance.setData({
                 min: 0,
                 max: 1025,
                 data: [
                     {
-                        x: position[0],
-                        y: position[1],
-                        value: parseInt(array[i][1]),
+                        x: heatmapConfig[configName].x,
+                        y: heatmapConfig[configName].y,
+                        value: parseInt(heatmapConfig[configName].data[i][1]),
                     },
                 ],
             });
 
-            console.log(`${name}: ${array[i][1]}`);
+            console.log(`${configName}: ${heatmapConfig[configName].data[i][1]}`);
 
             // Adds delay according to timestamp data.
             await new Promise((resolve) =>
                 setTimeout(
                     resolve,
-                    array[i + 1] === undefined
+                    // If reached the end of array do not set delay or else set delay according to milliseconds between current and next timestamps.s
+                    heatmapConfig[configName].data[i + 1] === undefined
                         ? 0
-                        : Date.parse(array[i + 1][0]) - Date.parse(array[i][0])
+                        : Date.parse(heatmapConfig[configName].data[i + 1][0]) - Date.parse(heatmapConfig[configName].data[i][0])
                 )
             );
         }
@@ -107,12 +121,13 @@ const TwoDHeatmap = () => {
     // Runs when the images have been loaded. Sets the h337 instances to each point.
     const onDataImageLoad = (isFront) => {
         if (isFront) {
-            heatmapQuadLeft = createHeatmapInstance("imageFront");
-            heatmapQuadRight = createHeatmapInstance("imageFront");
+            heatmapConfig["quad_left"].instance = createHeatmapInstance("imageFront");
+            heatmapConfig["quad_right"].instance = createHeatmapInstance("imageFront");
         } else {
-            heatmapHamsLeft = createHeatmapInstance("imageBack");
-            heatmapHamsRight = createHeatmapInstance("imageBack");
+            heatmapConfig["hams_left"].instance = createHeatmapInstance("imageBack");
+            heatmapConfig["hams_right"].instance = createHeatmapInstance("imageBack");
         }
+        onImageResize(); // Saves the size of the images.
     };
 
     // Takes in container as html/jsx id and returns an h337 instance that has been configured.
@@ -121,9 +136,9 @@ const TwoDHeatmap = () => {
             // only container is required, the rest will be defaults
             container: document.getElementById(container),
             blur: 0,
-            radius: 20,
+            radius: 20 ,
             minOpacity: 0.7,
-            gradient: {
+            gradient: { // From green to red.
                 0: "green",
                 0.2: "#EDD74B",
                 0.4: "#F2B62E",
@@ -133,6 +148,26 @@ const TwoDHeatmap = () => {
             },
         });
     };
+
+    // Runs when the window resizes so the heatmap can respond to the changes.
+    const onImageResize = () => {
+        
+        const imageFrontSize = [ document.querySelector('#imageFront').clientWidth, document.querySelector('#imageFront').clientHeight ];
+        const imageBackSize = [ document.querySelector('#imageBack').clientWidth, document.querySelector('#imageBack').clientHeight ];
+
+        heatmapConfig["quad_left"].x = Math.floor(2/5 * imageFrontSize[0]);
+        heatmapConfig["quad_left"].y = Math.floor(2/5 * imageFrontSize[1]);
+
+        heatmapConfig["quad_right"].x = Math.floor(3/5 * imageFrontSize[0]);
+        heatmapConfig["quad_right"].y = Math.floor(2/5 * imageFrontSize[1]);
+
+        heatmapConfig["hams_left"].x = Math.floor(2/5 * imageBackSize[0]);
+        heatmapConfig["hams_left"].y = Math.floor(2/5 * imageBackSize[1]);
+
+        heatmapConfig["hams_right"].x = Math.floor(3/5 * imageBackSize[0]);
+        heatmapConfig["hams_right"].y = Math.floor(2/5 * imageBackSize[1]);
+    }
+    window.onresize = onImageResize;
 
     return (
         <Container>
