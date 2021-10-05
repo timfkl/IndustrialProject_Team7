@@ -4,6 +4,7 @@ import imgBack from '../assets/back.jpg';
 import CSVToArray from '../scripts/CSVToArray';
 import h337 from 'heatmap.js';
 
+// Takes in html/jsx id, source image and function call for onLoad and returns an image wrapped in a div with those parameters set.
 const DataImage = ({ id, src, onLoad }) => {
     return (
         <div id={id}>
@@ -12,14 +13,17 @@ const DataImage = ({ id, src, onLoad }) => {
     );
 }
 
+// This component contains the heatmap and methods to run the heatmap.
 const TwoDHeatmap = () => {
-    let heatmapQuadLeft, heatmapQuadRight, heatmapHamsLeft, heatmapHamsRight;
+    let heatmapQuadLeft, heatmapQuadRight, heatmapHamsLeft, heatmapHamsRight; // Stores instances of h337 heatmap.
     let isRunning = false;
 
+    // Simulates data on the heatmap.
     const playHeatmap = () => {
 
         if (isRunning) return;
 
+        // Simulates data on each point on the heatmap.
         if (localStorage.getItem('left_quad')) {
             simulateDataOnPoint(CSVToArray(localStorage.getItem('left_quad')), heatmapQuadLeft, [210, 220], 'lq');
         }
@@ -39,10 +43,12 @@ const TwoDHeatmap = () => {
         isRunning = true;
     }
 
+    // Simulates data on each point. Takes in the data array [date, value], the h337 instance and position. Name is for debugging. 
     async function simulateDataOnPoint(array, heatmapInstance, position, name = '') {
 
         for (let i = 1; i < array.length; i++) {
 
+            // Sets the value and position for the point on the heatmap.
             heatmapInstance.setData({
                 min: 0,
                 max: 1025,
@@ -55,6 +61,7 @@ const TwoDHeatmap = () => {
 
             console.log(`${name}: ${array[i][1]}`);
 
+            // Adds delay according to timestamp data.
             await new Promise(resolve => setTimeout(
                 resolve,
                 array[i+1] === undefined ? 0 : Date.parse(array[i+1][0]) - Date.parse(array[i][0])
@@ -62,6 +69,7 @@ const TwoDHeatmap = () => {
         }
     }
 
+    // Runs when the images have been loaded. Sets the h337 instances to each point.
     const onDataImageLoad = (isFront) => {
         
         if (isFront) {
@@ -73,6 +81,7 @@ const TwoDHeatmap = () => {
         }
     }
 
+    // Takes in container as html/jsx id and returns an h337 instance that has been configured.
     const createHeatmapInstance = (container) => {
                 
         return h337.create({
