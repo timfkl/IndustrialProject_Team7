@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
-function LoginForm({ Login }) {
-    function handleChange(e) {
+const LoginForm = ({ Login }) => {
+    const [details, setDetails] = useState({ email: "", password: "" });
+
+    const handleChange = e => {
         //Without this handle change function the code won't actually update the login details in order to check if it matches.
         const { name, value } = e.target;
         setDetails((details) => ({ ...details, [name]: value }));
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = e => {
         //Handles form submission. Prevents page from reloading in order to save the data. Then passes the details through to Login func.
         e.preventDefault();
-        Login(details);
+        Login(details); 
     }
-
-    const [details, setDetails] = useState({ email: "", password: "" });
 
     return (
         //Login form.
