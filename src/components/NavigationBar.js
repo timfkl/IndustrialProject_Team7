@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import { Theme } from '../scripts/theme';
 
+// Custom login button component.
 const LoginButton = () => {
     return (
         <Button
@@ -17,11 +18,12 @@ const LoginButton = () => {
     );
 }
 
-//styles and exports a basic menu bar
+// Displays navigation bar.
 const NavigationBar = () => {
     return (
         <Navbar bg="light" expand="sm">
             <Container fluid>
+                {/* Displays Theo health name */}
                 <Navbar.Brand href="/">
                     <img
                         src={`${process.env.PUBLIC_URL}/logo_name.png`}
@@ -31,6 +33,7 @@ const NavigationBar = () => {
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
+                {/* Links collapse into a togglable container on smaller screens */}
                 <Navbar.Collapse id="navbarScroll" style={{ marginLeft: 10 }}>
                     <Nav
                         className="me-auto my-2 my-lg-0"
