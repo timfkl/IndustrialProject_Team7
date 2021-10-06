@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const LoginForm = ({ Login }) => {
+const LoginForm = ({ submitDetails }) => {
     const [details, setDetails] = useState({ email: "", password: "" });
 
     const handleChange = e => {
@@ -12,7 +12,7 @@ const LoginForm = ({ Login }) => {
     const handleSubmit = e => {
         //Handles form submission. Prevents page from reloading in order to save the data. Then passes the details through to Login func.
         e.preventDefault();
-        Login(details); 
+        submitDetails(details); 
     }
 
     return (
