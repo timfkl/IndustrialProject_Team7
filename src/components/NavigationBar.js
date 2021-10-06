@@ -24,7 +24,7 @@ const NavigationBar = () => {
         <Navbar bg="light" expand="sm">
             <Container fluid>
                 {/* Displays Theo health name */}
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/about">
                     <img
                         src={`${process.env.PUBLIC_URL}/logo_name.png`}
                         height="30"
@@ -40,7 +40,7 @@ const NavigationBar = () => {
                         style={{ maxHeight: "30%" }}
                         navbarScroll
                     >
-                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/about">Home</Nav.Link>
                         {/* <Nav.Link href="/about">About</Nav.Link> */}
                         <Nav.Link href="/contact">Contact</Nav.Link>
                     </Nav>
