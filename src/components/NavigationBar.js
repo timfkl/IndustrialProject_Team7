@@ -10,7 +10,8 @@ const LoginButton = () => {
             variant="warning"
             style={{
                 backgroundColor: Theme.colors.orange,
-                borderColor: Theme.colors.orange
+                borderColor: Theme.colors.orange,
+                color: 'white'
             }}
         >
             Sign in
