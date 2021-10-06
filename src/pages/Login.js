@@ -3,51 +3,41 @@ import LoginForm from "../components/LoginForm";
 
 //stylised login page
 const Login = () => {
+    
+    //hard codded login details.
     const users = {
         physio: {
-            email: "physio@test.com", //hard codded login details.
+            email: "physio@test.com",
             password: "physio123",
             userTypeID: 1
         },
         injured: {
-            email: "injured@test.com", //hard codded login details.
+            email: "injured@test.com",
             password: "injured123",
             userTypeID: 2
         },
         athlete:{
-            email: "athlete@test.com", //hard codded login details.
+            email: "athlete@test.com",
             password: "athlete123",
             userTypeID: 3
         }
     };
 
-    const [user, setUser] = useState({ email: "", password: "", userTypeID: 0 });
     const [error, setError] = useState(""); //seter for errors not in use. Could add catch errors if needed.
 
     const checkDetails = details => {
         console.log(details);
 
-        if (details.email == adminUser.email && details.password == adminUser.password) {
-            //if the submitted details of the login match, call setter to update details.
-            console.log("User Logged In");
-            setUser({
-                email: details.name,
-                password: details.password,
-            });
-        } else {
-            console.log("Wrong details");
-            alert("Wrong Details");
+        for (let key in users) {
+            if (users[key].email === details.email && users[key].password === details.password) {
+                localStorage.setItem("user", users[key].email);
+                localStorage.setItem("userTypeID", users[key].userTypeID);
+                console.log("User Logged In");
+            }
         }
-    };
 
-    const Logout = () => {
-        //If logout button is clicked, set the login details to blank and reload the page. Results starting back at login page.
-        console.log("User Logged Out");
-        setUser({
-            email: "",
-            password: "",
-        });
-        window.location.reload();
+        console.log("Wrong details");
+        alert("Wrong Details");
     };
 
     return (
