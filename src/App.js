@@ -9,7 +9,7 @@ import LoggedIn from "./pages/LoggedIn";
 import Progress from "./pages/Progress";
 import Navbar from "./components/Navbar"; //navbar component
 
-//route the contact and login pages to the js files
+// Allows the user to move between the pages.
 function App() {
     return (
         <Router>
