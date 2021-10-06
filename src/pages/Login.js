@@ -24,7 +24,7 @@ const Login = () => {
     const [user, setUser] = useState({ email: "", password: "", userTypeID: 0 });
     const [error, setError] = useState(""); //seter for errors not in use. Could add catch errors if needed.
 
-    const Login = (details) => {
+    const checkDetails = details => {
         console.log(details);
 
         if (details.email == adminUser.email && details.password == adminUser.password) {
@@ -65,7 +65,7 @@ const Login = () => {
                                 <button onClick={Logout}>Logout</button>
                             </div>
                         ) : (
-                            <LoginForm Login={Login} error={error} />
+                            <LoginForm submitDetails={checkDetails} error={error} />
                         )}
                     </div>
                     <div className="col-lg-4"></div>
