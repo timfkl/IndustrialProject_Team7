@@ -7,6 +7,7 @@ import h337 from "heatmap.js";
 // Takes in html/jsx id, source image and function call for onLoad and returns an image wrapped in a div with those parameters set.
 const DataImage = ({ id, src, onLoad }) => {
     return (
+        // Container for h337 heatmap instances.
         <div id={id}>
             <img src={src} alt="" width="100%" style={{ zIndex: -1 }} onLoad={onLoad} />
         </div>
@@ -17,9 +18,10 @@ const DataImage = ({ id, src, onLoad }) => {
 const TwoDHeatmap = () => {
     let isRunning = false;
 
+    // Stores important attributes of the heatmap instance.
     let heatmapConfig = {
         quad_left: {
-            instance: undefined,
+            instance: undefined, // h337 instance
             data: [],
             x: 0,
             y: 0,
@@ -79,11 +81,11 @@ const TwoDHeatmap = () => {
         isRunning = true; // To prevent this method from running again when not finished.
     };
 
-    // Simulates data on each point. Takes in the data array [date, value], the h337 instance and position. Name is for debugging.
+    // Simulates data on each point. Takes in the name of the key in heatmapConfig.
     async function simulateDataOnPoint(configName) {
         for (let i = 1; i < heatmapConfig[configName].data.length; i++) {
+            
             // Sets the value and position for the point on the heatmap.
-
             heatmapConfig[configName].instance.setData({
                 min: 0,
                 max: 1025,
@@ -155,6 +157,7 @@ const TwoDHeatmap = () => {
             document.querySelector("#imageBack").clientHeight,
         ];
 
+        // Sets the points so that they are in the same position when the images resize.
         heatmapConfig["quad_left"].x = Math.floor((2 / 5) * imageFrontSize[0]);
         heatmapConfig["quad_left"].y = Math.floor((2 / 5) * imageFrontSize[1]);
 
@@ -167,7 +170,7 @@ const TwoDHeatmap = () => {
         heatmapConfig["hams_right"].x = Math.floor((3 / 5) * imageBackSize[0]);
         heatmapConfig["hams_right"].y = Math.floor((2 / 5) * imageBackSize[1]);
     };
-    window.onresize = onImageResize;
+    window.onresize = onImageResize; // Runs when the browser resizes.
 
     return (
         <Container>
