@@ -1,6 +1,6 @@
 {
-  "short_name": "theoHealth",
-  "name": "theoHealth",
+  "short_name": "Theo Health",
+  "name": "Theo Health Website and App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#0297a2",
   "background_color": "#ffffff"
 }
