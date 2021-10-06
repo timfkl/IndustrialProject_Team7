@@ -84,7 +84,6 @@ const TwoDHeatmap = () => {
     // Simulates data on each point. Takes in the name of the key in heatmapConfig.
     async function simulateDataOnPoint(configName) {
         for (let i = 1; i < heatmapConfig[configName].data.length; i++) {
-            
             // Sets the value and position for the point on the heatmap.
             heatmapConfig[configName].instance.setData({
                 min: 0,
