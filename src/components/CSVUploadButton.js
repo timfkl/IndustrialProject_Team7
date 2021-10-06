@@ -9,6 +9,8 @@ export default function CSVUploadButton(){
     // Create a state for the modal, telling whether it's open or closed
     const [isOpen, setIsOpen] = React.useState(false);
     
+    var muscleGroup
+
     // Opens modal
     const showModal = () => {
         setIsOpen(true);
@@ -27,10 +29,12 @@ export default function CSVUploadButton(){
         const file = csvFile;
         const reader = new FileReader();
 
+        muscleGroup = document.getElementById("muscleGroup").value;
+
         reader.onload = function(e) {
             const text = e.target.result;
             console.log(text);
-            localStorage.setItem("csv", text)
+            localStorage.setItem("csv"+muscleGroup, text)
             hideModal()
         }
 
@@ -61,6 +65,14 @@ export default function CSVUploadButton(){
                     </input>
                 </form>
             </Modal.Body>
+
+            <Modal.Header>
+                <Modal.Title>Which muscle group is this for? (1-4)</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <input type="text" id="muscleGroup" name="muscleGroup" placeholder= "e.g. 1" /><br/>
+            </Modal.Body>
+
             <Modal.Footer>
                 {/* Buttons to close the modal, and submit it (which runs the submit method) */}
                 <button id="cancelButton"  className= "button" onClick={hideModal}>Cancel</button>

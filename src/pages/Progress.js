@@ -17,6 +17,8 @@ const Progress = () => {
     // Create use state goal, and setMuscleGroup which modifies its value, muscle group 1 is default when page reloads
     const [selectedMuscleGroup, setMuscleGroup] = useState(1);
 
+    const [activeActivationArray, setActiveActivationArray] = useState(1);
+
     // This will be the biggest max from the csv, hardcoded example for now
     var currentMax = 0
 
@@ -30,9 +32,9 @@ const Progress = () => {
     var arrayOfActivations = []
     
     // If the user has uploaded a csv - it is stored in local
-    if(localStorage.getItem("csv")){
+    if(localStorage.getItem("csv"+activeActivationArray)){
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(localStorage.getItem("csv"))
+        csvArray = CSVToArray(localStorage.getItem("csv"+activeActivationArray))
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift()
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array 
@@ -40,6 +42,7 @@ const Progress = () => {
             arrayOfActivations.push(parseInt(element[1])) 
         });(console.log(arrayOfActivations))
     }
+    
 
     // Save that new array to local
     localStorage.setItem("arrayOfActivations", arrayOfActivations)
@@ -65,6 +68,7 @@ const Progress = () => {
     const getMuscleGroup = (muscleGroup) => {
         setMuscleGroup (muscleGroup)
         setGoal(localStorage.getItem("goal"+muscleGroup))
+        setActiveActivationArray(muscleGroup)
     };
 
     return (
