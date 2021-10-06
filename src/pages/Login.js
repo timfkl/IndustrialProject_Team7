@@ -3,12 +3,25 @@ import LoginForm from "../components/LoginForm";
 
 //stylised login page
 const Login = () => {
-    const adminUser = {
-        email: "test@test.com", //hard codded login details.
-        password: "test123",
+    const users = {
+        physio: {
+            email: "physio@test.com", //hard codded login details.
+            password: "physio123",
+            userTypeID: 1
+        },
+        injured: {
+            email: "injured@test.com", //hard codded login details.
+            password: "injured123",
+            userTypeID: 2
+        },
+        athlete:{
+            email: "athlete@test.com", //hard codded login details.
+            password: "athlete123",
+            userTypeID: 3
+        }
     };
 
-    const [user, setUser] = useState({ email: "", password: "" });
+    const [user, setUser] = useState({ email: "", password: "", userTypeID: 0 });
     const [error, setError] = useState(""); //seter for errors not in use. Could add catch errors if needed.
 
     const Login = (details) => {
