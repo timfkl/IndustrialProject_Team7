@@ -10,7 +10,8 @@ export default function GoalUploadButton(){
     const [isOpen, setIsOpen] = React.useState(false);
 
     var currentGoal = 0
-    
+    var muscleGroup
+
     // Opens modal
     const showModal = () => {
         setIsOpen(true);
@@ -24,10 +25,11 @@ export default function GoalUploadButton(){
     // Runs when the submit button is clicked, sets goal in local storage - will need to do more in future
     const submit = () => {
         currentGoal = document.getElementById("goal").value;
-        localStorage.setItem("goal", currentGoal)
+        muscleGroup = document.getElementById("muscleGroup").value;
+        localStorage.setItem("goal"+muscleGroup, currentGoal)
         window.location.reload(); 
     }
-    
+
     
     // The html of the component
     return (
@@ -42,7 +44,13 @@ export default function GoalUploadButton(){
                 <Modal.Title>What level of muscle activation do you want to achieve?</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                    <input type="text" id="goal" name="goal"/><br/>
+                    <input type="text" id="goal" name="goal" placeholder = "e.g. 1024" /><br/>
+            </Modal.Body>
+            <Modal.Header>
+                <Modal.Title>Which muscle group is this for? (1-4)</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <input type="text" id="muscleGroup" name="muscleGroup" placeholder= "e.g. 1" /><br/>
             </Modal.Body>
             <Modal.Footer>
                 {/* Buttons to close the modal, and submit it (which runs the submit method) */}

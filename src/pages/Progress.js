@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Common from '../components/Common';
 import styled from 'styled-components';
@@ -7,11 +7,15 @@ import GoalUploadButton from '../components/GoalUploadButton';
 import CSVUploadButton from '../components/CSVUploadButton'
 import CSVToArray from '../scripts/CSVToArray'
 import './Progress.css'
+import { Dropdown } from 'react-bootstrap';
 
 const Progress = () => {
 
-    // Get the goal from local storage  
-    var goal = localStorage.getItem("goal")
+    // Create use state goal, and setGoal which modifies its value
+    const [goal, setGoal] = useState(localStorage.getItem("goal1") ? localStorage.getItem("goal1"): 0 );
+
+    // Create use state goal, and setMuscleGroup which modifies its value, muscle group 1 is default when page reloads
+    const [selectedMuscleGroup, setMuscleGroup] = useState(1);
 
     // This will be the biggest max from the csv, hardcoded example for now
     var currentMax = 0
@@ -53,38 +57,62 @@ const Progress = () => {
     // Progression is the client's maximum activation record / their goal * 100 - this isthen shown on the progression bar
     var progression = (currentMax / goal) * 100
 
-    if(progression>=100){
+    if(progression>=100 && goal != (undefined || 0)){
         showConfetti = true
     }
+
+    // When a muscle group is selected, go to local storage and find "goal + muscle group value", set goal to be that
+    const getMuscleGroup = (muscleGroup) => {
+        setMuscleGroup (muscleGroup)
+        setGoal(localStorage.getItem("goal"+muscleGroup))
+    };
 
     return (
        
         <header> 
-            <div class="confetti" style={{ visibility: showConfetti != undefined? 'visible': 'hidden'}}>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
-                <div class="confetti-piece"></div>
+            <div className="confetti" style={{ visibility: showConfetti != undefined? 'visible': 'hidden'}}>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
+                <div className="confetti-piece"></div>
             </div>
 
+
             <div className="Container">
-            <h5>You're Doing great!</h5>
-            <h5>Your current goal is: {goal}</h5>
-            <h5>Your current PR is: {currentMax}</h5>
             <GoalUploadButton/>
             <CSVUploadButton/>
             <ProgressBar animated now={progression} />
+
+
+
+            <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic">
+                    Select a Muscle Group to View
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => {getMuscleGroup(1)}}>1</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {getMuscleGroup(2)}}>2</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {getMuscleGroup(3)}}>3</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {getMuscleGroup(4)}}>4</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+
+            <h5>You are viewing muscle group: {selectedMuscleGroup}</h5>
+            <h5>Your current goal is: {goal}</h5>
+            <h5>Your current personal record is: {currentMax}</h5>
             <StyledLink to="/LoggedIn"> Back </StyledLink>
             </div>
+
         </header>
 
     )
