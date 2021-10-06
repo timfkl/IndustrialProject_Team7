@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import LoggedIn from "./pages/LoggedIn";
 import Progress from "./pages/Progress";
-import Navbar from "./components/Navbar"; //navbar component
+import Navbar from "./components/NavigationBar"; //navbar component
 
 // Allows the user to move between the pages.
 function App() {
