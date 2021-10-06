@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
+import LoginButton from './LoginButton';
 
 // Displays navigation bar.
 const NavigationBar = () => {
