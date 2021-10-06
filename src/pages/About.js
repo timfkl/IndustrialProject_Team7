@@ -1,7 +1,5 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
-import { CardGroup } from "react-bootstrap";
-import { Card } from "react-bootstrap";
+import { Carousel, Card, CardGroup } from "react-bootstrap";
 import "./About.css";
 
 const About = () => {
