@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Alert, Container, Form, FloatingLabel, Button } from "react-bootstrap";
 import axios from "axios";
-import './Login.css';
+// import './Login.css';
 
 //stylised login page
 const Login = () => {
     const [error, setError] = useState(""); //seter for errors not in use. Could add catch errors if needed.
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const API_PATH = "";
+    const API_PATH = "http://localhost/projects/api/login.php";
 
     //hard codded login details.
     const users = {
@@ -34,7 +34,7 @@ const Login = () => {
         e.preventDefault();
 
         axios({
-            method: "post",
+            method: "POST",
             url: `${API_PATH}`,
             headers: { "content-type": "application/json" },
             data: {
@@ -45,7 +45,10 @@ const Login = () => {
             .then((result) => {
                 console.log(result);
             })
-            .catch((error) => setError(error.message));
+            .catch((error) => {
+                setError(error.message);
+                console.log(error);
+            });
 
         // for (let key in users) {
         //     if (users[key].email === email && users[key].password === password) {
@@ -54,17 +57,18 @@ const Login = () => {
         //         return;
         //     }
         // }
+        // setError("The details you have entered are incorrect.")
     }
 
     return (
         //Login form.
         <Container>
-            <Alert variant="danger" style={{ display: error !== "" ? "block" : "none", margin: 10, textAlign: 'center' }}>
+            <Alert variant="danger" style={{ display: error !== "" ? "block" : "none", margin: 10, textAlign: 'center' }} onClose={() => {setError("")}} dismissible>
                 {error}
             </Alert>
 
             <div className="position-absolute top-50 start-50 translate-middle" style={{ minWidth: '30%', maxWidth: '90%', padding: '2rem', backgroundColor: 'white', borderRadius: 10 }}>
-                <Form name="login" onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3"></Form.Group>
                     <FloatingLabel label="Email address" className="mb-3">
                         <Form.Control name="email" type="email" placeholder="name@example.com" onChange={e => { setEmail(e.target.value) }} />
@@ -86,3 +90,6 @@ const Login = () => {
 };
 
 export default Login;
+
+
+// action={API_PATH} method="POST"
