@@ -1,8 +1,13 @@
 <?php
+header("Access-Control-Allow-Origin: 'http://localhost:3000");
+header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
 echo("working1");
 include('connection.php');
 include('functions.php');
-header("Access-Control-Allow-Origin: *");
+
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
