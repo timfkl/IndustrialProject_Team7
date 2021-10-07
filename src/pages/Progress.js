@@ -9,17 +9,86 @@ import CSVToArray from '../scripts/CSVToArray'
 import './Progress.css'
 import { Dropdown } from 'react-bootstrap';
 
+
+function selectRandomTask(currentTask1, currentTask2, currentTask3) {
+    //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
+    var tasks = ['Drink a glass of water', 'Read a chapter of a good book', 'Try a new recipe', 'Eat a good breakfast', 
+    '10+ Minute walk', '8 hours of sleep', 'Watch something funny', 'Clean home', 'Analyse your stress levels', 
+    'Make a gratitude list']; //the list of tasks
+
+    var task = tasks[Math.floor(Math.random() * tasks.length)]; //select random
+    while (task === currentTask1 || task === currentTask2 || task === currentTask3 ) { //ensure task hasn't just been done
+        task = tasks[Math.floor(Math.random() * tasks.length)];
+    }
+    return task;
+}
+
+function loadTasks() {
+    //function takes 3 random tasks and load them into the html
+    if (document.querySelector('#task1:checked') !== null && document.querySelector('#task2:checked') !== null 
+    && document.querySelector('#task3:checked') !== null) { //check that all 3 checkboxes are checked
+        var task1 = document.getElementById("task1label").innerHTML; //3 checker variables, used to ensure tasks don't repeat instantly
+        var task2 = document.getElementById("task2label").innerHTML;
+        var task3 = document.getElementById("task3label").innerHTML;
+
+    //find each label for the checkboxes and call function select a new one
+    document.getElementById("task1label").innerHTML = selectRandomTask(task1, task2, task3);
+    task1= document.getElementById("task1label").innerHTML; //set the new task as the checker variable
+    document.getElementById("task2label").innerHTML = selectRandomTask(task1, task2, task3);
+    task2= document.getElementById("task2label").innerHTML;
+    document.getElementById("task3label").innerHTML = selectRandomTask(task1, task2, task3);
+    document.getElementById("task1").checked = false
+    document.getElementById("task2").checked = false
+    document.getElementById("task3").checked = false}
+}
+
+function collectAnswers() {
+    //here we take the checkboxes and store them
+    //so the physio can tell if person is emotionally progressing too
+    var radiosSleep = document.getElementsByName('sleep'); //the sleep checkboxes
+    var radiosDrive = document.getElementsByName('drive'); 
+    var radiosStress = document.getElementsByName('stress'); 
+    var radiosMood = document.getElementsByName('mood'); 
+   
+    //variables to set from the checkboxes
+    var sleep = 'unselected';
+    var stress = 'unselected'; 
+    var drive = 'unselected';
+    var mood = 'unselected';
+
+    sleep = getRadioResults(radiosSleep);
+    drive = getRadioResults(radiosDrive);
+    stress = getRadioResults(radiosStress);
+    mood = getRadioResults(radiosMood);
+    //send check-in results to database here
+    console.log(sleep, drive, stress, mood)
+    document.getElementById('submitButton').innerHTML = "Submitted"; 
+}
+
+function getRadioResults(radios) {
+
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            // do whatever you want with the checked radio
+            return radios[i].id;
+         }}
+}
+
+
+
+
 const Progress = () => {
 
     // Create use state goal, and setGoal which modifies its value
     const [goal, setGoal] = useState(localStorage.getItem("goal1") ? localStorage.getItem("goal1"): 0 );
 
-    // Create use state goal, and setMuscleGroup which modifies its value, muscle group 1 is default when page reloads
+    // Create use state selectedMuscleGroup, setMuscleGroup which modifies its value, muscle group 1 is default when page reloads
     const [selectedMuscleGroup, setMuscleGroup] = useState(1);
-
+    
+    // Create use state musclePRDisplay - the PR of the specific muscle group, setMusclePRDisplay which modifies its value, muscle group 1's PR is default when page reloads
     const [musclePRDisplay, setMusclePRDisplay] = useState(localStorage.getItem("Max1") ? localStorage.getItem("Max1"): 0 )
 
-    // This will be the biggest max from the csv, hardcoded example for now
+    // This will be the biggest max from the csv
     var Max1 = 0
     var Max2 = 0
     var Max3 = 0
@@ -31,7 +100,7 @@ const Progress = () => {
     // Set to true when the goal is reached, otherwise left undefined, so confetti is hidden
     var showConfetti 
 
-    // An array to store activation stats, removing the dates and time from the csvArray
+    // Arrays to store activation stats, removing the dates and time from the csvArray
     var arrayOfActivations1 = []
     var arrayOfActivations2 = []
     var arrayOfActivations3 = []
@@ -150,6 +219,7 @@ const Progress = () => {
         setMuscleGroup (muscleGroup)
         setGoal(localStorage.getItem("goal"+muscleGroup))
         
+        // Set the pr to be displayed to that of the max of that muscle group
         if (muscleGroup==1){
             setMusclePRDisplay(Max1)
         }
@@ -166,18 +236,24 @@ const Progress = () => {
 
 
 
-    // Progression is the client's maximum activation record / their goal * 100 - this isthen shown on the progression bar
+    // Progression is the client's maximum activation record / their goal * 100 - this is then shown on the progression bar
     var progression = (musclePRDisplay / goal) * 100
 
     if(progression>=100 && goal != (undefined || 0)){
         showConfetti = true
     }
 
-
-
     return (
        
         <header> 
+
+            {/* Back button */}
+            <br/>
+            <StyledLink to="/LoggedIn"> Back </StyledLink>
+            <br/>
+            <br/>
+
+            {/* Confetti for achieving a goal */}
             <div className="confetti" style={{ visibility: showConfetti != undefined? 'visible': 'hidden'}}>
                 <div className="confetti-piece"></div>
                 <div className="confetti-piece"></div>
@@ -195,31 +271,71 @@ const Progress = () => {
             </div>
 
 
+            {/* This area allows the user to set a goal, upload a csv and see their progress and PR for each muscle group */}
             <div className="Container">
-            <GoalUploadButton/>
-            <CSVUploadButton/>
-            <ProgressBar animated now={progression} />
+                <GoalUploadButton/>
+                <CSVUploadButton/>
+                <ProgressBar animated now={progression} style={{width:'50vw'}}/>
+                
+                <h5>You are viewing muscle group: {selectedMuscleGroup}</h5>
+                <h5>Your current personal record is: {musclePRDisplay}</h5>
+                <h5>Your current goal is: {goal}</h5>
 
+                <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                        Select a Muscle Group to View
+                    </Dropdown.Toggle>
 
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(1)}}>1</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(2)}}>2</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(3)}}>3</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(4)}}>4</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
 
-            <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic">
-                    Select a Muscle Group to View
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => {getMuscleGroup(1)}}>1</Dropdown.Item>
-                    <Dropdown.Item onClick={() => {getMuscleGroup(2)}}>2</Dropdown.Item>
-                    <Dropdown.Item onClick={() => {getMuscleGroup(3)}}>3</Dropdown.Item>
-                    <Dropdown.Item onClick={() => {getMuscleGroup(4)}}>4</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-
-            <h5>You are viewing muscle group: {selectedMuscleGroup}</h5>
-            <h5>Your current goal is: {goal}</h5>
-            <h5>Your current personal record is: {musclePRDisplay}</h5>
-            <StyledLink to="/LoggedIn"> Back </StyledLink>
             </div>
+
+            {/* entire well being section */}
+            <div className="WellBeing" style={{ float:'right', height:'100px', margin:'30px'}}> 
+
+                {/* - Check in section, monitors users current feelings */}
+                <div className="CheckIn" style={{display:'inline-flex', margin:'10px', width:'300px', height:'200px', float:'left', border: '3px solid #195a5c'}}>
+                    <ul style={{listStyleType: 'none', display: 'static'}}>
+                        <h6 style={{textDecoration: 'underline'}}>Check-in</h6>
+                        <div style={{textAlign:'left'}}>
+                            {/* 4 radio buttons for sleep, drive, stress and modd */}
+                            <li>Sleep: <input type="radio" name="sleep" id="good"/> Good <input type="radio" name="sleep" id="ok"/>Ok <input type="radio" name="sleep" id="bad"/>Bad</li>
+                            <li style={{paddingTop:'8px'}}>Drive: <input type="radio" name="drive" id="good"/> Good <input type="radio" name="drive" id="ok"/>Ok <input type="radio" name="drive" id="bad"/>Bad</li>
+                            <li style={{paddingTop:'8px'}}>Stress: <input type="radio" name="stress" id="good"/> Good <input type="radio" name="stress" id="ok"/>Ok <input type="radio" name="stress" id="bad"/>Bad</li>
+                            <li style={{paddingTop:'8px', paddingBottom: '10px'}}>Mood: <input type="radio" name="mood" id="good"/> Good <input type="radio" name="mood" id="ok"/>Ok <input type="radio" name="mood" id="bad"/>Bad</li>
+                            {/* button to collect check in answers */}
+                            <li><button onClick={collectAnswers} id='submitButton' style={{color: '#195a5c', backgroundColor:'#f59e6e', float:'none'}}>Submit</button></li>
+                        </div>
+                    </ul>
+                </div>
+
+                {/* - Tasks section, gives users tasks for mental wellbeing */}
+                <div className="WellBeingTasks" style={{margin:'10px', width: '300px', height: '200px', float: 'right', border: '3px solid #195a5c'}}>
+                    <h6 style={{ display: 'inline-block', textDecoration: 'underline'}}>Well Being Tasks </h6>
+                    <br/>
+                    <div class="tasks" style={{textAlign: 'left'}}> {/* the list of tasks */}
+                        <ul style={{listStyleType: 'none', display: 'static'}}>
+                            <li><input type="checkbox" id="task1"/>
+                            <label id="task1label" for="task1"> Eat a good breakfast</label></li>
+                            <li><input type="checkbox" id="task2"/>
+                            <label id="task2label" for="task2"> 10+ Minute walk</label></li>
+                            <li><input type="checkbox" id="task3"/>
+                            <label id="task3label" for="task3"> 8 hours of sleep</label></li> 
+                        </ul>             
+                    </div>
+                    <p style={{color: '#f59e6e'}}>Complete all three for new tasks</p>
+                    {/* button for getting a new set of tasks */}
+                    <button onClick={loadTasks} style={{color: '#195a5c', backgroundColor:'#f59e6e'}}>Get new tasks</button>
+                </div>
+            </div>
+
+
 
         </header>
 

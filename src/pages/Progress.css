@@ -1,3 +1,7 @@
+
+.progress { margin-left: auto; margin-right:auto; }
+
+
 /* All of the confetti css is from https://codepen.io/zer0kool/pen/KjZWRW. It was then adapted to work for our site */
 .confetti {
     display: flex;
@@ -9,6 +13,7 @@
     overflow: hidden;
     z-index: -1;
 }
+
 .confetti-piece {
     position: absolute;
     width: 10px;
