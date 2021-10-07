@@ -33,6 +33,20 @@ const Login = () => {
         //Handles form submission. Prevents page from reloading in order to save the data. Then passes the details through to Login func.
         e.preventDefault();
 
+        axios({
+            method: "post",
+            url: `${API_PATH}`,
+            headers: { "content-type": "application/json" },
+            data: {
+                email: email,
+                password: password
+            },
+        })
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => setError(error.message));
+
         // for (let key in users) {
         //     if (users[key].email === email && users[key].password === password) {
         //         localStorage.setItem("user", users[key].email);
@@ -49,7 +63,7 @@ const Login = () => {
                 {error}
             </Alert>
 
-            <div className="position-absolute top-50 start-50 translate-middle" style={{ minWidth: '40%', maxWidth: '90%', padding: '2rem', backgroundColor: 'white', borderRadius: 10 }}>
+            <div className="position-absolute top-50 start-50 translate-middle" style={{ minWidth: '30%', maxWidth: '90%', padding: '2rem', backgroundColor: 'white', borderRadius: 10 }}>
                 <Form name="login" onSubmit={handleSubmit}>
                     <Form.Group className="mb-3"></Form.Group>
                     <FloatingLabel label="Email address" className="mb-3">
