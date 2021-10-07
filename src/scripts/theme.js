@@ -1,6 +1,6 @@
 export const Theme = {
     colors: {
-        turquoise: '#0297a2',
-        orange: '#db6e20'
+        teal: '#0297a2',
+        orange: '#f36d21'
     }
 }
