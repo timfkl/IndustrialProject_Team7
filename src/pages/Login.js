@@ -49,7 +49,7 @@ const Login = () => {
                 {error}
             </Alert>
 
-            <div className="position-absolute top-50 start-50 translate-middle" style={{ padding: '2rem', backgroundColor: 'white', borderRadius: 10 }}>
+            <div className="position-absolute top-50 start-50 translate-middle" style={{ minWidth: '40%', maxWidth: '90%', padding: '2rem', backgroundColor: 'white', borderRadius: 10 }}>
                 <Form name="login" onSubmit={handleSubmit}>
                     <Form.Group className="mb-3"></Form.Group>
                     <FloatingLabel label="Email address" className="mb-3">
