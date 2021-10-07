@@ -297,7 +297,7 @@ const Progress = () => {
             </div>
 
             {/* entire well being section */}
-            <div className="WellBeing" style={{ float:'right', height:'100px', margin:'30px'}}> 
+            <div className="WellBeing" style={{ height:'100px', margin:'30px'}}> 
 
                 {/* - Check in section, monitors users current feelings */}
                 <div className="CheckIn" style={{display:'inline-flex', margin:'10px', width:'300px', height:'200px', float:'left', border: '3px solid #195a5c'}}>
