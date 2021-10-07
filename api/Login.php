@@ -1,4 +1,5 @@
 <?php
+echo("working1");
 include('connection.php');
 include('functions.php');
 header("Access-Control-Allow-Origin: *");
@@ -7,7 +8,8 @@ $_POST = json_decode($rest_json, true);
 
 $model = new Connection();
 $con = $model->getConnection();
-
+echo("working2");
+debug_to_console("working");
 $result = [];
 if ($_POST)
 {
