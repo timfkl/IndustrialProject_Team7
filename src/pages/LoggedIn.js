@@ -28,9 +28,9 @@ const LoggedIn = () => {
                 <Tab eventKey={2} title="Progress">
                     <Progress/>
                 </Tab>
-                <Tab eventKey={3} title="Edit Goals">
+                {/* <Tab eventKey={3} title="Edit Goals">
                     <h3>Other Stuff to match wireframe</h3>
-                </Tab>
+                </Tab> */}
             </Tabs>
         </Container>
     );
