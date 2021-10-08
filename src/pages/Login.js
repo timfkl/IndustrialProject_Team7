@@ -61,7 +61,6 @@ const Login = () => {
         for (let key in users) {
             if (users[key].email === email && users[key].password === password) {
                 localStorage.setItem("user_name", users[key].name);
-                localStorage.setItem("user_email", users[key].email);
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
                 return;
             }
