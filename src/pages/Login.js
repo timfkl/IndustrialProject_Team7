@@ -4,17 +4,17 @@ import axios from "axios";
 
 //stylised login page
 const Login = () => {
-    const [error, setError] = useState(""); //seter for errors not in use. Could add catch errors if needed.
+    const [error, setError] = useState(""); //setter for errors not in use. Could add catch errors if needed.
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const API_PATH = "http://localhost/projects/api/login.php";
+    const API_PATH = "http://localhost/projects/api/login.php"; // api url
 
     // If the user is already logged in send them to the dashboard.
     if (localStorage.getItem("user_name")) {
         window.location.href = "/loggedin";
     }
 
-    //hard codded login details.
+    // hard coded user user details.
     const users = {
         physio: {
             name: "Darlene Alderson",
@@ -36,6 +36,7 @@ const Login = () => {
         },
     };
 
+    // Runs when the user submits.
     const handleSubmit = (e) => {
         //Handles form submission. Prevents page from reloading in order to save the data. Then passes the details through to Login func.
         e.preventDefault();
@@ -57,11 +58,13 @@ const Login = () => {
         //         console.log(error);
         //     });
 
+        // Compares with hard coded details.
         for (let key in users) {
             if (users[key].email === email && users[key].password === password) {
+                // Store username and user type id (1: physio, 2. injured athlete, 3. athlete)
                 localStorage.setItem("user_name", users[key].name);
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
-                window.location.href = "/loggedin";
+                window.location.href = "/loggedin"; // Redirect page.
                 return;
             }
         }
@@ -71,6 +74,7 @@ const Login = () => {
     return (
         //Login form.
         <Container>
+            {/* Shows if the details entered are wrong */}
             <Alert
                 variant="danger"
                 style={{
