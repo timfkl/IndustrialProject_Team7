@@ -17,18 +17,18 @@ const Login = () => {
 
     // hard coded user user details.
     const users = {
-        physio: {
-            name: "Darlene Alderson",
-            email: "physio@theohealth.com",
-            password: "physio123",
-            userTypeID: 1,
-        },
-        injured: {
-            name: "Philip Price",
-            email: "injured@theohealth.com",
-            password: "injured123",
-            userTypeID: 2,
-        },
+        // physio: {
+        //     name: "Darlene Alderson",
+        //     email: "physio@theohealth.com",
+        //     password: "physio123",
+        //     userTypeID: 1,
+        // },
+        // injured: {
+        //     name: "Philip Price",
+        //     email: "injured@theohealth.com",
+        //     password: "injured123",
+        //     userTypeID: 2,
+        // },
         athlete: {
             name: "Fernando Vera",
             email: "athlete@theohealth.com",

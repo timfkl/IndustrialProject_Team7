@@ -254,13 +254,6 @@ const Progress = () => {
     return (
        
         <header> 
-
-            {/* Back button */}
-            <br/>
-            {/* <StyledLink to="/LoggedIn"> Back </StyledLink> */}
-            <br/>
-            <br/>
-
             {/* Confetti for achieving a goal */}
             <div className="confetti" style={{ visibility: showConfetti != undefined? 'visible': 'hidden'}}>
                 <div className="confetti-piece"></div>
