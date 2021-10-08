@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Container, Form, FloatingLabel, Button } from "react-bootstrap";
+import OrangeButton from '../components/OrangeButton'
 import axios from "axios";
 
 //stylised login page
@@ -132,9 +133,7 @@ const Login = () => {
                             />
                         </FloatingLabel>
                     </Form.Group>
-                    <Button variant="warning" type="submit">
-                        Sign in
-                    </Button>
+                    <OrangeButton text="Sign in" props={{ variant: "warning", type: "submit" }} />
                 </Form>
             </div>
         </Container>
