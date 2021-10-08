@@ -12,6 +12,7 @@ const TealButton = ({text, props}) => {
                 borderColor: Theme.colors.teal,
                 color: 'white'
             }}
+            variant="info"
         >
             {text}
         </Button>
