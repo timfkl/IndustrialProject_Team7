@@ -1,6 +1,9 @@
 
 .progress { margin-left: auto; margin-right:auto; }
 
+header{
+    text-align: center;
+}
 
 /* All of the confetti css is from https://codepen.io/zer0kool/pen/KjZWRW. It was then adapted to work for our site */
 .confetti {
