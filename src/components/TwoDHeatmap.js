@@ -51,28 +51,28 @@ const TwoDHeatmap = () => {
         if (isRunning) return;
 
         // Simulates data on each point on the left quad muscle.
-        if (localStorage.getItem("quad_left")) {
+        if (localStorage.getItem("csv1")) {
             // Gets the specified sensor data saved in localstorage and converts to array.
             heatmapConfig["quad_left"].data = CSVToArray(localStorage.getItem("quad_left"));
             simulateDataOnPoint("quad_left");
         }
 
         // Simulates data on each point on the right quad muscle.
-        if (localStorage.getItem("quad_right")) {
+        if (localStorage.getItem("csv2")) {
             // Gets the specified sensor data saved in localstorage and converts to array.
             heatmapConfig["quad_right"].data = CSVToArray(localStorage.getItem("quad_right"));
             simulateDataOnPoint("quad_right");
         }
 
         // Simulates data on each point on the left hamstring.
-        if (localStorage.getItem("hams_left")) {
+        if (localStorage.getItem("csv3")) {
             // Gets the specified sensor data saved in localstorage and converts to array.
             heatmapConfig["hams_left"].data = CSVToArray(localStorage.getItem("hams_left"));
             simulateDataOnPoint("hams_left");
         }
 
         // Simulates data on each point on the right hamstring.
-        if (localStorage.getItem("hams_right")) {
+        if (localStorage.getItem("csv4")) {
             // Gets the specified sensor data saved in localstorage and converts to array.
             heatmapConfig["hams_right"].data = CSVToArray(localStorage.getItem("hams_right"));
             simulateDataOnPoint("hams_right");
