@@ -10,6 +10,11 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const API_PATH = "http://localhost/projects/api/login.php";
 
+    // If the user is already logged in send them to the dashboard.
+    if (localStorage.getItem('user_name')) {
+        window.location.href = "/loggedin";
+    }
+
     //hard codded login details.
     const users = {
         physio: {
