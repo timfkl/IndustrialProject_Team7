@@ -71,7 +71,9 @@ const Login = () => {
                 {error}
             </Alert>
 
+            <div className="position-absolute top-50 start-50 translate-middle" style={{ minWidth: '30%', maxWidth: '90%', padding: '2rem', backgroundColor: 'white', borderRadius: 10, textAlign: 'center' }}>
                 <img src={`${process.env.PUBLIC_URL}/logo_name.png`} alt="" className="mb-3" style={{ minWidth: '30%', maxWidth: '90%' }} />
+                <h3 className="mb-5">Sign into your account</h3>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3"></Form.Group>
                     <FloatingLabel label="Email address" className="mb-3">
@@ -82,7 +84,7 @@ const Login = () => {
                             <Form.Control name="password" type="password" placeholder="Password" onChange={e => { setPassword(e.target.value) }} />
                         </FloatingLabel>
                     </Form.Group>
-                    <Button variant="primary" type="submit" style={{ display: 'flex', justifySelf: 'center' }} >
+                    <Button variant="warning" type="submit" >
                         Sign in
                     </Button>
                 </Form>
