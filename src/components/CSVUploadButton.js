@@ -30,7 +30,8 @@ export default function CSVUploadButton(){
         const file = csvFile;
         const reader = new FileReader();
 
-        muscleGroup = selectValue;
+        muscleGroup = document.getElementById("muscleGroup").value;
+        console.log(document.getElementById("muscleGroup").value)
 
         reader.onload = function(e) {
             const text = e.target.result;
@@ -74,7 +75,7 @@ export default function CSVUploadButton(){
                     <Modal.Title>Which muscle is this data for?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Select onChange={(e) => {setSelectValue(e); console.log(e.target.value)}}>
+                    <Form.Select id="muscleGroup">
                         <option value={1}>Left Quadriceps</option>
                         <option value={2}>Right Quadriceps</option>
                         <option value={3}>Left Hamstring</option>
