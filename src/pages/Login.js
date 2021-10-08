@@ -62,6 +62,7 @@ const Login = () => {
             if (users[key].email === email && users[key].password === password) {
                 localStorage.setItem("user_name", users[key].name);
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
+                window.location.href = "/loggedin";
                 return;
             }
         }
