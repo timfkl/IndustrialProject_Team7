@@ -1,5 +1,6 @@
 import { Button } from 'react-bootstrap';
 import { Theme } from '../scripts/theme';
+import { useLocation } from 'react-router';
 
 // Custom login button component.
 const LoginButton = () => {
@@ -23,8 +24,9 @@ const LoginButton = () => {
                 borderColor: Theme.colors.orange,
                 color: 'white'
             }}
+            disabled={useLocation().pathname === '/login'}
         >
-            Sign in
+            { localStorage.getItem('user_name') ? 'Sign out' : 'Sign in' }
         </Button>
     );
 }
