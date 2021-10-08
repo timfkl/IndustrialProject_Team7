@@ -13,17 +13,20 @@ const Login = () => {
     //hard codded login details.
     const users = {
         physio: {
-            email: "physio@test.com",
+            name: 'Darlene Alderson',
+            email: "physio@theohealth.com",
             password: "physio123",
             userTypeID: 1
         },
         injured: {
-            email: "injured@test.com",
+            name: 'Philip Price',
+            email: "injured@theohealth.com",
             password: "injured123",
             userTypeID: 2
         },
         athlete:{
-            email: "athlete@test.com",
+            name: 'Fernando Vera',
+            email: "athlete@theohealth.com",
             password: "athlete123",
             userTypeID: 3
         }
