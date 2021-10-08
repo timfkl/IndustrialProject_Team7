@@ -36,31 +36,32 @@ const Login = () => {
         //Handles form submission. Prevents page from reloading in order to save the data. Then passes the details through to Login func.
         e.preventDefault();
 
-        axios({
-            method: "POST",
-            url: `${API_PATH}`,
-            headers: { "content-type": "application/json" },
-            data: {
-                email: email,
-                password: password
-            },
-        })
-            .then((result) => {
-                console.log(result);
-            })
-            .catch((error) => {
-                setError(error.message);
-                console.log(error);
-            });
+        // axios({
+        //     method: "POST",
+        //     url: `${API_PATH}`,
+        //     headers: { "content-type": "application/json" },
+        //     data: {
+        //         email: email,
+        //         password: password
+        //     },
+        // })
+        //     .then((result) => {
+        //         console.log(result);
+        //     })
+        //     .catch((error) => {
+        //         setError(error.message);
+        //         console.log(error);
+        //     });
 
-        // for (let key in users) {
-        //     if (users[key].email === email && users[key].password === password) {
-        //         localStorage.setItem("user", users[key].email);
-        //         localStorage.setItem("userTypeID", users[key].userTypeID);
-        //         return;
-        //     }
-        // }
-        // setError("The details you have entered are incorrect.")
+        for (let key in users) {
+            if (users[key].email === email && users[key].password === password) {
+                localStorage.setItem("user_name", users[key].name);
+                localStorage.setItem("user_email", users[key].email);
+                localStorage.setItem("user_type_ID", users[key].userTypeID);
+                return;
+            }
+        }
+        setError("The details you have entered are incorrect.");
     }
 
     return (
