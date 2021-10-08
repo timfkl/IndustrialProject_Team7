@@ -71,11 +71,9 @@ function getRadioResults(radios) {
         if (radios[i].checked) {
             // do whatever you want with the checked radio
             return radios[i].id;
-         }}
+        }
+    }
 }
-
-
-
 
 const Progress = () => {
 
@@ -234,7 +232,17 @@ const Progress = () => {
         }
     };
 
+    let selectedMuscleGroupName;
 
+    if (selectedMuscleGroup === 1) {
+        selectedMuscleGroupName = "Left Quadriceps";
+    } else if (selectedMuscleGroup === 2) {
+        selectedMuscleGroupName = "Right Quadriceps";
+    } else if (selectedMuscleGroup === 3) {
+        selectedMuscleGroupName = "Left Hamstring";
+    } else {
+        selectedMuscleGroupName = "Right Hamstring";
+    }
 
     // Progression is the client's maximum activation record / their goal * 100 - this is then shown on the progression bar
     var progression = (musclePRDisplay / goal) * 100
@@ -249,7 +257,7 @@ const Progress = () => {
 
             {/* Back button */}
             <br/>
-            <StyledLink to="/LoggedIn"> Back </StyledLink>
+            {/* <StyledLink to="/LoggedIn"> Back </StyledLink> */}
             <br/>
             <br/>
 
@@ -277,7 +285,7 @@ const Progress = () => {
                 <CSVUploadButton/>
                 <ProgressBar animated now={progression} style={{width:'50vw'}}/>
                 
-                <h5>You are viewing muscle group: {selectedMuscleGroup}</h5>
+                <h5>You are viewing muscle group: {selectedMuscleGroupName}</h5>
                 <h5>Your current personal record is: {musclePRDisplay}</h5>
                 <h5>Your current goal is: {goal}</h5>
 
@@ -287,10 +295,10 @@ const Progress = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => {getMuscleGroup(1)}}>1</Dropdown.Item>
-                        <Dropdown.Item onClick={() => {getMuscleGroup(2)}}>2</Dropdown.Item>
-                        <Dropdown.Item onClick={() => {getMuscleGroup(3)}}>3</Dropdown.Item>
-                        <Dropdown.Item onClick={() => {getMuscleGroup(4)}}>4</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(1)}}>Left Quadriceps</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(2)}}>Right Quadriceps</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(3)}}>Left Hamstring</Dropdown.Item>
+                        <Dropdown.Item onClick={() => {getMuscleGroup(4)}}>Right Hamstring</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 
