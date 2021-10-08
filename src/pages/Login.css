@@ -1,6 +1,0 @@
-body {
-    background: rgb(2,151,162);
-    background: -moz-linear-gradient(90deg, rgba(2,151,162,1) 0%, rgba(243,109,33,1) 40%, rgba(243,109,33,1) 60%, rgba(2,151,162,1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(2,151,162,1) 0%, rgba(243,109,33,1) 40%, rgba(243,109,33,1) 60%, rgba(2,151,162,1) 100%);
-    background: linear-gradient(90deg, rgba(2,151,162,1) 0%, rgba(243,109,33,1) 40%, rgba(243,109,33,1) 60%, rgba(2,151,162,1) 100%);
-}
