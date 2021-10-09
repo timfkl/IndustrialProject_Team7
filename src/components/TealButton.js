@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import { Theme } from '../scripts/theme';
 
 // Custom login button component.
-const TealButton = ({text, props}) => {
+const TealButton = (props) => {
 
     return (
         <Button
@@ -14,7 +14,7 @@ const TealButton = ({text, props}) => {
             }}
             variant="info"
         >
-            {text}
+            {props.text}
         </Button>
     );
 }
