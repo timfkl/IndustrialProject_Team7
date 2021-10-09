@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Container, Form, FloatingLabel, Button } from "react-bootstrap";
+import { Alert, Container, Form, FloatingLabel } from "react-bootstrap";
 import OrangeButton from '../components/OrangeButton'
 import axios from "axios";
 
@@ -11,8 +11,14 @@ const Login = () => {
     const API_PATH = "http://localhost/projects/api/login.php"; // api url
 
     // If the user is already logged in send them to the dashboard.
-    if (localStorage.getItem("user_name")) {
-        window.location.href = "/dashboard";
+    const userTypeID = parseInt(localStorage.getItem("user_type_ID"));
+
+    if (userTypeID !== undefined) {
+        if (userTypeID === 1) {
+            window.location.href = "/list";
+        } else if (userTypeID === 2 || userTypeID === 3) {
+            window.location.href = "/dashboard";
+        }
     }
 
     // hard coded user user details.
@@ -65,7 +71,11 @@ const Login = () => {
                 // Store username and user type id (1: physio, 2. injured athlete, 3. athlete)
                 localStorage.setItem("user_name", users[key].name);
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
-                window.location.href = "/dashboard"; // Redirect page.
+
+                // Redirect page based on type of user.
+                if (users[key].userTypeID === 1) window.location.href = "/list";
+                else window.location.href = "/dashboard";
+
                 return;
             }
         }
