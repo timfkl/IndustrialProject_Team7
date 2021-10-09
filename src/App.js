@@ -6,7 +6,6 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
-import AthleteList from "./pages/AthleteList";
 import Navbar from "./components/NavigationBar"; //navbar component
 
 // Allows the user to move between the pages.
@@ -20,8 +19,7 @@ function App() {
                 <Route path="/login" component={Login} />
 
                 {/* Only logged in users can access */}
-                <PrivateRoute path="/dashboard" component={Dashboard} access={[2,3]} />
-                <PrivateRoute path="/list" component={AthleteList} access={[1]} />
+                <PrivateRoute path="/dashboard" component={Dashboard} />
                 
                 {/* Defaults to homepage */}
                 <Route component={About} />
@@ -33,10 +31,12 @@ function App() {
 // Creates a route so that only logged in users can access them.
 const PrivateRoute = (props) => {
     const location = useLocation();
-    const userTypeID = parseInt(localStorage.getItem("user_type_ID"));
 
-    if (!userTypeID || !props.access.includes(userTypeID)) return <Redirect to={{ pathname: "/login", state: { from: location }}} />;
-    else return <Route {...props} />;
+    return localStorage.getItem("user_type_ID") ? (
+        <Route {...props} />
+    ) : (
+        <Redirect to={{ pathname: "/login", state: { from: location } }} />
+    );
 
     // If user is logged in go to page specifed or else redirect to login page.
 };

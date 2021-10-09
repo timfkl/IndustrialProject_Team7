@@ -11,14 +11,8 @@ const Login = () => {
     const API_PATH = "http://localhost/projects/api/login.php"; // api url
 
     // If the user is already logged in send them to the dashboard.
-    const userTypeID = parseInt(localStorage.getItem("user_type_ID"));
-
-    if (userTypeID !== undefined) {
-        if (userTypeID === 1) {
-            window.location.href = "/list";
-        } else if (userTypeID === 2 || userTypeID === 3) {
-            window.location.href = "/dashboard";
-        }
+    if (localStorage.getItem("user_type_ID") !== undefined) {
+        window.location.href = "/dashboard";
     }
 
     // hard coded user user details.
@@ -73,8 +67,7 @@ const Login = () => {
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
 
                 // Redirect page based on type of user.
-                if (users[key].userTypeID === 1) window.location.href = "/list";
-                else window.location.href = "/dashboard";
+                window.location.href = "/dashboard";
 
                 return;
             }
