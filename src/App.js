@@ -17,13 +17,14 @@ function App() {
             <Navbar />
             <Switch>
                 {/* Normal paths that the public can access */}
-                <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/login" component={Login} />
 
                 {/* Only logged in users can access */}
                 <PrivateRoute path="/dashboard" component={LoggedIn} />
                 <PrivateRoute path="/list" component={AthleteList} />
+                
+                {/* Defaults to homepage */}
                 <Route component={About} />
             </Switch>
         </Router>
