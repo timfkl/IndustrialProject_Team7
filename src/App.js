@@ -23,7 +23,6 @@ function App() {
 
                 {/* Only logged in users can access */}
                 <PrivateRoute path="/loggedin" component={LoggedIn} />
-                <PrivateRoute path="/progress" component={Progress} />
                 <PrivateRoute path="/list" component={AthleteList} />
                 <Route component={About} />
             </Switch>
@@ -35,6 +34,8 @@ function App() {
 const PrivateRoute = (props) => {
     const location = useLocation();
     const userTypeID = localStorage.getItem("user_type_ID");
+
+    
 
     // If user is logged in go to page specifed or else redirect to login page.
     return userTypeID ? (
