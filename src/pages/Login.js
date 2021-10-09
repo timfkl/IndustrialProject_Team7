@@ -143,7 +143,7 @@ const Login = () => {
                             />
                         </FloatingLabel>
                     </Form.Group>
-                    <OrangeButton text="Sign in" props={{ variant: "warning", type: "submit" }} />
+                    <OrangeButton text="Sign in" variant="warning" type="submit" />
                 </Form>
             </div>
         </Container>
