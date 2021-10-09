@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import LoggedIn from "./pages/LoggedIn";
 import Progress from "./pages/Progress";
+import AthleteList from "./pages/AthleteList";
 import Navbar from "./components/NavigationBar"; //navbar component
 
 // Allows the user to move between the pages.
@@ -23,6 +24,7 @@ function App() {
                 {/* Only logged in users can access */}
                 <PrivateRoute path="/loggedin" component={LoggedIn} />
                 <PrivateRoute path="/progress" component={Progress} />
+                <PrivateRoute path="/list" component={AthleteList} />
                 <Route component={About} />
             </Switch>
         </Router>
