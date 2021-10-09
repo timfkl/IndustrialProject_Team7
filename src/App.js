@@ -22,7 +22,7 @@ function App() {
                 <Route path="/login" component={Login} />
 
                 {/* Only logged in users can access */}
-                <PrivateRoute path="/loggedin" component={LoggedIn} />
+                <PrivateRoute path="/dashboard" component={LoggedIn} />
                 <PrivateRoute path="/list" component={AthleteList} />
                 <Route component={About} />
             </Switch>

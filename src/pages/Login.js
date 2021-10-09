@@ -65,7 +65,7 @@ const Login = () => {
                 // Store username and user type id (1: physio, 2. injured athlete, 3. athlete)
                 localStorage.setItem("user_name", users[key].name);
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
-                window.location.href = "/loggedin"; // Redirect page.
+                window.location.href = "/dashboard"; // Redirect page.
                 return;
             }
         }
