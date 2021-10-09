@@ -18,12 +18,13 @@ const AthleteList = () => {
     ]
 
     return (
-        <Container>
+        <Container className="mt-3">
 
-            <h3>List of Athletes</h3>
+            <h2>Hello, {localStorage.getItem('user_name')}.</h2>
+            <p>Here is a list of your clients.</p>
 
             <h6>
-                {list.length > 0 ? "Please choose an athlete" : "You don't have any athletes to review."}
+                {list.length > 0 ? "" : "You don't have any athletes to review."}
             </h6>
 
             <div>
