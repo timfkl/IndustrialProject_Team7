@@ -1,7 +1,3 @@
-import { Link } from 'react-router-dom';
-//for styling 
-import styled from 'styled-components';
-import Common from '../components/Common';
 import { useState } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
@@ -35,10 +31,5 @@ const Dashboard = () => {
         </Container>
     );
 }
-
-//use styling from common.js for links
-const StyledLink = styled(Link)`
-    ${Common}
-`;
 
 export default Dashboard;
