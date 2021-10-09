@@ -8,7 +8,7 @@ import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
 import CSVUploadButton from '../components/CSVUploadButton'; // Csv upload button component.
 import Progress from './Progress';
 
-const LoggedIn = () => {
+const Dashboard = () => {
     const [tab, setTab] = useState(1);
 
     return (
@@ -41,4 +41,4 @@ const StyledLink = styled(Link)`
     ${Common}
 `;
 
-export default LoggedIn
+export default Dashboard;

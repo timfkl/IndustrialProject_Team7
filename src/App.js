@@ -5,8 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "r
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import About from "./pages/About";
-import LoggedIn from "./pages/LoggedIn";
-import Progress from "./pages/Progress";
+import Dashboard from "./pages/Dashboard";
 import AthleteList from "./pages/AthleteList";
 import Navbar from "./components/NavigationBar"; //navbar component
 
@@ -21,8 +20,8 @@ function App() {
                 <Route path="/login" component={Login} />
 
                 {/* Only logged in users can access */}
-                <PrivateRoute path="/dashboard" component={LoggedIn} />
-                <PrivateRoute path="/list" component={AthleteList} />
+                <PrivateRoute path="/dashboard" component={Dashboard} access={[]} />
+                <PrivateRoute path="/list" component={AthleteList} access={[1]} />
                 
                 {/* Defaults to homepage */}
                 <Route component={About} />
