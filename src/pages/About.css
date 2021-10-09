@@ -1,0 +1,13 @@
+.carousel {
+    width:auto;
+}
+
+.carousel img{
+    height: 92vh;
+}
+
+.card-img-top {
+    width: 100%;
+    height: max-content;
+    object-fit: cover;
+}
