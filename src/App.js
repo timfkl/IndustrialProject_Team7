@@ -33,21 +33,12 @@ function App() {
 // Creates a route so that only logged in users can access them.
 const PrivateRoute = (props) => {
     const location = useLocation();
-    const userTypeID = localStorage.getItem("user_type_ID");
+    const userTypeID = parseInt(localStorage.getItem("user_type_ID"));
 
-    
+    if (!userTypeID || !props.access.includes(userTypeID)) return <Redirect to={{ pathname: "/login", state: { from: location }}} />;
+    else return <Route {...props} />;
 
     // If user is logged in go to page specifed or else redirect to login page.
-    return userTypeID ? (
-        <Route {...props} />
-    ) : (
-        <Redirect
-            to={{
-                pathname: "/login",
-                state: { from: location },
-            }}
-        />
-    );
 };
 
 export default App;
