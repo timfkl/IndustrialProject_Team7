@@ -8,7 +8,7 @@ const DashboardButton = () => {
     }
 
     return localStorage.getItem("user_name") ? (
-        <TealButton text="Dashboard" props={{ className: "me-1", onClick: {handleClick} }} />
+        <TealButton text="Dashboard" className="me-1" onClick={handleClick} />
     ) : null;
 };
 
