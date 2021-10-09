@@ -20,7 +20,7 @@ function App() {
                 <Route path="/login" component={Login} />
 
                 {/* Only logged in users can access */}
-                <PrivateRoute path="/dashboard" component={Dashboard} access={[]} />
+                <PrivateRoute path="/dashboard" component={Dashboard} access={[2,3]} />
                 <PrivateRoute path="/list" component={AthleteList} access={[1]} />
                 
                 {/* Defaults to homepage */}
