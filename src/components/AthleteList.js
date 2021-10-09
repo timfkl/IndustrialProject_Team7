@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import NameList from "../components/NameList";
+import NameList from "./NameList";
 
 const AthleteList = () => {
 
