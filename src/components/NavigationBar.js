@@ -6,7 +6,7 @@ import TealButton from '../components/TealButton';
 // Displays navigation bar.
 const NavigationBar = () => {
 
-    const userButton = <TealButton text="Dashboard" props={{ className: "me-1", href: "/loggedin" }} />
+    const userButton = <TealButton text="Dashboard" props={{ className: "me-1", href: "/dashboard" }} />
 
     return (
         <Navbar bg="light" expand="sm">

@@ -12,7 +12,7 @@ const Login = () => {
 
     // If the user is already logged in send them to the dashboard.
     if (localStorage.getItem("user_name")) {
-        window.location.href = "/loggedin";
+        window.location.href = "/dashboard";
     }
 
     // hard coded user user details.
