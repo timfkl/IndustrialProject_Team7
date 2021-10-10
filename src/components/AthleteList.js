@@ -15,21 +15,18 @@ const AthleteList = () => {
         "Antwan Watkins",
         "Dong Conner",
         "Aldi Lidl"
-    ]
+    ];
+
+    const handleItemClick = (name, index) => {
+        console.log(name);
+    }
 
     return (
         <Container className="mt-3">
-
-            <h2>Hello, {localStorage.getItem('user_name')}.</h2>
-            <p>Here is a list of your clients.</p>
-
             <h6>
-                {list.length > 0 ? "" : "You don't have any athletes to review."}
+                {list.length > 0 ? "Please choose a client from the list" : "You don't have any athletes to review."}
             </h6>
-
-            <div>
-                <NameList list={list} />
-            </div>
+            <NameList list={list} onItmeClick={handleItemClick} />
 
         </Container>
     );
