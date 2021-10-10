@@ -36,7 +36,12 @@ const AthleteDashboard = () => {
 
 const PhysioDashboard = () => {
     const [tab, setTab] = useState(1);
-    const [client, setClient] = useState("");
+    const [client, setClient] = useState("Athlete");
+
+    const handleNameChosen = (name, index) => {
+        setClient(name);
+        setTab(2);
+    }
 
     return (
         <Container className="mt-3">
@@ -45,10 +50,10 @@ const PhysioDashboard = () => {
             <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}>
                 
                 <Tab eventKey={1} title="Athlete List">
-                    <AthleteList/>
+                    <AthleteList onNameChosen={handleNameChosen}/>
                 </Tab>
 
-                <Tab eventKey={2} title="Latest Session">
+                <Tab eventKey={2} title={`${client}'s Session`} disabled={client === "Athlete"}>                 
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
                     <Row>
@@ -58,7 +63,7 @@ const PhysioDashboard = () => {
                     </Row>
                 </Tab>
                 
-                <Tab eventKey={3} title="Progress">
+                <Tab eventKey={3} title={`${client}'s Progress`} disabled={client === "Athlete"}>
                     <Progress />
                 </Tab>
                 {/* <Tab eventKey={3} title="Edit Goals">
