@@ -1,8 +1,7 @@
 // import necessary sources
-import './CSVUploadButton.css';
 import { useState } from 'react'
 import React from "react";
-import { Modal, Form } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 import OrangeButton from './OrangeButton';
 
 export default function CSVUploadButton(){
@@ -84,19 +83,17 @@ export default function CSVUploadButton(){
 
                 <Modal.Footer>
                     {/* Buttons to close the modal, and submit it (which runs the submit method) */}
-                    <button id="cancelButton" className="button" onClick={hideModal}>
+                    <Button id="cancelButton" variant="danger" onClick={hideModal}>
                         Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <OrangeButton
+                        text="Submit"
                         id="uploadButton"
-                        className="button"
                         onClick={(e) => {
                             e.preventDefault();
                             if (csvFile) submit();
                         }}
-                    >
-                        Submit
-                    </button>
+                    />
                 </Modal.Footer>
             </Modal>
         </>
