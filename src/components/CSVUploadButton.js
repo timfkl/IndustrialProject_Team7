@@ -1,22 +1,21 @@
 // import necessary sources
-import { useState } from 'react'
+import { useState } from "react";
 import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-import OrangeButton from './OrangeButton';
+import OrangeButton from "./OrangeButton";
 
-export default function CSVUploadButton(){
-
+export default function CSVUploadButton() {
     // Create a state for the modal, telling whether it's open or closed
     const [isOpen, setIsOpen] = React.useState(false);
     const [selectValue, setSelectValue] = React.useState(1);
-    
-    var muscleGroup
+
+    var muscleGroup;
 
     // Opens modal
     const showModal = () => {
         setIsOpen(true);
     };
-    
+
     // Closes modal
     const hideModal = () => {
         setIsOpen(false);
@@ -31,24 +30,24 @@ export default function CSVUploadButton(){
         const reader = new FileReader();
 
         muscleGroup = document.getElementById("muscleGroup").value;
-        console.log(document.getElementById("muscleGroup").value)
+        console.log(document.getElementById("muscleGroup").value);
 
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const text = e.target.result;
             console.log(text);
-            localStorage.setItem("csv"+muscleGroup, text)
-            hideModal()
-        }
+            localStorage.setItem("csv" + muscleGroup, text);
+            hideModal();
+        };
 
         reader.readAsText(file);
         window.location.reload();
-    }
-    
+    };
+
     // The html of the component
     return (
         <>
             {/* This button opens the modal to upload csv files */}
-            <OrangeButton text="Upload a CSV" onClick={showModal}/>
+            <OrangeButton text="Upload a CSV" onClick={showModal} />
 
             {/* When the modal setIsOpen is true, the modal is displayed and offers and area for users to upload a csv */}
             <Modal show={isOpen} onHide={hideModal}>
