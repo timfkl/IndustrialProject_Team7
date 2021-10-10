@@ -46,11 +46,15 @@ const GoalUploadButton = () => {
                     <Form.Control type="number" id="goal" name="goal" placeholder="e.g. 1024" min="0" />
                 </Modal.Body>
                 <Modal.Header>
-                    <Modal.Title>Which muscle group is this for? (1-4)</Modal.Title>
+                    <Modal.Title>Which muscle is this goal for?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <input type="text" id="muscleGroup" name="muscleGroup" placeholder="e.g. 1" />
-                    <br />
+                    <Form.Select id="muscleGroup">
+                        <option value={1}>Left Quadriceps</option>
+                        <option value={2}>Right Quadriceps</option>
+                        <option value={3}>Left Hamstring</option>
+                        <option value={4}>Right Hamstring</option>
+                    </Form.Select>
                 </Modal.Body>
                 <Modal.Footer>
                     {/* Buttons to close the modal, and submit it (which runs the submit method) */}
