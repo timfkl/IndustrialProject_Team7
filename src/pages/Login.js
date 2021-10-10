@@ -11,7 +11,7 @@ const Login = () => {
     const API_PATH = "http://localhost/projects/api/login.php"; // api url
 
     // If the user is already logged in send them to the dashboard.
-    if (localStorage.getItem("user_type_ID") !== undefined) {
+    if (localStorage.getItem("user_type_ID")) {
         window.location.href = "/dashboard";
     }
 
