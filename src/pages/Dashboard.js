@@ -10,7 +10,7 @@ const AthleteDashboard = () => {
 
     return (
         <Container className="mt-3">
-            <h2>Hello, {localStorage.getItem("user_name")}</h2>
+            <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
             <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}>
                 <Tab eventKey={1} title="Latest Session">
