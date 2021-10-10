@@ -21,7 +21,7 @@ const OrangeButton = (props) => {
             {...props}
             style={{
                 backgroundColor: backColor,
-                border: 0,
+                borderColor: backColor,
                 color: 'white'
             }}
             variant="warning"
