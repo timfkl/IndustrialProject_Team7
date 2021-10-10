@@ -1,7 +1,7 @@
 // import necessary sources
 import { useState } from "react";
 import React from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import OrangeButton from "./OrangeButton";
 
 const GoalUploadButton = () => {
@@ -55,19 +55,17 @@ const GoalUploadButton = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     {/* Buttons to close the modal, and submit it (which runs the submit method) */}
-                    <button id="cancelButton" className="button" onClick={hideModal}>
+                    <Button id="cancelButton" variant="danger" onClick={hideModal}>
                         Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <OrangeButton
+                        text="Submit"
                         id="uploadButton"
-                        className="button"
                         onClick={(e) => {
                             e.preventDefault();
                             submit();
                         }}
-                    >
-                        Submit
-                    </button>
+                    />
                 </Modal.Footer>
             </Modal>
         </>
