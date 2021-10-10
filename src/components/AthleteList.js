@@ -21,7 +21,7 @@ const AthleteList = ({ onNameChosen }) => {
     return (
         <Container className="mt-3">
             <h6>
-                {list.length > 0 ? "Please choose a client from the list" : "You don't have any athletes to review."}
+                {list.length > 0 ? "Please choose an athlete from the list." : "You don't have any athletes to review."}
             </h6>
             <NameList list={list} onItemClick={onNameChosen} />
 
