@@ -4,7 +4,7 @@ export const Theme = {
         orange: '#f36d21'
     },
     mouseOver: {
-        teal: '',
+        teal: '#00727a',
         orange: '#c75a1c'
     }
 }
