@@ -454,9 +454,4 @@ const Progress = () => {
     );
 };
 
-//use styling from common.js for links
-const StyledLink = styled(Link)`
-    ${Common}
-`;
-
 export default Progress;
