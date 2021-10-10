@@ -1,7 +1,7 @@
 // import necessary sources
 import { useState } from "react";
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 import OrangeButton from "./OrangeButton";
 
 const GoalUploadButton = () => {
@@ -43,8 +43,7 @@ const GoalUploadButton = () => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <input type="text" id="goal" name="goal" placeholder="e.g. 1024" />
-                    <br />
+                    <Form.Control type="number" id="goal" name="goal" placeholder="e.g. 1024" min="0" />
                 </Modal.Body>
                 <Modal.Header>
                     <Modal.Title>Which muscle group is this for? (1-4)</Modal.Title>
