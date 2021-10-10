@@ -55,17 +55,17 @@ export default function CSVUploadButton() {
                     <Modal.Title>Upload a .csv with sensor data here:</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Area to upload csv */}
-                    <form id="csvForm">
-                        <input
+                    <Form.Group className="mb-3">
+                        {/* Area to upload csv */}
+                        <Form.Control 
                             type="file"
                             accept=".csv"
                             id="csvFile"
                             onChange={(e) => {
                                 setCsvFile(e.target.files[0]);
                             }}
-                        ></input>
-                    </form>
+                        />
+                    </Form.Group>
                 </Modal.Body>
 
                 <Modal.Header>
