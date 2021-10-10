@@ -4,9 +4,9 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import OrangeButton from "./OrangeButton";
 
-export default function GoalUploadButton() {
+const GoalUploadButton = () => {
     // Create a state for the modal, telling whether it's open or closed
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     var currentGoal = 0;
     var muscleGroup;
@@ -73,3 +73,5 @@ export default function GoalUploadButton() {
         </>
     );
 }
+
+export default GoalUploadButton;
