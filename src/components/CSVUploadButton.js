@@ -3,6 +3,7 @@ import './CSVUploadButton.css';
 import { useState } from 'react'
 import React from "react";
 import { Modal, Form } from "react-bootstrap";
+import OrangeButton from './OrangeButton';
 
 export default function CSVUploadButton(){
 
@@ -48,9 +49,7 @@ export default function CSVUploadButton(){
     return (
         <>
             {/* This button opens the modal to upload csv files */}
-            <button id="uploadButton" className="button" onClick={showModal}>
-                Upload a CSV
-            </button>
+            <OrangeButton text="Upload a CSV" onClick={showModal}/>
 
             {/* When the modal setIsOpen is true, the modal is displayed and offers and area for users to upload a csv */}
             <Modal show={isOpen} onHide={hideModal}>
