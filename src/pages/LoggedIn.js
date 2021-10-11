@@ -5,7 +5,6 @@ import Common from '../components/Common';
 import { useState } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
-import CSVUploadButton from '../components/CSVUploadButton'; // Csv upload button component.
 import Progress from './Progress';
 
 const LoggedIn = () => {
@@ -19,11 +18,6 @@ const LoggedIn = () => {
                 <Tab eventKey={1} title="Latest Session">
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
-                    <Row>
-                        <Col>
-                            <CSVUploadButton />
-                        </Col>
-                    </Row>
                 </Tab>
                 <Tab eventKey={2} title="Progress">
                     <Progress/>
