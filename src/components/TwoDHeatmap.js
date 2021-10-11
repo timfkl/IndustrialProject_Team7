@@ -176,6 +176,7 @@ const TwoDHeatmap = () => {
         <Container>
             <Row>
                 <Col sm={6}>
+                    <h5>Quadriceps (Front)</h5>
                     <DataImage
                         id={"imageFront"}
                         src={imgFront}
@@ -185,6 +186,7 @@ const TwoDHeatmap = () => {
                     />
                 </Col>
                 <Col sm={6}>
+                    <h5>Hamstrings (Back)</h5>
                     <DataImage
                         id={"imageBack"}
                         src={imgBack}
