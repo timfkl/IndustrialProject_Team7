@@ -3,6 +3,7 @@ import imgFront from "../assets/front.jpg";
 import imgBack from "../assets/back.jpg";
 import CSVToArray from "../scripts/CSVToArray";
 import h337 from "heatmap.js";
+import CSVUploadButton from "./CSVUploadButton";
 
 // Takes in html/jsx id, source image and function call for onLoad and returns an image wrapped in a div with those parameters set.
 const DataImage = ({ id, src, onLoad }) => {
@@ -175,6 +176,7 @@ const TwoDHeatmap = () => {
         <Container>
             <Row>
                 <Col sm={6}>
+                    <h5>Quadriceps (Front)</h5>
                     <DataImage
                         id={"imageFront"}
                         src={imgFront}
@@ -184,6 +186,7 @@ const TwoDHeatmap = () => {
                     />
                 </Col>
                 <Col sm={6}>
+                    <h5>Hamstrings (Back)</h5>
                     <DataImage
                         id={"imageBack"}
                         src={imgBack}
@@ -194,8 +197,9 @@ const TwoDHeatmap = () => {
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    <Button onClick={playHeatmap}>Run</Button>
+                <Col className="mt-3">
+                    <CSVUploadButton/>
+                    <Button className="ms-2" onClick={playHeatmap}>Run Simulation</Button>
                 </Col>
             </Row>
         </Container>
