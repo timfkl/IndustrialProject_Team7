@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import AthleteList from '../components/AthleteList';
 import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
-import CSVUploadButton from '../components/CSVUploadButton'; // Csv upload button component.
 import Progress from './Progress';
 
 const AthleteDashboard = () => {
@@ -16,11 +15,6 @@ const AthleteDashboard = () => {
                 <Tab eventKey={1} title="Latest Session">
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
-                    <Row>
-                        <Col>
-                            <CSVUploadButton />
-                        </Col>
-                    </Row>
                 </Tab>
                 
                 <Tab eventKey={2} title="Progress">
@@ -56,11 +50,6 @@ const PhysioDashboard = () => {
                 <Tab eventKey={2} title={`${client}'s Session`} disabled={client === "Athlete"}>                 
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
-                    <Row>
-                        <Col>
-                            <CSVUploadButton />
-                        </Col>
-                    </Row>
                 </Tab>
                 
                 <Tab eventKey={3} title={`${client}'s Progress`} disabled={client === "Athlete"}>
