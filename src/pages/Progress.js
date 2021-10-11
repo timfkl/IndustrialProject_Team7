@@ -276,7 +276,7 @@ const Progress = () => {
             <div className="Container">
                 <GoalUploadButton/>
                 <CSVUploadButton/>
-                <ProgressBar animated now={progression} style={{width:'50vw'}}/>
+                <ProgressBar  now={progression} style={{width:'50vw'}}/>
                 
                 <h5>You are viewing muscle group: {selectedMuscleGroupName}</h5>
                 <h5>Your current personal record is: {musclePRDisplay}</h5>
