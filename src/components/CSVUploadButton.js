@@ -13,8 +13,6 @@ export default function CSVUploadButton() {
     const [csvHamsLeft, setCsvHamsLeft] = useState();
     const [csvHamsRight, setCsvHamsRight] = useState();
 
-    var muscleGroup;
-
     // Opens modal
     const showModal = () => {
         setIsOpen(true);
