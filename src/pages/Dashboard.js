@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { Container, Tabs, Tab } from 'react-bootstrap';
 import AthleteList from '../components/AthleteList';
 import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
 import Progress from './Progress';
