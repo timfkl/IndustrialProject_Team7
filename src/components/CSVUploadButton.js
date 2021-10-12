@@ -6,8 +6,12 @@ import OrangeButton from "./OrangeButton";
 
 export default function CSVUploadButton() {
     // Create a state for the modal, telling whether it's open or closed
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [selectValue, setSelectValue] = React.useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+    // Create a state for the csv uploads 
+    const [csvQuadLeft, setCsvQuadLeft] = useState();
+    const [csvQuadRight, setCsvQuadRight] = useState();
+    const [csvHamsLeft, setCsvHamsLeft] = useState();
+    const [csvHamsRight, setCsvHamsRight] = useState();
 
     var muscleGroup;
 
@@ -56,28 +60,49 @@ export default function CSVUploadButton() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3">
+                        <Form.Label>Left Quadriceps</Form.Label>
                         {/* Area to upload csv */}
                         <Form.Control 
                             type="file"
                             accept=".csv"
-                            id="csvFile"
                             onChange={(e) => {
-                                setCsvFile(e.target.files[0]);
+                                setCsvQuadLeft(e.target.files[0]);
                             }}
                         />
                     </Form.Group>
-                </Modal.Body>
-
-                <Modal.Header>
-                    <Modal.Title>Which muscle is this data for?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form.Select id="muscleGroup">
-                        <option value={1}>Left Quadriceps</option>
-                        <option value={2}>Right Quadriceps</option>
-                        <option value={3}>Left Hamstring</option>
-                        <option value={4}>Right Hamstring</option>
-                    </Form.Select>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Right Quadriceps</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
+                            type="file"
+                            accept=".csv"
+                            onChange={(e) => {
+                                setCsvQuadRight(e.target.files[0]);
+                            }}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Left Hamstring</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
+                            type="file"
+                            accept=".csv"
+                            onChange={(e) => {
+                                setCsvHamsLeft(e.target.files[0]);
+                            }}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Right Hamstring</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
+                            type="file"
+                            accept=".csv"
+                            onChange={(e) => {
+                                setCsvHamsRight(e.target.files[0]);
+                            }}
+                        />
+                    </Form.Group>
                 </Modal.Body>
 
                 <Modal.Footer>
