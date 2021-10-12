@@ -25,22 +25,18 @@ export default function CSVUploadButton() {
         setIsOpen(false);
     };
 
-    // Create a state for the csv upload
-    const [csvFile, setCsvFile] = useState();
-
-    // Runs when the submit button is clicked, prints the csv to console - will need to do more in future
+    // Runs when the submit button is clicked, saves file to session storage and alerts parent.
     const submit = () => {
-        const file = csvFile;
-        const reader = new FileReader();
+        
+        if (csvQuadLeft) saveFile(csvQuadLeft, "quad_left");
+        if (csvQuadRight) saveFile(csvQuadRight, "quad_right");
+        if (csvHamsLeft) saveFile(csvHamsLeft, "hams_left");
+        if (csvHamsRight) saveFile(csvHamsRight, "hams_right");
+        
+        hideModal();
+        onSubmit();
+    };
 
-        muscleGroup = document.getElementById("muscleGroup").value;
-        console.log(document.getElementById("muscleGroup").value);
-
-        reader.onload = function (e) {
-            const text = e.target.result;
-            console.log(text);
-            localStorage.setItem("csv" + muscleGroup, text);
-            hideModal();
     // Saves the files to session storage.
     const saveFile = (file, name) => {
         const reader = new FileReader();
