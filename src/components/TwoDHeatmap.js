@@ -118,7 +118,6 @@ const TwoDHeatmap = () => {
 
             } else {
                 if (hamsZoomLevel > 0) setHamsZoomLevel(hamsZoomLevel - 1);
-
             }
         }
     }
@@ -130,16 +129,16 @@ const TwoDHeatmap = () => {
                     <h5>Quadriceps (Front)</h5>
                     <ImageQuads quadColorLeft={quadColorLeft} quadColorRight={quadColorRight} viewBox={zoomLevels.quad[quadZoomLevel]} />
                     <ButtonGroup style={{ width: "100%" }}>
-                        <Button variant="secondary" onClick={() => setZoomLevel(true, true)}>Zoom In</Button>
-                        <Button variant="secondary" onClick={() => setZoomLevel(true, false)}>Zoom Out</Button>
+                        <Button variant="secondary" onClick={() => setZoomLevel(true, true)} disabled={quadZoomLevel === 2}>Zoom In</Button>
+                        <Button variant="secondary" onClick={() => setZoomLevel(true, false)} disabled={quadZoomLevel === 0}>Zoom Out</Button>
                     </ButtonGroup>
                 </Col>
                 <Col sm={12} md={6}>
                     <h5>Hamstrings (Back)</h5>
                     <ImageHams hamsColorLeft={hamsColorLeft} hamsColorRight={hamsColorRight} viewBox={zoomLevels.hams[hamsZoomLevel]} />
                     <ButtonGroup style={{ width: "100%" }}>
-                        <Button variant="secondary" onClick={() => setZoomLevel(false, true)}>Zoom In</Button>
-                        <Button variant="secondary" onClick={() => setZoomLevel(false, false)}>Zoom Out</Button>
+                        <Button variant="secondary" onClick={() => setZoomLevel(false, true)} disabled={hamsZoomLevel === 2}>Zoom In</Button>
+                        <Button variant="secondary" onClick={() => setZoomLevel(false, false)} disabled={hamsZoomLevel === 0}>Zoom Out</Button>
                     </ButtonGroup>
                 </Col>
             </Row>
