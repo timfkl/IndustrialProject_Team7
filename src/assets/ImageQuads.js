@@ -4,6 +4,7 @@ const ImageQuads = ({
     quadColorLeft,
     quadColorRight,
     colorOpacity = "0.5",
+    borderWidth = "5",
     borderColor = "#fff",
     borderOpacity = "1",
 }) => {
@@ -34,7 +35,7 @@ const ImageQuads = ({
                     strokeLinejoin="miter"
                     strokeMiterlimit="4"
                     strokeOpacity={borderOpacity}
-                    strokeWidth="10"
+                    strokeWidth={borderWidth}
                     d="M717.1 208.95l-24.807 181.688-43.776 129.777 30.643 109.59 58.368 12.978 59.827-69.215 16.051-135.545-65.664-201.876z"
                 ></path>
                 <path
@@ -46,7 +47,7 @@ const ImageQuads = ({
                     strokeLinejoin="miter"
                     strokeMiterlimit="4"
                     strokeOpacity={borderOpacity}
-                    strokeWidth="10"
+                    strokeWidth={borderWidth}
                     d="M483.829 208.953l24.806 181.803 43.775 129.86-30.643 109.658L463.4 643.26l-59.826-69.258-16.052-135.631 65.664-202.004z"
                 ></path>
             </g>

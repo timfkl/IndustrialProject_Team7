@@ -4,6 +4,7 @@ const ImageHams = ({
     hamsColorLeft,
     hamsColorRight,
     colorOpacity = "0.5",
+    borderWidth = "5",
     borderColor = "#fff",
     borderOpacity = "1",
 }) => {
@@ -32,7 +33,7 @@ const ImageHams = ({
                     strokeLinejoin="miter"
                     strokeMiterlimit="4"
                     strokeOpacity={borderOpacity}
-                    strokeWidth="10"
+                    strokeWidth={borderWidth}
                     d="M470.025 217.862v103.864l-28.543 97.372-7.785 115.548-28.543-38.949-24.65 27.264 5.189-137.619 11.677-86.985 22.056-48.037z"
                 ></path>
                 <path
@@ -44,7 +45,7 @@ const ImageHams = ({
                     strokeLinejoin="miter"
                     strokeMiterlimit="4"
                     strokeOpacity={borderOpacity}
-                    strokeWidth="10"
+                    strokeWidth={borderWidth}
                     d="M599.983 219.113v103.89l28.543 97.398 7.784 115.577 28.543-38.958 24.65 27.27-5.189-137.654-11.676-87.008-22.056-48.049z"
                 ></path>
             </g>
