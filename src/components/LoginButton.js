@@ -10,6 +10,7 @@ const LoginButton = () => {
         // Clears localstorage.
         if (localStorage.getItem('user_name')) {
             localStorage.clear();
+            sessionStorage.clear();
         }
     }
 
