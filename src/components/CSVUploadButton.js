@@ -4,7 +4,7 @@ import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import OrangeButton from "./OrangeButton";
 
-export default function CSVUploadButton() {
+const CSVUploadButton = ({onSubmit}) => {
     // Create a state for the modal, telling whether it's open or closed
     const [isOpen, setIsOpen] = useState(false);
     // Create a state for the csv uploads 
@@ -14,14 +14,10 @@ export default function CSVUploadButton() {
     const [csvHamsRight, setCsvHamsRight] = useState();
 
     // Opens modal
-    const showModal = () => {
-        setIsOpen(true);
-    };
+    const showModal = () => setIsOpen(true);
 
     // Closes modal
-    const hideModal = () => {
-        setIsOpen(false);
-    };
+    const hideModal = () => setIsOpen(false);
 
     // Runs when the submit button is clicked, saves file to session storage and alerts parent.
     const submit = () => {
@@ -112,13 +108,12 @@ export default function CSVUploadButton() {
                     <OrangeButton
                         text="Submit"
                         id="uploadButton"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if (csvFile) submit();
-                        }}
+                        onClick={(e) => {submit()}}
                     />
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
+
+export default CSVUploadButton;
