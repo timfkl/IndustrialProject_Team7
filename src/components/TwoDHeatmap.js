@@ -40,25 +40,25 @@ const TwoDHeatmap = () => {
         // Simulates data on each point on the left quad muscle.
         if (sessionStorage.getItem("quad_left")) {
             // Gets the specified sensor data saved in session storage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("quad_left")), setQuadColorLeft, "LQ");
+            simulateDataOnPoint(CSVToArray(sessionStorage.getItem("quad_left")), setQuadColorLeft, "LQ");
         }
 
         // Simulates data on each point on the right quad muscle.
         if (sessionStorage.getItem("quad_right")) {
             // Gets the specified sensor data saved in session storage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("quad_right")), setQuadColorRight, "RQ");
+            simulateDataOnPoint(CSVToArray(sessionStorage.getItem("quad_right")), setQuadColorRight, "RQ");
         }
 
         // Simulates data on each point on the left hamstring muscle.
         if (sessionStorage.getItem("hams_left")) {
             // Gets the specified sensor data saved in session storage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("hams_left")), setHamsColorLeft, "LH");
+            simulateDataOnPoint(CSVToArray(sessionStorage.getItem("hams_left")), setHamsColorLeft, "LH");
         }
 
         // Simulates data on each point on the right hamstring muscle.
         if (sessionStorage.getItem("hams_right")) {
             // Gets the specified sensor data saved in session storage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("hams_right")), setHamsColorRight, "RH");
+            simulateDataOnPoint(CSVToArray(sessionStorage.getItem("hams_right")), setHamsColorRight, "RH");
         }
 
         setIsRunning(true); // To prevent this function from running again when not finished.
