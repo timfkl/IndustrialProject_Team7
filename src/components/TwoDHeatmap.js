@@ -90,6 +90,28 @@ const TwoDHeatmap = () => {
         else if (value >= 1000) return "#E82C3D";
     }
 
+    const setZoomLevel = (forQuads, forZoomIn) => {
+
+        if (forQuads) {
+
+            if (forZoomIn) {
+                if (quadZoomLevel < 2) setQuadZoomLevel(quadZoomLevel + 1);
+
+            } else {
+                if (quadZoomLevel > 0) setQuadZoomLevel(quadZoomLevel - 1);
+            }
+
+        } else {
+
+            if (forZoomIn) {
+                if (hamsZoomLevel < 2) setHamsZoomLevel(hamsZoomLevel + 1);
+
+            } else {
+                if (hamsZoomLevel > 0) setHamsZoomLevel(hamsZoomLevel - 1);
+
+            }
+        }
+    }
 
     return (
         <Container>
