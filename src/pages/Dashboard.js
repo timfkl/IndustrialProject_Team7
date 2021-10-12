@@ -30,9 +30,10 @@ const AthleteDashboard = () => {
 
 const PhysioDashboard = () => {
     const [tab, setTab] = useState(1);
-    const [client, setClient] = useState("Athlete");
+    const [client, setClient] = useState(sessionStorage.getItem('athlete') ? sessionStorage.getItem('athlete') : "Athlete");
 
     const handleNameChosen = (item) => {
+        sessionStorage.setItem('athlete', item.name);
         setClient(item.name);
         setTab(2);
     }
