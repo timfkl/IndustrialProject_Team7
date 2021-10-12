@@ -13,6 +13,7 @@ const TwoDHeatmap = () => {
     const [hamsColorRight, setHamsColorRight] = useState("black");
     const [quadZoomLevel, setQuadZoomLevel] = useState(0);
     const [hamsZoomLevel, setHamsZoomLevel] = useState(0);
+    const [isRunning, setIsRunning] = useState(false);
     
     const zoomLevels = {
         quad: [
@@ -26,11 +27,11 @@ const TwoDHeatmap = () => {
             "315 150 440 440"
         ]
     }
-    let isRunning = false;
 
     // Simulates data on the heatmap.
     const playHeatmap = () => {
         if (isRunning) return;
+        console.log("object")
 
         // Simulates data on each point on the left quad muscle.
         if (localStorage.getItem("csv1")) {
@@ -56,7 +57,7 @@ const TwoDHeatmap = () => {
             simulateDataOnPoint(CSVToArray(localStorage.getItem("csv4")), setHamsColorRight, "RH");
         }
 
-        isRunning = true; // To prevent this method from running again when not finished.
+        setIsRunning(true); // To prevent this method from running again when not finished.
     };
 
     // Simulates data on each point. Takes in the name of the key in heatmapConfig.
