@@ -1,6 +1,7 @@
 const ImageQuads = ({
     width,
     height,
+    viewBox,
     quadColorLeft,
     quadColorRight,
     colorOpacity = "0.5",
@@ -15,7 +16,7 @@ const ImageQuads = ({
             width={width}
             height={height}
             version="1.1"
-            viewBox="0 0 1200 1200"
+            viewBox={viewBox}
         >
             <g>
                 <image

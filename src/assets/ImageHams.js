@@ -1,6 +1,7 @@
 const ImageHams = ({
     width,
     height,
+    viewBox,
     hamsColorLeft,
     hamsColorRight,
     colorOpacity = "0.5",
@@ -15,7 +16,7 @@ const ImageHams = ({
             width={width}
             height={height}
             version="1.1"
-            viewBox="0 0 1066.667 1066.667"
+            viewBox={viewBox}
         >
             <g>
                 <image
