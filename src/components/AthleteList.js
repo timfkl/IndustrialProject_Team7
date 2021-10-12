@@ -160,12 +160,7 @@ const AthleteList = ({ onNameChosen }) => {
         <>
             <DetailsModal showModal={showModal} item={modalItem} onSelect={onNameChosen} onClose={handleClose} />
         <Container className="mt-3">
-            <h6>
-                {list.length > 0 ? "Please choose an athlete from the list." : "You don't have any athletes to review."}
-            </h6>
-            <NameList list={list} onItemClick={onNameChosen} />
-
-        </Container>
+                <NameList list={list} onItemClick={onNameChosen} onDetailsClick={handleDetailsClick} />
         </>
     );
 }
