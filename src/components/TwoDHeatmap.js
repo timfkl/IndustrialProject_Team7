@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Row, Col, ButtonGroup, Button } from "react-bootstrap";
 import CSVToArray from "../scripts/CSVToArray";
 import CSVUploadButton from "./CSVUploadButton";
+import TealButton from "./TealButton"
 import ImageQuads from "../assets/ImageQuads";
 import ImageHams from "../assets/ImageHams";
 
@@ -178,9 +179,12 @@ const TwoDHeatmap = () => {
             <Row>
                 <Col className="mt-3">
                     <CSVUploadButton />
-                    <Button className="ms-2" onClick={playHeatmap} disabled={isRunning}>
-                        Run Simulation
-                    </Button>
+                    <TealButton
+                        text="Run Simulation"
+                        className="ms-2"
+                        onClick={playHeatmap}
+                        disabled={isRunning}
+                    />
                 </Col>
             </Row>
         </Container>
