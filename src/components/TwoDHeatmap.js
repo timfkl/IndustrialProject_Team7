@@ -7,10 +7,10 @@ import ImageHams from "../assets/ImageHams";
 
 // This component contains the heatmap and methods to run the heatmap.
 const TwoDHeatmap = () => {
-    const [leftQuadColor, setLeftQuadColor] = useState("black");
-    const [rightQuadColor, setRightQuadColor] = useState("black");
-    const [leftHamsColor, setLefHamsColor] = useState("black");
-    const [rightHamsColor, setRightHamsColor] = useState("black");
+    const [quadColorLeft, setQuadColorLeft] = useState("black");
+    const [quadColorRight, setQuadColorRight] = useState("black");
+    const [hamsColorLeft, setHamsColorLeft] = useState("black");
+    const [hamsColorRight, setHamsColorRight] = useState("black");
     let isRunning = false;
 
     // Simulates data on the heatmap.
