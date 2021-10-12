@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, ButtonGroup, Button } from "react-bootstrap";
 import CSVToArray from "../scripts/CSVToArray";
 import CSVUploadButton from "./CSVUploadButton";
 import ImageQuads from "../assets/ImageQuads";
@@ -118,17 +118,27 @@ const TwoDHeatmap = () => {
             <Row>
                 <Col sm={6}>
                     <h5>Quadriceps (Front)</h5>
-                    <ImageQuads quadColorLeft={quadColorLeft} quadColorRight={quadColorRight} />
+                    <ImageQuads quadColorLeft={quadColorLeft} quadColorRight={quadColorRight} viewBox={zoomLevels.quad[quadZoomLevel]} />
+                    <ButtonGroup style={{ width: "100%" }}>
+                        <Button variant="secondary" onClick={() => setZoomLevel(true, true)}>Zoom In</Button>
+                        <Button variant="secondary" onClick={() => setZoomLevel(true, false)}>Zoom Out</Button>
+                    </ButtonGroup>
                 </Col>
                 <Col sm={6}>
                     <h5>Hamstrings (Back)</h5>
-                    <ImageHams hamsColorLeft={hamsColorLeft} hamsColorRight={hamsColorRight} />
+                    <ImageHams hamsColorLeft={hamsColorLeft} hamsColorRight={hamsColorRight} viewBox={zoomLevels.hams[hamsZoomLevel]} />
+                    <ButtonGroup style={{ width: "100%" }}>
+                        <Button variant="secondary" onClick={() => setZoomLevel(false, true)}>Zoom In</Button>
+                        <Button variant="secondary" onClick={() => setZoomLevel(false, false)}>Zoom Out</Button>
+                    </ButtonGroup>
                 </Col>
             </Row>
             <Row>
                 <Col className="mt-3">
-                    <CSVUploadButton/>
-                    <Button className="ms-2" onClick={playHeatmap}>Run Simulation</Button>
+                    <CSVUploadButton />
+                    <Button className="ms-2" onClick={playHeatmap}>
+                        Run Simulation
+                    </Button>
                 </Col>
             </Row>
         </Container>
