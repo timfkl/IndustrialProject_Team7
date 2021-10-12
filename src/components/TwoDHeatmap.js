@@ -75,38 +75,6 @@ const TwoDHeatmap = () => {
         }
     }
 
-    // Runs when the images have been loaded. Sets the h337 instances to each point.
-    const onDataImageLoad = (isFront) => {
-        if (isFront) {
-            heatmapConfig["quad_left"].instance = createHeatmapInstance("imageFront");
-            heatmapConfig["quad_right"].instance = createHeatmapInstance("imageFront");
-        } else {
-            heatmapConfig["hams_left"].instance = createHeatmapInstance("imageBack");
-            heatmapConfig["hams_right"].instance = createHeatmapInstance("imageBack");
-        }
-        onImageResize(); // Saves the size of the images.
-    };
-
-    // Takes in container as html/jsx id and returns an h337 instance that has been configured.
-    // const createHeatmapInstance = (container) => {
-    //     return h337.create({
-    //         // only container is required, the rest will be defaults
-    //         container: document.getElementById(container),
-    //         blur: 0,
-    //         radius: 20,
-    //         minOpacity: 0.7,
-    //         gradient: {
-    //             // From green to red.
-    //             0: "green",
-    //             0.2: "#EDD74B",
-    //             0.4: "#F2B62E",
-    //             0.6: "#DB8535",
-    //             0.8: "#F25B2E",
-    //             0.95: "#E82C3D",
-    //         },
-    //     });
-    // };
-
 
     return (
         <Container>
