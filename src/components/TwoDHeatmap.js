@@ -49,32 +49,20 @@ const TwoDHeatmap = () => {
     };
 
     // Simulates data on each point. Takes in the name of the key in heatmapConfig.
-    async function simulateDataOnPoint(configName) {
-        for (let i = 1; i < heatmapConfig[configName].data.length; i++) {
+    async function simulateDataOnPoint(data, setMuscleColor, name) {
+        for (let i = 1; i < data.length; i++) {
             // Sets the value and position for the point on the heatmap.
-            heatmapConfig[configName].instance.setData({
-                min: 0,
-                max: 1025,
-                data: [
-                    {
-                        x: heatmapConfig[configName].x,
-                        y: heatmapConfig[configName].y,
-                        value: parseInt(heatmapConfig[configName].data[i][1]),
-                    },
-                ],
-            });
-
-            console.log(`${configName}: ${heatmapConfig[configName].data[i][1]}`);
+            setMuscleColor(getColorFromValue(parseInt(data[i][1])));
+            console.log(`${name}: ${data[i][1]}`);
 
             // Adds delay according to timestamp data.
             await new Promise((resolve) =>
                 setTimeout(
                     resolve,
                     // If reached the end of array do not set delay or else set delay according to milliseconds between current and next timestamps.
-                    heatmapConfig[configName].data[i + 1] === undefined
+                    data[i + 1] === undefined
                         ? 0
-                        : Date.parse(heatmapConfig[configName].data[i + 1][0]) -
-                              Date.parse(heatmapConfig[configName].data[i][0])
+                        : Date.parse(data[i + 1][0]) - Date.parse(data[i][0])
                 )
             );
         }
