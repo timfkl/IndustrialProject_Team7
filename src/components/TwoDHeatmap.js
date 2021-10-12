@@ -38,27 +38,27 @@ const TwoDHeatmap = () => {
         if (isRunning) return;
 
         // Simulates data on each point on the left quad muscle.
-        if (localStorage.getItem("csv1")) {
-            // Gets the specified sensor data saved in localstorage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("csv1")), setQuadColorLeft, "LQ");
+        if (sessionStorage.getItem("quad_left")) {
+            // Gets the specified sensor data saved in session storage and converts to array.
+            simulateDataOnPoint(CSVToArray(localStorage.getItem("quad_left")), setQuadColorLeft, "LQ");
         }
 
         // Simulates data on each point on the right quad muscle.
-        if (localStorage.getItem("csv2")) {
-            // Gets the specified sensor data saved in localstorage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("csv2")), setQuadColorRight, "RQ");
+        if (sessionStorage.getItem("quad_right")) {
+            // Gets the specified sensor data saved in session storage and converts to array.
+            simulateDataOnPoint(CSVToArray(localStorage.getItem("quad_right")), setQuadColorRight, "RQ");
         }
 
         // Simulates data on each point on the left hamstring muscle.
-        if (localStorage.getItem("csv3")) {
-            // Gets the specified sensor data saved in localstorage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("csv3")), setHamsColorLeft, "LH");
+        if (sessionStorage.getItem("hams_left")) {
+            // Gets the specified sensor data saved in session storage and converts to array.
+            simulateDataOnPoint(CSVToArray(localStorage.getItem("hams_left")), setHamsColorLeft, "LH");
         }
 
         // Simulates data on each point on the right hamstring muscle.
-        if (localStorage.getItem("csv4")) {
-            // Gets the specified sensor data saved in localstorage and converts to array.
-            simulateDataOnPoint(CSVToArray(localStorage.getItem("csv4")), setHamsColorRight, "RH");
+        if (sessionStorage.getItem("hams_right")) {
+            // Gets the specified sensor data saved in session storage and converts to array.
+            simulateDataOnPoint(CSVToArray(localStorage.getItem("hams_right")), setHamsColorRight, "RH");
         }
 
         setIsRunning(true); // To prevent this function from running again when not finished.
