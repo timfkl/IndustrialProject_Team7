@@ -1,6 +1,5 @@
 // import necessary sources
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import OrangeButton from "./OrangeButton";
 
@@ -46,12 +45,12 @@ const CSVUploadButton = ({onSubmit}) => {
     return (
         <>
             {/* This button opens the modal to upload csv files */}
-            <OrangeButton text="Upload a CSV" onClick={showModal} />
+            <OrangeButton text="Upload .csv files" onClick={showModal} />
 
             {/* When the modal setIsOpen is true, the modal is displayed and offers and area for users to upload a csv */}
             <Modal show={isOpen} onHide={hideModal}>
                 <Modal.Header>
-                    <Modal.Title>Upload a .csv with sensor data here:</Modal.Title>
+                    <Modal.Title>Upload .csv files</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3">
