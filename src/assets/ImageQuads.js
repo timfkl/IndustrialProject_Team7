@@ -1,4 +1,12 @@
-const ImageQuads = ({ width, height, quadLeftColor, quadRightColor, colorOpacity = "0.5", borderColor = "#fff", borderOpacity = "1" }) => {
+const ImageQuads = ({
+    width,
+    height,
+    quadLeftColor,
+    quadRightColor,
+    colorOpacity = "0.5",
+    borderColor = "#fff",
+    borderOpacity = "1",
+}) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
