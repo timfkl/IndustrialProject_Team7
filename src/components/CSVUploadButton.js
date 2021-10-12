@@ -27,7 +27,7 @@ const CSVUploadButton = ({onSubmit}) => {
         if (csvHamsRight) saveFile(csvHamsRight, "hams_right");
         
         hideModal();
-        onSubmit();
+        if (onSubmit) onSubmit();
     };
 
     // Saves the files to session storage.
