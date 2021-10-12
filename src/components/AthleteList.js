@@ -52,7 +52,6 @@ const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
 }
 
 const AthleteList = ({ onNameChosen }) => {
-
     // Test name array. Will be replaced with database call. 
     const list = [
         {
@@ -147,8 +146,14 @@ const AthleteList = ({ onNameChosen }) => {
         }
     ];
 
+    const [filteredList, setFilteredList] = useState(list);
     const [showModal, setShowModal] = useState(false);
     const [modalItem, setModalItem] = useState(list[0]);
+
+    const filter = (e) => {
+        // setFilteredList();
+    }
+
     const handleDetailsClick = item => {
         setModalItem(item);
         setShowModal(true);
@@ -159,8 +164,22 @@ const AthleteList = ({ onNameChosen }) => {
     return (
         <>
             <DetailsModal showModal={showModal} item={modalItem} onSelect={onNameChosen} onClose={handleClose} />
-        <Container className="mt-3">
+            <Container className="mt-3">
+                <h5>
+                    {list.length > 0
+                        ? "Please choose an athlete from the list."
+                        : "You don't have any athletes to review."}
+                </h5>
+                <Form className="d-flex">
+                    <FormControl
+                        type="search"
+                        placeholder="Search"
+                        className="my-3"
+                        onChange={filter}
+                    />
+                </Form>
                 <NameList list={list} onItemClick={onNameChosen} onDetailsClick={handleDetailsClick} />
+            </Container>
         </>
     );
 }
