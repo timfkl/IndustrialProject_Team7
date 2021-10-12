@@ -32,8 +32,8 @@ const PhysioDashboard = () => {
     const [tab, setTab] = useState(1);
     const [client, setClient] = useState("Athlete");
 
-    const handleNameChosen = (name, index) => {
-        setClient(name);
+    const handleNameChosen = (item) => {
+        setClient(item.name);
         setTab(2);
     }
 
