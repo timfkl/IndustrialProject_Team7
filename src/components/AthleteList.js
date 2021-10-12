@@ -147,7 +147,18 @@ const AthleteList = ({ onNameChosen }) => {
         }
     ];
 
+    const [showModal, setShowModal] = useState(false);
+    const [modalItem, setModalItem] = useState(list[0]);
+    const handleDetailsClick = item => {
+        setModalItem(item);
+        setShowModal(true);
+    }
+
+    const handleClose = () => setShowModal(false);
+
     return (
+        <>
+            <DetailsModal showModal={showModal} item={modalItem} onSelect={onNameChosen} onClose={handleClose} />
         <Container className="mt-3">
             <h6>
                 {list.length > 0 ? "Please choose an athlete from the list." : "You don't have any athletes to review."}
@@ -155,6 +166,7 @@ const AthleteList = ({ onNameChosen }) => {
             <NameList list={list} onItemClick={onNameChosen} />
 
         </Container>
+        </>
     );
 }
 
