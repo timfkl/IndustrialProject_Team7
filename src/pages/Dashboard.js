@@ -14,7 +14,7 @@ const AthleteDashboard = () => {
             <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
             <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}>
-                <Tab eventKey={1} title="Latest Session">
+                <Tab eventKey={1} title="Heatmap">
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
                 </Tab>
@@ -51,7 +51,7 @@ const PhysioDashboard = () => {
                     <AthleteList onNameChosen={handleNameChosen}/>
                 </Tab>
 
-                <Tab eventKey={2} title={`${client}'s Session`} disabled={client === "Athlete"}>                 
+                <Tab eventKey={2} title={`${client}'s Heatmap`} disabled={client === "Athlete"}>                 
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
                 </Tab>
