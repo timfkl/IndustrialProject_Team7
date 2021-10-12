@@ -320,7 +320,7 @@ const Progress = () => {
                 <div className="WellBeingTasks" style={{margin:'10px', width: '300px', height: '200px', float: 'right', border: '3px solid #195a5c'}}>
                     <h6 style={{ display: 'inline-block', textDecoration: 'underline'}}>Well Being Tasks </h6>
                     <br/>
-                    <div class="tasks" style={{textAlign: 'left'}}> {/* the list of tasks */}
+                    <div className="tasks" style={{textAlign: 'left'}}> {/* the list of tasks */}
                         <ul style={{listStyleType: 'none', display: 'static'}}>
                             <li><input type="checkbox" id="task1"/>
                             <label id="task1label" for="task1"> Eat a good breakfast</label></li>
