@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Form, FormControl, Modal, Button, Table } from "react-bootstrap";
+import { Container, FormControl, Modal, Button, Table } from "react-bootstrap";
 import NameList from "./NameList";
 import OrangeButton from './OrangeButton';
 
@@ -150,8 +150,18 @@ const AthleteList = ({ onNameChosen }) => {
     const [showModal, setShowModal] = useState(false);
     const [modalItem, setModalItem] = useState(list[0]);
 
-    const filter = (e) => {
-        // setFilteredList();
+    const filter = e => {
+
+        if (e.target.value === "") {
+            setFilteredList(list);
+            return;
+        }
+
+        setFilteredList(list.filter(
+            item => {
+                item.name.toLowerCase().includes(e.target.value.toLowerCase());
+            }
+        ));
     }
 
     const handleDetailsClick = item => {
@@ -170,15 +180,13 @@ const AthleteList = ({ onNameChosen }) => {
                         ? "Please choose an athlete from the list."
                         : "You don't have any athletes to review."}
                 </h5>
-                <Form className="d-flex">
-                    <FormControl
-                        type="search"
-                        placeholder="Search"
-                        className="my-3"
-                        onChange={filter}
-                    />
-                </Form>
-                <NameList list={list} onItemClick={onNameChosen} onDetailsClick={handleDetailsClick} />
+                <FormControl
+                    type="search"
+                    placeholder="Search athlete"
+                    className="my-3"
+                    onChange={filter}
+                />
+                <NameList list={filteredList} onItemClick={onNameChosen} onDetailsClick={handleDetailsClick} />
             </Container>
         </>
     );
