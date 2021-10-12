@@ -1,21 +1,8 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import imgFront from "../assets/front.jpg";
-import imgBack from "../assets/back.jpg";
 import CSVToArray from "../scripts/CSVToArray";
-import h337 from "heatmap.js";
 import CSVUploadButton from "./CSVUploadButton";
 import ImageQuads from "../assets/ImageQuads";
 import ImageHams from "../assets/ImageHams";
-
-// Takes in html/jsx id, source image and function call for onLoad and returns an image wrapped in a div with those parameters set.
-const DataImage = ({ id, src, onLoad }) => {
-    return (
-        // Container for h337 heatmap instances.
-        <div id={id}>
-            <img src={src} alt="" width="100%" style={{ zIndex: -1 }} onLoad={onLoad} />
-        </div>
-    );
-};
 
 // This component contains the heatmap and methods to run the heatmap.
 const TwoDHeatmap = () => {
@@ -179,24 +166,10 @@ const TwoDHeatmap = () => {
             <Row>
                 <Col sm={6}>
                     <h5>Quadriceps (Front)</h5>
-                    {/* <DataImage
-                        id={"imageFront"}
-                        src={imgFront}
-                        onLoad={() => {
-                            onDataImageLoad(true);
-                        }}
-                    /> */}
                     <ImageQuads/>
                 </Col>
                 <Col sm={6}>
                     <h5>Hamstrings (Back)</h5>
-                    {/* <DataImage
-                        id={"imageBack"}
-                        src={imgBack}
-                        onLoad={() => {
-                            onDataImageLoad(false);
-                        }}
-                    /> */}
                     <ImageHams/>
                 </Col>
             </Row>
