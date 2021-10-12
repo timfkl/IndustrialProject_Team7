@@ -7,14 +7,19 @@ import ImageHams from "../assets/ImageHams";
 
 // This component contains the heatmap and methods to run the heatmap.
 const TwoDHeatmap = () => {
+    // The initial colors of the heatmap.
     const [quadColorLeft, setQuadColorLeft] = useState("black");
     const [quadColorRight, setQuadColorRight] = useState("black");
     const [hamsColorLeft, setHamsColorLeft] = useState("black");
     const [hamsColorRight, setHamsColorRight] = useState("black");
+
+    // Stores the current zoom level of each image.
     const [quadZoomLevel, setQuadZoomLevel] = useState(0);
     const [hamsZoomLevel, setHamsZoomLevel] = useState(0);
-    const [isRunning, setIsRunning] = useState(false);
+
+    const [isRunning, setIsRunning] = useState(false); // If the simulation is running.
     
+    // Stores the zoom levels as an json array of viewbox dimensions.
     const zoomLevels = {
         quad: [
             "0 0 1200 1200",
@@ -56,17 +61,18 @@ const TwoDHeatmap = () => {
             simulateDataOnPoint(CSVToArray(localStorage.getItem("csv4")), setHamsColorRight, "RH");
         }
 
-        setIsRunning(true); // To prevent this method from running again when not finished.
+        setIsRunning(true); // To prevent this function from running again when not finished.
     };
 
-    // Simulates data on each point. Takes in the name of the key in heatmapConfig.
+    // Simulates data on each point. Takes in the data as an array, the function of which muscle to change color
+    // and optionally the name for debugging purposes.
     async function simulateDataOnPoint(data, setMuscleColor, name) {
         for (let i = 1; i < data.length; i++) {
             // Sets the value and position for the point on the heatmap.
             setMuscleColor(getColorFromValue(parseInt(data[i][1])));
             console.log(`${name}: ${data[i][1]}`);
 
-            // Adds delay according to timestamp data.
+            // Delays execution according to timestamp data.
             await new Promise((resolve) =>
                 setTimeout(
                     resolve,
@@ -79,6 +85,7 @@ const TwoDHeatmap = () => {
         }
     }
 
+    // Gets the color based on values in the csv file.
     const getColorFromValue = value => {
 
         if (value < 10) return "gray";
@@ -90,6 +97,9 @@ const TwoDHeatmap = () => {
         else if (value >= 1000) return "#E82C3D";
     }
 
+    // Sets the zoom level or either image. forQuads is true if the user wants to change zoom
+    // for quadriceps image and vice versa. forZoomIn is true if the user wants to zoom in or
+    // vice versa.
     const setZoomLevel = (forQuads, forZoomIn) => {
 
         if (forQuads) {

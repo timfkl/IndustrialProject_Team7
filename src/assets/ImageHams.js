@@ -1,3 +1,4 @@
+// Contains the image and svg overlay of the Hamstrings.
 const ImageHams = ({
     width,
     height,

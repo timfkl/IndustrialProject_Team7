@@ -1,3 +1,4 @@
+// Contains the image and svg overlay of the Quadriceps.
 const ImageQuads = ({
     width,
     height,
