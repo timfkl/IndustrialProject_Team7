@@ -41,11 +41,16 @@ export default function CSVUploadButton() {
             console.log(text);
             localStorage.setItem("csv" + muscleGroup, text);
             hideModal();
+    // Saves the files to session storage.
+    const saveFile = (file, name) => {
+        const reader = new FileReader();
+        
+        reader.onload = e => {
+            sessionStorage.setItem(name, e.target.result);
         };
 
         reader.readAsText(file);
-        window.location.reload();
-    };
+    }
 
     // The html of the component
     return (
