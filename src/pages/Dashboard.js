@@ -34,6 +34,7 @@ const PhysioDashboard = () => {
     const [client, setClient] = useState(sessionStorage.getItem('athlete') ? sessionStorage.getItem('athlete') : "Athlete");
 
     const handleNameChosen = (item) => {
+        sessionStorage.clear(); // Clears session storage data for privacy and security.
         sessionStorage.setItem('athlete', item.name); // Saves to localstorage incase of reload.
         setClient(item.name);
         setTab(2); // Changes to heatmap.
