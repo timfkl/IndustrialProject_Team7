@@ -3,13 +3,19 @@ import { Container, FormControl, Modal, Button, Table } from "react-bootstrap";
 import NameList from "./NameList";
 import OrangeButton from './OrangeButton';
 
+// Displays a modal which shows athete details. Takes item as the athlete, showModal
+// allows to display modal. onClose is a function prop which runs when the use wants
+// to close the modal. onSelect is a function prop which runs when the user clicks
+// to see the heatmap.
 const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
+    // Displays modal with details.
     return (
         <Modal show={showModal} onHide={onClose}>
             <Modal.Header closeButton>
                 <Modal.Title>{item.name}'s Details</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                {/* Table is responsive on mouse over */}
                 <Table striped bordered hover>
                     <tbody>
                         <tr>
@@ -51,8 +57,10 @@ const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
     );
 }
 
+// Displays the list of athletes. onNameChosen is a function prop which runs when the user
+// wants to see the heatmap for a specified athlete.
 const AthleteList = ({ onNameChosen }) => {
-    // Test name array. Will be replaced with database call. 
+    // Test details. Will be replaced with database call. 
     const list = [
         {
             name: "Philip Price",
@@ -146,16 +154,12 @@ const AthleteList = ({ onNameChosen }) => {
         }
     ];
 
-    const [filteredList, setFilteredList] = useState(list);
+    const [filteredList, setFilteredList] = useState(list); // stores list of athletes filtered by search.
     const [showModal, setShowModal] = useState(false);
-    const [modalItem, setModalItem] = useState(list[0]);
+    const [modalItem, setModalItem] = useState(list[0]); // Specific athlete to show modal for.
 
+    // Filters list of athletes based on search query.
     const filter = e => {
-
-        if (e.target.value === "") {
-            setFilteredList(list);
-            return;
-        }
 
         setFilteredList(list.filter(
             item => {
@@ -164,6 +168,7 @@ const AthleteList = ({ onNameChosen }) => {
         ));
     }
 
+    // Shows modal to show details about a specific athlete.
     const handleDetailsClick = item => {
         setModalItem(item);
         setShowModal(true);
