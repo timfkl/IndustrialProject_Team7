@@ -8,34 +8,6 @@ import ImageHams from "../assets/ImageHams";
 const TwoDHeatmap = () => {
     let isRunning = false;
 
-    // Stores important attributes of the heatmap instance.
-    let heatmapConfig = {
-        quad_left: {
-            instance: undefined, // h337 instance
-            data: [],
-            x: 0,
-            y: 0,
-        },
-        quad_right: {
-            instance: undefined,
-            data: [],
-            x: 0,
-            y: 0,
-        },
-        hams_left: {
-            instance: undefined,
-            data: [],
-            x: 0,
-            y: 0,
-        },
-        hams_right: {
-            instance: undefined,
-            data: [],
-            x: 0,
-            y: 0,
-        },
-    };
-
     // Simulates data on the heatmap.
     const playHeatmap = () => {
         if (isRunning) return;
