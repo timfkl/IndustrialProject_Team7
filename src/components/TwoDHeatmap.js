@@ -126,7 +126,7 @@ const TwoDHeatmap = () => {
     return (
         <Container>
             <Row>
-                <Col sm={6}>
+                <Col sm={12} md={6}>
                     <h5>Quadriceps (Front)</h5>
                     <ImageQuads quadColorLeft={quadColorLeft} quadColorRight={quadColorRight} viewBox={zoomLevels.quad[quadZoomLevel]} />
                     <ButtonGroup style={{ width: "100%" }}>
@@ -134,7 +134,7 @@ const TwoDHeatmap = () => {
                         <Button variant="secondary" onClick={() => setZoomLevel(true, false)}>Zoom Out</Button>
                     </ButtonGroup>
                 </Col>
-                <Col sm={6}>
+                <Col sm={12} md={6}>
                     <h5>Hamstrings (Back)</h5>
                     <ImageHams hamsColorLeft={hamsColorLeft} hamsColorRight={hamsColorRight} viewBox={zoomLevels.hams[hamsZoomLevel]} />
                     <ButtonGroup style={{ width: "100%" }}>
