@@ -159,7 +159,7 @@ const AthleteList = ({ onNameChosen }) => {
 
         setFilteredList(list.filter(
             item => {
-                item.name.toLowerCase().includes(e.target.value.toLowerCase());
+                return (item.name.toLowerCase().includes(e.target.value.toLowerCase()));
             }
         ));
     }
