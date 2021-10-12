@@ -11,6 +11,21 @@ const TwoDHeatmap = () => {
     const [quadColorRight, setQuadColorRight] = useState("black");
     const [hamsColorLeft, setHamsColorLeft] = useState("black");
     const [hamsColorRight, setHamsColorRight] = useState("black");
+    const [quadZoomLevel, setQuadZoomLevel] = useState(0);
+    const [hamsZoomLevel, setHamsZoomLevel] = useState(0);
+    
+    const zoomLevels = {
+        quad: [
+            "0 0 1200 1200",
+            "150 55 900 900",
+            "300 110 600 600"
+        ],
+        hams: [
+            "0 0 1066 1066",
+            "200 80 680 680",
+            "315 150 440 440"
+        ]
+    }
     let isRunning = false;
 
     // Simulates data on the heatmap.
