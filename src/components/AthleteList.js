@@ -44,6 +44,8 @@ const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
                 </Table>
             </Modal.Body>
             <Modal.Footer>
+                <Button variant="danger" onClick={onClose}>Close</Button>
+                <OrangeButton text="See Heatmap" onClick={() => {onSelect(item); onClose();}} />
             </Modal.Footer>
         </Modal>
     );
