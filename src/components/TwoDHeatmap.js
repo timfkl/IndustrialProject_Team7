@@ -75,6 +75,17 @@ const TwoDHeatmap = () => {
         }
     }
 
+    const getColorFromValue = value => {
+
+        if (value < 10) return "gray";
+        else if (value >= 10 && value < 200) return "green";
+        else if (value >= 200 && value < 400) return "#EDD74B";
+        else if (value >= 400 && value < 600) return "#F2B62E";
+        else if (value >= 600 && value < 800) return "#DB8535";
+        else if (value >= 800 && value < 1000) return "#F25B2E";
+        else if (value >= 1000) return "#E82C3D";
+    }
+
 
     return (
         <Container>
