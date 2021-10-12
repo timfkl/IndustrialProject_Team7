@@ -1,5 +1,8 @@
-import { Container } from "react-bootstrap";
+import { useState } from "react";
+import { Container, Form, FormControl, Modal, Button, Table } from "react-bootstrap";
 import NameList from "./NameList";
+import OrangeButton from './OrangeButton';
+
 const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
     return (
         <Modal show={showModal} onHide={onClose}>
@@ -7,6 +10,38 @@ const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
                 <Modal.Title>{item.name}'s Details</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                <Table striped bordered hover>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{item.name}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth</td>
+                            <td>{item.dob}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><a href={`mailto:${item.email}`}>{item.email}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile</td>
+                            <td><a href={`tel:${item.mobile}`}>{item.mobile}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Height</td>
+                            <td>{item.height}</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>{item.weight}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Active</td>
+                            <td>{item.lastActive}</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </Modal.Body>
             <Modal.Footer>
             </Modal.Footer>
