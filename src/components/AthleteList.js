@@ -1,5 +1,18 @@
 import { Container } from "react-bootstrap";
 import NameList from "./NameList";
+const DetailsModal = ({item, showModal = false, onClose, onSelect}) => {
+    return (
+        <Modal show={showModal} onHide={onClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>{item.name}'s Details</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            </Modal.Body>
+            <Modal.Footer>
+            </Modal.Footer>
+        </Modal>
+    );
+}
 
 const AthleteList = ({ onNameChosen }) => {
 
