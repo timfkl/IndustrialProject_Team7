@@ -81,11 +81,11 @@ const TwoDHeatmap = () => {
             <Row>
                 <Col sm={6}>
                     <h5>Quadriceps (Front)</h5>
-                    <ImageQuads/>
+                    <ImageQuads quadColorLeft={quadColorLeft} quadColorRight={quadColorRight} />
                 </Col>
                 <Col sm={6}>
                     <h5>Hamstrings (Back)</h5>
-                    <ImageHams/>
+                    <ImageHams hamsColorLeft={hamsColorLeft} hamsColorRight={hamsColorRight} />
                 </Col>
             </Row>
             <Row>
