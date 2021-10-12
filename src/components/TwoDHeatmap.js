@@ -31,7 +31,6 @@ const TwoDHeatmap = () => {
     // Simulates data on the heatmap.
     const playHeatmap = () => {
         if (isRunning) return;
-        console.log("object")
 
         // Simulates data on each point on the left quad muscle.
         if (localStorage.getItem("csv1")) {
@@ -137,7 +136,7 @@ const TwoDHeatmap = () => {
             <Row>
                 <Col className="mt-3">
                     <CSVUploadButton />
-                    <Button className="ms-2" onClick={playHeatmap}>
+                    <Button className="ms-2" onClick={playHeatmap} disabled={isRunning}>
                         Run Simulation
                     </Button>
                 </Col>
