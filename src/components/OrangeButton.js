@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import { Theme } from '../scripts/theme';
 
 // Custom login button component.
-const OrangeButton = (props) => {
+const OrangeButton = ({text, props}) => {
 
     return (
         <Button
@@ -14,7 +14,7 @@ const OrangeButton = (props) => {
             }}
             variant="warning"
         >
-            {props.text}
+            {text}
         </Button>
     );
 }
