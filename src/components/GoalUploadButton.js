@@ -25,8 +25,7 @@ const GoalUploadButton = () => {
     const submit = () => {
         currentGoal = document.getElementById("goal").value;
         muscleGroup = document.getElementById("muscleGroup").value;
-        localStorage.setItem("goal" + muscleGroup, currentGoal);
-        window.location.reload();
+        sessionStorage.setItem("goal" + muscleGroup, currentGoal);
     };
 
     // The html of the component
