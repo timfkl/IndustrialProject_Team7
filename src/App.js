@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Redirect, useLocation } from "react-router-dom";
 //import pages to link to
 import Contact from "./pages/Contact";
