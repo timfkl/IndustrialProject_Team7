@@ -89,7 +89,7 @@ const getRadioResults = (radios) => {
 const Progress = () => {
     // Create use state goal, and setGoal which modifies its value
     const [goal, setGoal] = useState(
-        localStorage.getItem("goal1") ? localStorage.getItem("goal1") : 0
+        sessionStorage.getItem("goal1") ? sessionStorage.getItem("goal1") : 0
     );
 
     // Create use state selectedMuscleGroup, setMuscleGroup which modifies its value, muscle group 1 is default when page reloads
@@ -97,7 +97,7 @@ const Progress = () => {
 
     // Create use state musclePRDisplay - the PR of the specific muscle group, setMusclePRDisplay which modifies its value, muscle group 1's PR is default when page reloads
     const [musclePRDisplay, setMusclePRDisplay] = useState(
-        localStorage.getItem("Max1") ? localStorage.getItem("Max1") : 0
+        sessionStorage.getItem("Max1") ? sessionStorage.getItem("Max1") : 0
     );
 
     // This will be the biggest max from the csv
@@ -119,9 +119,9 @@ const Progress = () => {
     var arrayOfActivations4 = [];
 
     // If the user has uploaded a csv - it is stored in local
-    if (localStorage.getItem("csv1")) {
+    if (sessionStorage.getItem("csv1")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(localStorage.getItem("csv1"));
+        csvArray = CSVToArray(sessionStorage.getItem("csv1"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -132,9 +132,9 @@ const Progress = () => {
     }
 
     // If the user has uploaded a csv - it is stored in local
-    if (localStorage.getItem("csv2")) {
+    if (sessionStorage.getItem("csv2")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(localStorage.getItem("csv2"));
+        csvArray = CSVToArray(sessionStorage.getItem("csv2"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -145,9 +145,9 @@ const Progress = () => {
     }
 
     // If the user has uploaded a csv - it is stored in local
-    if (localStorage.getItem("csv3")) {
+    if (sessionStorage.getItem("csv3")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(localStorage.getItem("csv3"));
+        csvArray = CSVToArray(sessionStorage.getItem("csv3"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -158,9 +158,9 @@ const Progress = () => {
     }
 
     // If the user has uploaded a csv - it is stored in local
-    if (localStorage.getItem("csv4")) {
+    if (sessionStorage.getItem("csv4")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(localStorage.getItem("csv4"));
+        csvArray = CSVToArray(sessionStorage.getItem("csv4"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -171,65 +171,65 @@ const Progress = () => {
     }
 
     // Save that new array to local
-    localStorage.setItem("arrayOfActivations1", arrayOfActivations1);
+    sessionStorage.setItem("arrayOfActivations1", arrayOfActivations1);
 
     // Save that new array to local
-    localStorage.setItem("arrayOfActivations2", arrayOfActivations2);
+    sessionStorage.setItem("arrayOfActivations2", arrayOfActivations2);
 
     // Save that new array to local
-    localStorage.setItem("arrayOfActivations3", arrayOfActivations3);
+    sessionStorage.setItem("arrayOfActivations3", arrayOfActivations3);
 
     // Save that new array to local
-    localStorage.setItem("arrayOfActivations4", arrayOfActivations4);
+    sessionStorage.setItem("arrayOfActivations4", arrayOfActivations4);
 
     // If there is an array of activations in local
-    if (localStorage.getItem("arrayOfActivations1")) {
+    if (sessionStorage.getItem("arrayOfActivations1")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max1' which is the athlete's personal activation record
         for (var i = 0; i < arrayOfActivations1.length; i++) {
             if (Max1 < arrayOfActivations1[i]) {
                 Max1 = arrayOfActivations1[i];
             }
         }
-        localStorage.setItem("Max1", Max1);
+        sessionStorage.setItem("Max1", Max1);
     }
 
     // If there is an array of activations in local
-    if (localStorage.getItem("arrayOfActivations2")) {
+    if (sessionStorage.getItem("arrayOfActivations2")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max2' which is the athlete's personal activation record
         for (var i = 0; i < arrayOfActivations2.length; i++) {
             if (Max2 < arrayOfActivations2[i]) {
                 Max2 = arrayOfActivations2[i];
             }
         }
-        localStorage.setItem("Max2", Max2);
+        sessionStorage.setItem("Max2", Max2);
     }
 
     // If there is an array of activations in local
-    if (localStorage.getItem("arrayOfActivations3")) {
+    if (sessionStorage.getItem("arrayOfActivations3")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max3' which is the athlete's personal activation record
         for (var i = 0; i < arrayOfActivations3.length; i++) {
             if (Max3 < arrayOfActivations3[i]) {
                 Max3 = arrayOfActivations3[i];
             }
         }
-        localStorage.setItem("Max3", Max3);
+        sessionStorage.setItem("Max3", Max3);
     }
 
     // If there is an array of activations in local
-    if (localStorage.getItem("arrayOfActivations4")) {
+    if (sessionStorage.getItem("arrayOfActivations4")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max4' which is the athlete's personal activation record
         for (var i = 0; i < arrayOfActivations4.length; i++) {
             if (Max4 < arrayOfActivations4[i]) {
                 Max4 = arrayOfActivations4[i];
             }
         }
-        localStorage.setItem("Max4", Max4);
+        sessionStorage.setItem("Max4", Max4);
     }
 
     // When a muscle group is selected, go to local storage and find "goal + muscle group value", set goal to be that
     const getMuscleGroup = (muscleGroup) => {
         setMuscleGroup(muscleGroup);
-        setGoal(localStorage.getItem("goal" + muscleGroup));
+        setGoal(sessionStorage.getItem("goal" + muscleGroup));
 
         // Set the pr to be displayed to that of the max of that muscle group
         if (muscleGroup == 1) {
