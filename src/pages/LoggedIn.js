@@ -1,7 +1,3 @@
-import { Link } from 'react-router-dom';
-//for styling 
-import styled from 'styled-components';
-import Common from '../components/Common';
 import { useState } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
