@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Container, Form, FloatingLabel, Button } from "react-bootstrap";
+import { Alert, Container, Form, FloatingLabel } from "react-bootstrap";
 import OrangeButton from '../components/OrangeButton'
 import axios from "axios";
 
@@ -11,24 +11,24 @@ const Login = () => {
     const API_PATH = "http://localhost/projects/api/login.php"; // api url
 
     // If the user is already logged in send them to the dashboard.
-    if (localStorage.getItem("user_name")) {
-        window.location.href = "/loggedin";
+    if (localStorage.getItem("user_type_ID")) {
+        window.location.href = "/dashboard";
     }
 
     // hard coded user user details.
     const users = {
-        // physio: {
-        //     name: "Darlene Alderson",
-        //     email: "physio@theohealth.com",
-        //     password: "physio123",
-        //     userTypeID: 1,
-        // },
-        // injured: {
-        //     name: "Philip Price",
-        //     email: "injured@theohealth.com",
-        //     password: "injured123",
-        //     userTypeID: 2,
-        // },
+        physio: {
+            name: "Darlene Alderson",
+            email: "physio@theohealth.com",
+            password: "physio123",
+            userTypeID: 1,
+        },
+        injured: {
+            name: "Philip Price",
+            email: "injured@theohealth.com",
+            password: "injured123",
+            userTypeID: 2,
+        },
         athlete: {
             name: "Fernando Vera",
             email: "athlete@theohealth.com",
@@ -65,7 +65,10 @@ const Login = () => {
                 // Store username and user type id (1: physio, 2. injured athlete, 3. athlete)
                 localStorage.setItem("user_name", users[key].name);
                 localStorage.setItem("user_type_ID", users[key].userTypeID);
-                window.location.href = "/loggedin"; // Redirect page.
+
+                // Redirect page based on type of user.
+                window.location.href = "/dashboard";
+
                 return;
             }
         }
@@ -133,7 +136,7 @@ const Login = () => {
                             />
                         </FloatingLabel>
                     </Form.Group>
-                    <OrangeButton text="Sign in" props={{ variant: "warning", type: "submit" }} />
+                    <OrangeButton text="Sign in" variant="warning" type="submit" />
                 </Form>
             </div>
         </Container>
