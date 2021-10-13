@@ -30,10 +30,11 @@ const AthleteDashboard = () => {
 
 const PhysioDashboard = () => {
     const [tab, setTab] = useState(1);
-    const [client, setClient] = useState("Athlete");
+    const [client, setClient] = useState(localStorage.getItem('athlete') ? localStorage.getItem('athlete') : "Athlete");
 
-    const handleNameChosen = (item) => {
-        setClient(item.name);
+    const handleNameChosen = (name, index) => {
+        localStorage.setItem('athlete', name);
+        setClient(name);
         setTab(2);
     }
 
