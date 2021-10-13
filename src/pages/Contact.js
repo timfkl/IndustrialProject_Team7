@@ -2,7 +2,6 @@ import React from 'react';
 import {Card, CardGroup } from "react-bootstrap";
 import './Contact.css'
 import { Form } from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
 import { Col } from 'react-bootstrap';
 import OrangeButton from '../components/OrangeButton';
 
@@ -10,6 +9,7 @@ const Contact = () => {
     return (
 
         <div id = "content">
+            {/* First set of cards for contacting theo health */}
             <CardGroup>
                 <Card>
                     <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/assets/image9.jpg`}  style={{ display: 'block', width: '50%', margin: 'auto'}}/>
@@ -44,6 +44,8 @@ const Contact = () => {
                 
             </CardGroup>
             <br/>
+
+            {/* Second set of cards that include more ways to contact and an email questions form */}
             <CardGroup>
                 <Card>
                     <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/assets/image10.jpg`} style={{ display: 'block', width: '50%', margin: 'auto'}}/>
