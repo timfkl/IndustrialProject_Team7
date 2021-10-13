@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 export default function GoalUploadButton(){
 
     // Create a state for the modal, telling whether it's open or closed
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     var currentGoal = 0
     var muscleGroup
