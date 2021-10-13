@@ -1,12 +1,14 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
+import { SocialIcon } from 'react-social-icons';
 const Contact = () => {
     return (
-        <header> 
-            <h5>Contact Page</h5>
-            <p>do we even want this</p>
-        </header>
 
+        <div>
+            //ReactDOM.render(<SocialIcon url="https://twitter.com/theoHealth" />, document.body)
+            
+        
+        </div>
     )
 }
 export default Contact
