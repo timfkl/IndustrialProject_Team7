@@ -16,7 +16,7 @@ const NameList = ({ list, onItemClick, onDetailsClick }) => {
                             <Card.Title>{item.name}</Card.Title>
                         </Card.Body>
                         <ListGroup className="list-group-flush">
-                            <ListGroup.Item onClick={() => {onItemClick(item)}} action>Select Client</ListGroup.Item>
+                            <ListGroup.Item onClick={() => {onItemClick(item)}} action>See Heatmap</ListGroup.Item>
                             <ListGroup.Item onClick={() => {onDetailsClick(item)}} action>See Details</ListGroup.Item>
                         </ListGroup>
                         <Card.Footer>Last active: {item.lastActive}</Card.Footer>

@@ -7,9 +7,10 @@ const LoginButton = () => {
     // When the user clicks the button.
     const handleClick = () => {
 
-        // Clears localstorage.
+        // Clears localstorage and session storage of data.
         if (localStorage.getItem('user_name')) {
             localStorage.clear();
+            sessionStorage.clear();
         }
     }
 
