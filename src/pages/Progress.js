@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import ProgressBar from "react-bootstrap/ProgressBar";
+import { ProgressBar, Dropdown } from "react-bootstrap";
 import GoalUploadButton from "../components/GoalUploadButton";
 import CSVUploadButton from "../components/CSVUploadButton";
 import CSVToArray from "../scripts/CSVToArray";
 import "./Progress.css";
-import { Dropdown } from "react-bootstrap";
 
 //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
 const selectRandomTask = (currentTask1, currentTask2, currentTask3) => {
