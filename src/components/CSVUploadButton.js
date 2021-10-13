@@ -8,7 +8,6 @@ export default function CSVUploadButton(){
 
     // Create a state for the modal, telling whether it's open or closed
     const [isOpen, setIsOpen] = React.useState(false);
-    const [selectValue, setSelectValue] = React.useState(1);
     
     var muscleGroup
 
