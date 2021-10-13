@@ -412,21 +412,21 @@ const Progress = () => {
                         <ul style={{ listStyleType: "none", display: "static" }}>
                             <li>
                                 <input type="checkbox" id="task1" />
-                                <label id="task1label" for="task1">
+                                <label id="task1label" htmlFor="task1">
                                     {" "}
                                     Eat a good breakfast
                                 </label>
                             </li>
                             <li>
                                 <input type="checkbox" id="task2" />
-                                <label id="task2label" for="task2">
+                                <label id="task2label" htmlFor="task2">
                                     {" "}
                                     10+ Minute walk
                                 </label>
                             </li>
                             <li>
                                 <input type="checkbox" id="task3" />
-                                <label id="task3label" for="task3">
+                                <label id="task3label" htmlFor="task3">
                                     {" "}
                                     8 hours of sleep
                                 </label>
