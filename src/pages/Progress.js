@@ -119,9 +119,9 @@ const Progress = () => {
     var arrayOfActivations4 = [];
 
     // If the user has uploaded a csv - it is stored in local
-    if (sessionStorage.getItem("csv1")) {
+    if (sessionStorage.getItem("quad_left")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(sessionStorage.getItem("csv1"));
+        csvArray = CSVToArray(sessionStorage.getItem("quad_left"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -132,9 +132,9 @@ const Progress = () => {
     }
 
     // If the user has uploaded a csv - it is stored in local
-    if (sessionStorage.getItem("csv2")) {
+    if (sessionStorage.getItem("quad_right")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(sessionStorage.getItem("csv2"));
+        csvArray = CSVToArray(sessionStorage.getItem("quad_right"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -145,9 +145,9 @@ const Progress = () => {
     }
 
     // If the user has uploaded a csv - it is stored in local
-    if (sessionStorage.getItem("csv3")) {
+    if (sessionStorage.getItem("hams_left")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(sessionStorage.getItem("csv3"));
+        csvArray = CSVToArray(sessionStorage.getItem("hams_left"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
@@ -158,9 +158,9 @@ const Progress = () => {
     }
 
     // If the user has uploaded a csv - it is stored in local
-    if (sessionStorage.getItem("csv4")) {
+    if (sessionStorage.getItem("hams_right")) {
         // Call the CSVToArray method in 'scripts', which returns the csv as an array
-        csvArray = CSVToArray(sessionStorage.getItem("csv4"));
+        csvArray = CSVToArray(sessionStorage.getItem("hams_right"));
         // Now remove the first entry of the csv array which is just formatting info
         csvArray.shift();
         // Go through the csvArray, take the second element of each array within the array (the activation readings) and add them to a new array
