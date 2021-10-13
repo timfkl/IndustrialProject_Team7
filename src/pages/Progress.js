@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Common from "../components/Common";
-import styled from "styled-components";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import GoalUploadButton from "../components/GoalUploadButton";
 import CSVUploadButton from "../components/CSVUploadButton";
