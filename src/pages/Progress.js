@@ -195,9 +195,9 @@ const Progress = () => {
     // If there is an array of activations in local
     if (sessionStorage.getItem("arrayOfActivations2")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max2' which is the athlete's personal activation record
-        for (var i = 0; i < arrayOfActivations2.length; i++) {
-            if (Max2 < arrayOfActivations2[i]) {
-                Max2 = arrayOfActivations2[i];
+        for (var j = 0; j < arrayOfActivations2.length; j++) {
+            if (Max2 < arrayOfActivations2[j] ) {
+                Max2 = arrayOfActivations2[j];
             }
         }
         sessionStorage.setItem("Max2", Max2);
@@ -206,9 +206,9 @@ const Progress = () => {
     // If there is an array of activations in local
     if (sessionStorage.getItem("arrayOfActivations3")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max3' which is the athlete's personal activation record
-        for (var i = 0; i < arrayOfActivations3.length; i++) {
-            if (Max3 < arrayOfActivations3[i]) {
-                Max3 = arrayOfActivations3[i];
+        for (var k = 0; k < arrayOfActivations3.length; k++) {
+            if (Max3 < arrayOfActivations3[k] ) {
+                Max3 = arrayOfActivations3[k];
             }
         }
         sessionStorage.setItem("Max3", Max3);
@@ -217,9 +217,9 @@ const Progress = () => {
     // If there is an array of activations in local
     if (sessionStorage.getItem("arrayOfActivations4")) {
         // Go through each entry of the array, and find the biggest number, save this to a var called 'Max4' which is the athlete's personal activation record
-        for (var i = 0; i < arrayOfActivations4.length; i++) {
-            if (Max4 < arrayOfActivations4[i]) {
-                Max4 = arrayOfActivations4[i];
+        for (var l = 0; l < arrayOfActivations4.length; l++) {
+            if (Max4 < arrayOfActivations4[l] ) {
+                Max4 = arrayOfActivations4[l];
             }
         }
         sessionStorage.setItem("Max4", Max4);
@@ -231,17 +231,17 @@ const Progress = () => {
         setGoal(sessionStorage.getItem("goal" + muscleGroup));
 
         // Set the pr to be displayed to that of the max of that muscle group
-        if (muscleGroup == 1) {
-            setMusclePRDisplay(Max1);
+        if (muscleGroup===1){
+            setMusclePRDisplay(Max1)
         }
-        if (muscleGroup == 2) {
-            setMusclePRDisplay(Max2);
+        if (muscleGroup===2){
+            setMusclePRDisplay(Max2)
         }
-        if (muscleGroup == 3) {
-            setMusclePRDisplay(Max3);
+        if (muscleGroup===3){
+            setMusclePRDisplay(Max3)
         }
-        if (muscleGroup == 4) {
-            setMusclePRDisplay(Max4);
+        if (muscleGroup===4){
+            setMusclePRDisplay(Max4)
         }
     };
 
@@ -260,17 +260,14 @@ const Progress = () => {
     // Progression is the client's maximum activation record / their goal * 100 - this is then shown on the progression bar
     var progression = (musclePRDisplay / goal) * 100;
 
-    if (progression >= 100 && goal != (undefined || 0)) {
-        showConfetti = true;
+    if(progression>=100 && goal !== (undefined || 0)){
+        showConfetti = true
     }
 
     return (
         <header>
             {/* Confetti for achieving a goal */}
-            <div
-                className="confetti"
-                style={{ visibility: showConfetti != undefined ? "visible" : "hidden" }}
-            >
+            <div className="confetti" style={{ visibility: showConfetti !== undefined? 'visible': 'hidden'}}>
                 <div className="confetti-piece"></div>
                 <div className="confetti-piece"></div>
                 <div className="confetti-piece"></div>
