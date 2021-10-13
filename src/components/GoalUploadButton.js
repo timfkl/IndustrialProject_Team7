@@ -26,7 +26,7 @@ const GoalUploadButton = ({onSubmit}) => {
         currentGoal = document.getElementById("goal").value;
         muscleGroup = document.getElementById("muscleGroup").value;
         sessionStorage.setItem("goal" + muscleGroup, currentGoal);
-        
+        hideModal();
         if (onSubmit) onSubmit();
     };
 
