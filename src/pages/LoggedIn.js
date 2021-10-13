@@ -36,9 +36,4 @@ const LoggedIn = () => {
     );
 }
 
-//use styling from common.js for links
-const StyledLink = styled(Link)`
-    ${Common}
-`;
-
 export default LoggedIn
