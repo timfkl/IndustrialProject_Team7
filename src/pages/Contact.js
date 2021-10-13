@@ -1,9 +1,10 @@
 import React from 'react';
-import { Carousel, Card, CardGroup } from "react-bootstrap";
+import {Card, CardGroup } from "react-bootstrap";
 import './Contact.css'
 import { Form } from 'react-bootstrap';
 import Button from '@restart/ui/esm/Button';
 import { Col } from 'react-bootstrap';
+import OrangeButton from '../components/OrangeButton';
 
 const Contact = () => {
     return (
@@ -55,6 +56,16 @@ const Contact = () => {
                 </Card>
 
                 <Card>
+                    <Card.Img variant="top" src={`${process.env.PUBLIC_URL}/assets/image11.png`} style={{ display: 'block', width: '50%', margin: 'auto'}}/>
+                    <Card.Body>
+                        <Card.Title>Or Ask One Of Our Physiotherapists Yourself</Card.Title>
+                        <Card.Text>
+                        Dr. Jean-Luc Dawe of DawePhysios.co.uk recommends Theo Health for all his clients!
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card>
                     <Card.Body>
                         <Card.Title>Or Email Us A Question</Card.Title>
                         <Card.Text>
@@ -81,9 +92,7 @@ const Contact = () => {
                                     <Form.Label>Question</Form.Label>
                                     <Form.Control/>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
-                                    Submit
-                                </Button>
+                                <OrangeButton text="Submit" type="Submit" onClick={() => window.location.reload()} />
                             </Form>
                         </Card.Text>
                     </Card.Body>
@@ -91,6 +100,7 @@ const Contact = () => {
 
 
             </CardGroup>
+            <br/>
 
         </div>
 
