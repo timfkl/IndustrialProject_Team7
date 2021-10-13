@@ -42,7 +42,7 @@ const PhysioDashboard = () => {
 
     // Displays the dashboard where part is split into tabs.
     return (
-        <Container className="mt-3">
+        <Container className="mt-3 mb-5">
             <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
             <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}>
