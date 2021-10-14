@@ -181,15 +181,12 @@ const TwoDHeatmap = () => {
                     <CSVUploadButton />
                     <TealButton
                         text="Run Simulation"
-                        className="ms-2"
+                        className="mx-2"
                         onClick={playHeatmap}
                     />
-                </Col>
-            </Row>
-                <Col>
-                    <Button onClick={playHeatmap} style={{paddingRight:'1opx'}}>Run</Button>
                     <TealButton href="/finish" text="Finish Session"/>
                 </Col>
+            </Row>
         </Container>
     );
 };
