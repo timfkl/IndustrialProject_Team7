@@ -1,22 +1,21 @@
 // import necessary sources
-import './CSVUploadButton.css';
-import { useState } from 'react'
+import { useState } from "react";
 import React from "react";
-import Modal from "react-bootstrap/Modal";
+import { Modal, Form, Button } from "react-bootstrap";
+import OrangeButton from "./OrangeButton";
 
-export default function GoalUploadButton(){
-
+const GoalUploadButton = () => {
     // Create a state for the modal, telling whether it's open or closed
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    var currentGoal = 0
-    var muscleGroup
+    var currentGoal = 0;
+    var muscleGroup;
 
     // Opens modal
     const showModal = () => {
         setIsOpen(true);
     };
-    
+
     // Closes modal
     const hideModal = () => {
         setIsOpen(false);
@@ -26,44 +25,54 @@ export default function GoalUploadButton(){
     const submit = () => {
         currentGoal = document.getElementById("goal").value;
         muscleGroup = document.getElementById("muscleGroup").value;
-        localStorage.setItem("goal"+muscleGroup, currentGoal)
-        window.location.reload(); 
-    }
+        localStorage.setItem("goal" + muscleGroup, currentGoal);
+        window.location.reload();
+    };
 
-    
     // The html of the component
     return (
         <>
+            {/* This button opens the modal to upload csv files */}
+            <OrangeButton text="Set a New Goal" id="uploadButton" onClick={showModal} />
 
-        {/* This button opens the modal to upload csv files */}
-        <button id="uploadButton" className= "button" onClick={showModal}>Set a New Goal</button>
-
-        {/* When the modal setIsOpen is true, the modal is displayed and offers and area for users to upload a csv */}
-        <Modal show={isOpen} onHide={hideModal}>
-            <Modal.Header>
-                <Modal.Title>What level of muscle activation do you want to achieve?</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                    <input type="text" id="goal" name="goal" placeholder = "e.g. 1024" /><br/>
-            </Modal.Body>
-            <Modal.Header>
-                <Modal.Title>Which muscle group is this for? (1-4)</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <input type="text" id="muscleGroup" name="muscleGroup" placeholder= "e.g. 1" /><br/>
-            </Modal.Body>
-            <Modal.Footer>
-                {/* Buttons to close the modal, and submit it (which runs the submit method) */}
-                <button id="cancelButton"  className= "button" onClick={hideModal}>Cancel</button>
-                <button id="uploadButton"  className= "button"
-                    onClick={(e) => {
-                        e.preventDefault()
-                        submit()
-                    }}>
-                    Submit 
-                </button>
-            </Modal.Footer>
-        </Modal>
+            {/* When the modal setIsOpen is true, the modal is displayed and offers and area for users to upload a csv */}
+            <Modal show={isOpen} onHide={hideModal}>
+                <Modal.Header>
+                    <Modal.Title>
+                        What level of muscle activation do you want to achieve?
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Control type="number" id="goal" name="goal" placeholder="e.g. 1024" min="0" />
+                </Modal.Body>
+                <Modal.Header>
+                    <Modal.Title>Which muscle is this goal for?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Select id="muscleGroup">
+                        <option value={1}>Left Quadriceps</option>
+                        <option value={2}>Right Quadriceps</option>
+                        <option value={3}>Left Hamstring</option>
+                        <option value={4}>Right Hamstring</option>
+                    </Form.Select>
+                </Modal.Body>
+                <Modal.Footer>
+                    {/* Buttons to close the modal, and submit it (which runs the submit method) */}
+                    <Button id="cancelButton" variant="danger" onClick={hideModal}>
+                        Cancel
+                    </Button>
+                    <OrangeButton
+                        text="Submit"
+                        id="uploadButton"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            submit();
+                        }}
+                    />
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }
+
+export default GoalUploadButton;

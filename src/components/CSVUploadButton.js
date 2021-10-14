@@ -1,105 +1,118 @@
 // import necessary sources
-import './CSVUploadButton.css';
-import { useState } from 'react'
-import React from "react";
-import { Modal, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Modal, Form, Button } from "react-bootstrap";
+import OrangeButton from "./OrangeButton";
 
-export default function CSVUploadButton(){
-
+const CSVUploadButton = ({onSubmit}) => {
     // Create a state for the modal, telling whether it's open or closed
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [selectValue, setSelectValue] = React.useState(1);
-    
-    var muscleGroup
+    const [isOpen, setIsOpen] = useState(false);
+    // Create a state for the csv uploads 
+    const [csvQuadLeft, setCsvQuadLeft] = useState();
+    const [csvQuadRight, setCsvQuadRight] = useState();
+    const [csvHamsLeft, setCsvHamsLeft] = useState();
+    const [csvHamsRight, setCsvHamsRight] = useState();
 
     // Opens modal
-    const showModal = () => {
-        setIsOpen(true);
-    };
-    
+    const showModal = () => setIsOpen(true);
+
     // Closes modal
-    const hideModal = () => {
-        setIsOpen(false);
+    const hideModal = () => setIsOpen(false);
+
+    // Runs when the submit button is clicked, saves file to session storage and alerts parent.
+    const submit = () => {
+        
+        if (csvQuadLeft) saveFile(csvQuadLeft, "quad_left");
+        if (csvQuadRight) saveFile(csvQuadRight, "quad_right");
+        if (csvHamsLeft) saveFile(csvHamsLeft, "hams_left");
+        if (csvHamsRight) saveFile(csvHamsRight, "hams_right");
+        
+        hideModal();
+        if (onSubmit) onSubmit();
     };
 
-    // Create a state for the csv upload
-    const [csvFile, setCsvFile] = useState();
-
-    // Runs when the submit button is clicked, prints the csv to console - will need to do more in future
-    const submit = () => {
-        const file = csvFile;
+    // Saves the files to session storage.
+    const saveFile = (file, name) => {
         const reader = new FileReader();
-
-        muscleGroup = document.getElementById("muscleGroup").value;
-        console.log(document.getElementById("muscleGroup").value)
-
-        reader.onload = function(e) {
-            const text = e.target.result;
-            console.log(text);
-            localStorage.setItem("csv"+muscleGroup, text)
-            hideModal()
-        }
+        
+        reader.onload = e => {
+            sessionStorage.setItem(name, e.target.result);
+        };
 
         reader.readAsText(file);
-        window.location.reload();
     }
-    
+
     // The html of the component
     return (
         <>
             {/* This button opens the modal to upload csv files */}
-            <button id="uploadButton" className="button" onClick={showModal}>
-                Upload a CSV
-            </button>
+            <OrangeButton text="Upload .csv files" onClick={showModal} />
 
             {/* When the modal setIsOpen is true, the modal is displayed and offers and area for users to upload a csv */}
             <Modal show={isOpen} onHide={hideModal}>
                 <Modal.Header>
-                    <Modal.Title>Upload a .csv with sensor data here:</Modal.Title>
+                    <Modal.Title>Upload .csv files</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Area to upload csv */}
-                    <form id="csvForm">
-                        <input
+                    <Form.Group className="mb-3">
+                        <Form.Label>Left Quadriceps</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
                             type="file"
                             accept=".csv"
-                            id="csvFile"
                             onChange={(e) => {
-                                setCsvFile(e.target.files[0]);
+                                setCsvQuadLeft(e.target.files[0]);
                             }}
-                        ></input>
-                    </form>
-                </Modal.Body>
-
-                <Modal.Header>
-                    <Modal.Title>Which muscle is this data for?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form.Select id="muscleGroup">
-                        <option value={1}>Left Quadriceps</option>
-                        <option value={2}>Right Quadriceps</option>
-                        <option value={3}>Left Hamstring</option>
-                        <option value={4}>Right Hamstring</option>
-                    </Form.Select>
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Right Quadriceps</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
+                            type="file"
+                            accept=".csv"
+                            onChange={(e) => {
+                                setCsvQuadRight(e.target.files[0]);
+                            }}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Left Hamstring</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
+                            type="file"
+                            accept=".csv"
+                            onChange={(e) => {
+                                setCsvHamsLeft(e.target.files[0]);
+                            }}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Right Hamstring</Form.Label>
+                        {/* Area to upload csv */}
+                        <Form.Control 
+                            type="file"
+                            accept=".csv"
+                            onChange={(e) => {
+                                setCsvHamsRight(e.target.files[0]);
+                            }}
+                        />
+                    </Form.Group>
                 </Modal.Body>
 
                 <Modal.Footer>
                     {/* Buttons to close the modal, and submit it (which runs the submit method) */}
-                    <button id="cancelButton" className="button" onClick={hideModal}>
+                    <Button id="cancelButton" variant="danger" onClick={hideModal}>
                         Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <OrangeButton
+                        text="Submit"
                         id="uploadButton"
-                        className="button"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if (csvFile) submit();
-                        }}
-                    >
-                        Submit
-                    </button>
+                        onClick={(e) => {submit()}}
+                    />
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
+
+export default CSVUploadButton;
