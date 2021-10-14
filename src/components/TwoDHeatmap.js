@@ -183,7 +183,6 @@ const TwoDHeatmap = () => {
                         text="Run Simulation"
                         className="ms-2"
                         onClick={playHeatmap}
-                        disabled={isRunning}
                     />
                 </Col>
             </Row>
