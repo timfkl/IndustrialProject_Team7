@@ -300,6 +300,8 @@ const Progress = () => {
                 <h5>Your current personal record is: {musclePRDisplay}</h5>
                 <h5>Your current goal is: {goal}</h5>
 
+                <br/>
+
                 <Dropdown>
                     <Dropdown.Toggle id="dropdown-basic">
                         Select a Muscle Group to View

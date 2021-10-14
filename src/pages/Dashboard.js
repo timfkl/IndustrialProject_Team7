@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { Container, Tabs, Tab } from 'react-bootstrap';
 import AthleteList from '../components/AthleteList';
 import TwoDHeatmap from '../components/TwoDHeatmap'; // Contains 2D heatmap.
 import Progress from './Progress';
 
+// This dashnoard is only for the athlete.
 const AthleteDashboard = () => {
-    const [tab, setTab] = useState(1);
+    const [tab, setTab] = useState(1); // Stores which tab the athlete is in.
 
+    // Displays the dashboard where part is split into tabs.
     return (
         <Container className="mt-3">
             <h2>Hello, {localStorage.getItem("user_name")}.</h2>
@@ -25,19 +27,23 @@ const AthleteDashboard = () => {
     );
 }
 
+// This dashboard only displays for the physiotherapist.
 const PhysioDashboard = () => {
-    const [tab, setTab] = useState(1);
-    const [client, setClient] = useState(localStorage.getItem('athlete') ? localStorage.getItem('athlete') : "Athlete");
+    const [tab, setTab] = useState(1); // Stores which tab the physio is in.
+    // If page is reloaded, the physio can still view the same athlete.
+    const [client, setClient] = useState(sessionStorage.getItem('athlete') ? sessionStorage.getItem('athlete') : "Athlete");
 
-    const handleNameChosen = (name, index) => {
-        localStorage.setItem('athlete', name);
-        setClient(name);
-        setTab(2);
+    const handleNameChosen = (item) => {
+        sessionStorage.clear(); // Clears session storage data for privacy and security.
+        sessionStorage.setItem('athlete', item.name); // Saves to localstorage incase of reload.
+        setClient(item.name);
+        setTab(2); // Changes to heatmap.
     }
 
+    // Displays the dashboard where part is split into tabs.
     return (
-        <Container className="mt-3">
-            <h2>Hello, {localStorage.getItem("user_name")}</h2>
+        <Container className="mt-3 mb-5">
+            <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
             <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)} variant="pills" >
                 
@@ -45,7 +51,7 @@ const PhysioDashboard = () => {
                     <AthleteList onNameChosen={handleNameChosen}/>
                 </Tab>
 
-                <Tab eventKey={2} title={`${client}'s Session`} disabled={client === "Athlete"}>                 
+                <Tab eventKey={2} title={`${client}'s Heatmap`} disabled={client === "Athlete"}>                 
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
                 </Tab>
@@ -53,9 +59,6 @@ const PhysioDashboard = () => {
                 <Tab eventKey={3} title={`${client}'s Progress`} disabled={client === "Athlete"}>
                     <Progress />
                 </Tab>
-                {/* <Tab eventKey={3} title="Edit Goals">
-                    <h3>Other Stuff to match wireframe</h3>
-                </Tab> */}
             </Tabs>
         </Container>
     );
