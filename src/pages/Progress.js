@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ProgressBar, Dropdown } from "react-bootstrap";
+import { ProgressBar, Dropdown, Container, Row, Col } from "react-bootstrap";
 import GoalUploadButton from "../components/GoalUploadButton";
 import CSVUploadButton from "../components/CSVUploadButton";
 import TealButton from "../components/TealButton";
@@ -7,7 +7,6 @@ import CSVToArray from "../scripts/CSVToArray";
 import LineChartProgress from "../components/LineChart";
 import LineChartWellBeing from "../components/LineChartWellBeing";
 import "./Progress.css";
-import { Dropdown, Container, Row, Col } from "react-bootstrap";
 
 //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
 const selectRandomTask = (currentTask1, currentTask2, currentTask3) => {
