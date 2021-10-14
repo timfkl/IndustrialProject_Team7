@@ -1,6 +1,6 @@
 import React from "react";
-import { Carousel, Card, CardGroup, Container, Row, Col, Button, Nav } from "react-bootstrap";
-import {changeData, Line} from '../components/LineChartWellBeing';
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { changeData } from '../components/LineChartWellBeing';
 
 function selectRandomTask(currentTask1, currentTask2, currentTask3) {
     //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
