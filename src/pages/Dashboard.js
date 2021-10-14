@@ -11,7 +11,7 @@ const AthleteDashboard = () => {
         <Container className="mt-3">
             <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
-            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}>
+            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}  variant="pills">
                 <Tab eventKey={1} title="Latest Session">
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
@@ -20,9 +20,6 @@ const AthleteDashboard = () => {
                 <Tab eventKey={2} title="Progress">
                     <Progress />
                 </Tab>
-                {/* <Tab eventKey={3} title="Edit Goals">
-                    <h3>Other Stuff to match wireframe</h3>
-                </Tab> */}
             </Tabs>
         </Container>
     );
