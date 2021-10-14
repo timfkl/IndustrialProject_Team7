@@ -6,8 +6,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import GoalUploadButton from "../components/GoalUploadButton";
 import CSVUploadButton from "../components/CSVUploadButton";
 import CSVToArray from "../scripts/CSVToArray";
+import LineChartProgress from "../components/LineChart";
+import LineChartWellBeing from "../components/LineChartWellBeing";
 import "./Progress.css";
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Container, Row, Col } from "react-bootstrap";
 
 //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
 const selectRandomTask = (currentTask1, currentTask2, currentTask3) => {
@@ -339,119 +341,17 @@ const Progress = () => {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-
-            {/* entire well being section */}
-            <div className="WellBeing" style={{ height: "100px", margin: "30px" }}>
-                {/* - Check in section, monitors users current feelings */}
-                <div
-                    className="CheckIn"
-                    style={{
-                        display: "inline-flex",
-                        margin: "10px",
-                        width: "300px",
-                        height: "200px",
-                        float: "left",
-                        border: "3px solid #195a5c",
-                    }}
-                >
-                    <ul style={{ listStyleType: "none", display: "static" }}>
-                        <h6 style={{ textDecoration: "underline" }}>Check-in</h6>
-                        <div style={{ textAlign: "left" }}>
-                            {/* 4 radio buttons for sleep, drive, stress and modd */}
-                            <li>
-                                Sleep: <input type="radio" name="sleep" id="good" /> Good{" "}
-                                <input type="radio" name="sleep" id="ok" />
-                                Ok <input type="radio" name="sleep" id="bad" />
-                                Bad
-                            </li>
-                            <li style={{ paddingTop: "8px" }}>
-                                Drive: <input type="radio" name="drive" id="good" /> Good{" "}
-                                <input type="radio" name="drive" id="ok" />
-                                Ok <input type="radio" name="drive" id="bad" />
-                                Bad
-                            </li>
-                            <li style={{ paddingTop: "8px" }}>
-                                Stress: <input type="radio" name="stress" id="good" /> Good{" "}
-                                <input type="radio" name="stress" id="ok" />
-                                Ok <input type="radio" name="stress" id="bad" />
-                                Bad
-                            </li>
-                            <li style={{ paddingTop: "8px", paddingBottom: "10px" }}>
-                                Mood: <input type="radio" name="mood" id="good" /> Good{" "}
-                                <input type="radio" name="mood" id="ok" />
-                                Ok <input type="radio" name="mood" id="bad" />
-                                Bad
-                            </li>
-                            {/* button to collect check in answers */}
-                            <li>
-                                <button
-                                    onClick={collectAnswers}
-                                    id="submitButton"
-                                    style={{
-                                        color: "#195a5c",
-                                        backgroundColor: "#f59e6e",
-                                        float: "none",
-                                    }}
-                                >
-                                    Submit
-                                </button>
-                            </li>
-                        </div>
-                    </ul>
-                </div>
-
-                {/* - Tasks section, gives users tasks for mental wellbeing */}
-                <div
-                    className="WellBeingTasks"
-                    style={{
-                        margin: "10px",
-                        width: "300px",
-                        height: "200px",
-                        float: "right",
-                        border: "3px solid #195a5c",
-                    }}
-                >
-                    <h6 style={{ display: "inline-block", textDecoration: "underline" }}>
-                        Well Being Tasks{" "}
-                    </h6>
-                    <br />
-                    <div className="tasks" style={{ textAlign: "left" }}>
-                        {" "}
-                        {/* the list of tasks */}
-                        <ul style={{ listStyleType: "none", display: "static" }}>
-                            <li>
-                                <input type="checkbox" id="task1" />
-                                <label id="task1label" for="task1">
-                                    {" "}
-                                    Eat a good breakfast
-                                </label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="task2" />
-                                <label id="task2label" for="task2">
-                                    {" "}
-                                    10+ Minute walk
-                                </label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="task3" />
-                                <label id="task3label" for="task3">
-                                    {" "}
-                                    8 hours of sleep
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <p style={{ color: "#f59e6e" }}>Complete all three for new tasks</p>
-                    {/* button for getting a new set of tasks */}
-                    <button
-                        onClick={loadTasks}
-                        style={{ color: "#195a5c", backgroundColor: "#f59e6e" }}
-                    >
-                        Get new tasks
-                    </button>
-                </div>
-            </div>
+            <div style = {{ maxWidth:  "2000px",  margin:'20px', paddingTop:'50px'}}>
+            <div>
+                <Container>
+                <Row>
+                <Col sm={6}>
+                <LineChartProgress /></Col>
+                <Col dm={6}>
+                <LineChartWellBeing/></Col>
+                </Row>
+                </Container> 
+            </div> </div>
         </header>
     );
 };
