@@ -19,8 +19,8 @@ const AthleteDashboard = () => {
         <Container className="mt-3">
             <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
-            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => changeTab(e, setTab)}>
-                <Tab eventKey={1} title="Heatmap">
+            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => changeTab(e, setTab)} variant="pills">
+                <Tab eventKey={1} title="Latest Session">
                     {/* Container for 2D Heatmap */}
                     <TwoDHeatmap />
                 </Tab>
@@ -53,7 +53,7 @@ const PhysioDashboard = () => {
         <Container className="mt-3 mb-5">
             <h2>Hello, {localStorage.getItem("user_name")}.</h2>
             <p>Welcome to your dashboard.</p>
-            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => changeTab(e, setTab)}>
+            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => changeTab(e, setTab)} variant="pills" >
                 
                 <Tab eventKey={1} title="Athlete List">
                     <AthleteList onNameChosen={handleNameChosen}/>
