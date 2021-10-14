@@ -4,6 +4,7 @@ import GoalUploadButton from "../components/GoalUploadButton";
 import CSVUploadButton from "../components/CSVUploadButton";
 import CSVToArray from "../scripts/CSVToArray";
 import "./Progress.css";
+import TealButton from "../components/TealButton";
 
 //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
 const selectRandomTask = (currentTask1, currentTask2, currentTask3) => {
@@ -377,17 +378,11 @@ const Progress = () => {
                             </li>
                             {/* button to collect check in answers */}
                             <li>
-                                <button
+                                <TealButton
+                                    text="Submit"
                                     onClick={collectAnswers}
                                     id="submitButton"
-                                    style={{
-                                        color: "#195a5c",
-                                        backgroundColor: "#f59e6e",
-                                        float: "none",
-                                    }}
-                                >
-                                    Submit
-                                </button>
+                                />
                             </li>
                         </div>
                     </ul>
@@ -437,12 +432,10 @@ const Progress = () => {
                     </div>
                     <p style={{ color: "#f59e6e" }}>Complete all three for new tasks</p>
                     {/* button for getting a new set of tasks */}
-                    <button
+                    <TealButton
+                        text="Get new tasks"
                         onClick={loadTasks}
-                        style={{ color: "#195a5c", backgroundColor: "#f59e6e" }}
-                    >
-                        Get new tasks
-                    </button>
+                    />
                 </div>
             </div>
         </header>
