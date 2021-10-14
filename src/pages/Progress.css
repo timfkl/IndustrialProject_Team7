@@ -1,3 +1,15 @@
+.progress-bar{
+    background-color: #0297a2;
+}
+
+body{
+    background: rgb(255,131,56);
+    background: linear-gradient(90deg, rgba(255,131,56,0.5) 0%, rgba(255,255,255,1) 50%, rgba(3,212,227,0.5) 100%);
+}
+
+#dropdown-basic{
+    background-color: #0297a2;
+}
 
 .progress { margin-left: auto; margin-right:auto; }
 
