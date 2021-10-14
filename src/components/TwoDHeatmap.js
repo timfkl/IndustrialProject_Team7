@@ -186,6 +186,10 @@ const TwoDHeatmap = () => {
                     />
                 </Col>
             </Row>
+                <Col>
+                    <Button onClick={playHeatmap} style={{paddingRight:'1opx'}}>Run</Button>
+                    <TealButton href="/finish" text="Finish Session"/>
+                </Col>
         </Container>
     );
 };

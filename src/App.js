@@ -5,6 +5,8 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
+import FinishSession from "./pages/FinishSession";
+import Progress from "./pages/Progress";
 import Navbar from "./components/NavigationBar"; //navbar component
 
 // Allows the user to move between the pages.
@@ -19,6 +21,8 @@ function App() {
 
                 {/* Only logged in users can access */}
                 <PrivateRoute path="/dashboard" component={Dashboard} />
+                <PrivateRoute path="/finish" component={FinishSession} />
+                <PrivateRoute path="/progress" component={Progress} />
                 
                 {/* Defaults to homepage */}
                 <Route component={About} />
