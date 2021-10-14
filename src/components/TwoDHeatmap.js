@@ -184,9 +184,10 @@ const TwoDHeatmap = () => {
                     <CSVUploadButton />
                     <TealButton
                         text="Run Simulation"
-                        className="ms-2"
+                        className="mx-2"
                         onClick={playHeatmap}
                     />
+                    <TealButton href="/finish" text="Finish Session"/>
                 </Col>
                 <Col>
                     <heatmapStats />

@@ -4,7 +4,7 @@ import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import OrangeButton from "./OrangeButton";
 
-const GoalUploadButton = () => {
+const GoalUploadButton = ({onSubmit}) => {
     // Create a state for the modal, telling whether it's open or closed
     const [isOpen, setIsOpen] = useState(false);
 
@@ -25,8 +25,9 @@ const GoalUploadButton = () => {
     const submit = () => {
         currentGoal = document.getElementById("goal").value;
         muscleGroup = document.getElementById("muscleGroup").value;
-        localStorage.setItem("goal" + muscleGroup, currentGoal);
-        window.location.reload();
+        sessionStorage.setItem("goal" + muscleGroup, currentGoal);
+        hideModal();
+        if (onSubmit) onSubmit();
     };
 
     // The html of the component
