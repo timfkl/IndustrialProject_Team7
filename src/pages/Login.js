@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Alert, Container, Form, FloatingLabel } from "react-bootstrap";
 import OrangeButton from '../components/OrangeButton'
-import axios from "axios";
+// import axios from "axios";
 
 //stylised login page
 const Login = () => {
     const [error, setError] = useState(""); //setter for errors not in use. Could add catch errors if needed.
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const API_PATH = "http://localhost/projects/api/login.php"; // api url
+    // const API_PATH = "http://localhost/projects/api/login.php"; // api url
 
     // If the user is already logged in send them to the dashboard.
     if (localStorage.getItem("user_type_ID")) {
