@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { changeData } from '../components/LineChartWellBeing';
+import TealButton from '../components/TealButton';
 
 function selectRandomTask(currentTask1, currentTask2, currentTask3) {
     //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
@@ -119,7 +120,8 @@ const FinishSession = () => {
                 </div>
                 </Col>
                 <Col sm={4}>
-                <Button href="/progress">Complete Session</Button> </Col>
+                    <TealButton text="Complete Session" href="/progress" />
+                </Col>
             </Row>
         </Container>
 
