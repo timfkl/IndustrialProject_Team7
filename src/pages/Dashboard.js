@@ -42,7 +42,7 @@ const PhysioDashboard = () => {
         <Container className="mt-3">
             <h2>Hello, {localStorage.getItem("user_name")}</h2>
             <p>Welcome to your dashboard.</p>
-            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)}>
+            <Tabs className="mb-3" activeKey={tab} onSelect={(e) => setTab(e)} variant="pills" >
                 
                 <Tab eventKey={1} title="Athlete List">
                     <AthleteList onNameChosen={handleNameChosen}/>
