@@ -62,15 +62,11 @@ function getRadioResults(radios) {
 
     for (var i = 0; i < radios.length; i++) {
         if (radios[i].checked) {
-            // do whatever you want with the checked radio
+            // return radio that is checked
             return radios[i].id;
         }
     }
 }
-
-
-
-
 
 const FinishSession = () => {
     return (
@@ -80,7 +76,7 @@ const FinishSession = () => {
                 <Col sm={4}>              
             <div style = {{display: 'inline-block'}}>
                 {/* - Check in section, monitors users current feelings */}
-                <div className="CheckIn" style={{display:'inline-block', margin:'10px', width:'500px', height:'310px', float:'left', border: '3px solid #195a5c'}}>
+                <div className="CheckIn" style={{background: '#f8c097', display:'inline-block', margin:'10px', width:'500px', height:'310px', float:'left', border: '3px solid #195a5c'}}>
                     <ul style={{listStyleType: 'none', display: 'static'}}>
                         <h6 style={{textDecoration: 'underline'}}>Check-in</h6>
                         <h7>Please rate your levels of sleep, drive, stress and mood</h7>
@@ -104,7 +100,7 @@ const FinishSession = () => {
                 </Col>
                 <Col sm={4}>
                         {/* - Tasks section, gives users tasks for mental wellbeing */}
-                <div className="WellBeingTasks" style={{margin:'10px', width: '300px', height: '200px', float: 'right', border: '3px solid #195a5c'}}>
+                <div className="WellBeingTasks" style={{background: '#9ed4d1', margin:'10px', width: '300px', height: '200px', float: 'right', border: '3px solid #195a5c'}}>
                     <h6 style={{ display: 'inline-block', textDecoration: 'underline'}}>Well Being Tasks </h6>
                     <br/>
                     <div class="tasks" style={{textAlign: 'left'}}> {/* the list of tasks */}
@@ -117,7 +113,7 @@ const FinishSession = () => {
                             <label id="task3label" for="task3"> 8 hours of sleep</label></li> 
                         </ul>             
                     </div>
-                    <p style={{color: '#f59e6e'}}>Complete all three for new tasks</p>
+                    <p style={{color: '#bb6820'}}>Complete all three for new tasks</p>
                     {/* button for getting a new set of tasks */}
                     <button onClick={loadTasks} style={{color: '#195a5c', backgroundColor:'#f59e6e'}}>Get new tasks</button>
                 </div>

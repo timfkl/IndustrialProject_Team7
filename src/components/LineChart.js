@@ -12,8 +12,8 @@ const LineChartProgress = () => {
             datasets: [{
                 label: 'Left Quad',
                 data: [600, 560, 700, 1024, 1000, 1040],
-                backgroundColor: ['red'],
-                borderColor: ['red'],
+                backgroundColor: ['purple'],
+                borderColor: ['purple'],
                 hoverBackgroundColor: ['White'],
             },
             {
@@ -26,8 +26,8 @@ const LineChartProgress = () => {
             {
                 label: 'Left Hamstring',
                 data: [802, 800, 740, 855, 790, 780],
-                backgroundColor: ['yellow'],
-                borderColor: ['yellow'],
+                backgroundColor: ['orange'],
+                borderColor: ['orange'],
                 hoverBackgroundColor: ['White'],
             },
             {

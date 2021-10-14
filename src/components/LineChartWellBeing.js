@@ -36,15 +36,15 @@ const LineChartWellBeing = () => {
             {
                 label: 'Drive',
                 data: driveData,
-                backgroundColor: ['aqua'],
-                borderColor: ['aqua'],
+                backgroundColor: ['blue'],
+                borderColor: ['blue'],
                 hoverBackgroundColor: ['White'],
             },
             {
                 label: 'Stress',
                 data: stressData,
-                backgroundColor: ['purple'],
-                borderColor: ['purple'],
+                backgroundColor: ['orange'],
+                borderColor: ['orange'],
                 hoverBackgroundColor: ['White'],
             },
             {
@@ -59,6 +59,7 @@ const LineChartWellBeing = () => {
         }}
         height={100}
         width={200}
+        backgroundColor={'white'}
         options={{
             maintainAspectRatio: true,
         }}
