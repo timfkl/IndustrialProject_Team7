@@ -35,7 +35,13 @@ const CSVUploadButton = ({onSubmit}) => {
         const reader = new FileReader();
         
         reader.onload = e => {
-            sessionStorage.setItem(name, e.target.result);
+			try{
+				sessionStorage.setItem(name, e.target.result);
+				console.log(localStorage);
+			}catch(e){
+				console.log("Local Storage is full, Please empty data");
+				localStorage.clear();
+			}
         };
 
         reader.readAsText(file);

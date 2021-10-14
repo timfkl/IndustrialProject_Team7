@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel, Card, CardGroup, Container, Row, Col, Button, Nav } from "react-bootstrap";
-import {changeData, Line} from '../components/LineChartWellBeing';
+import { changeData, Line } from '../components/LineChartWellBeing';
+import CSVToArray from "../scripts/CSVToArray";
 
 function selectRandomTask(currentTask1, currentTask2, currentTask3) {
     //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
@@ -68,6 +69,146 @@ function getRadioResults(radios) {
     }
 }
 
+const heatmapStats = () => {
+//function heatmapStats() {
+    // If there is an array of activations in local
+    var firstArray = [];
+    var secondArray = [];
+    var thirdArray = []
+    var fourthArray = [];
+    let quadRMax = 0;
+    let quadLMax = 0;
+    let hamsRMax = 0;
+    let hamsLMax = 0;
+    let quadLAvg = 0;
+    let quadRAvg = 0;
+    let hamsLAvg = 0;
+    let hamsRAvg = 0;
+    let quadLStDev = 0;
+    let quadRStDev = 0;
+    let hamsLStDev = 0;
+    let hamsRStDev = 0;
+    //run();
+    //function run() {
+
+        //Some storage brute forcing follows (after an attempt at being elegant)
+        //First Array
+        if (sessionStorage.getItem("quad_left")) {
+            var tempFirstArray = CSVToArray(sessionStorage.getItem("quad_left"));
+            tempFirstArray.shift()
+            tempFirstArray.forEach(element => {
+                firstArray.push(parseInt(element[1]))
+            });
+        }
+        //Second Array
+        if (sessionStorage.getItem("quad_right")) {
+            var tempSecondArray = CSVToArray(sessionStorage.getItem("quad_right"));
+            tempSecondArray.shift()
+            tempSecondArray.forEach(element => {
+                secondArray.push(parseInt(element[1]))
+            });
+        }
+        //Third Array
+        if (sessionStorage.getItem("hams_left")) {
+            var tempThirdArray = CSVToArray(sessionStorage.getItem("hams_left"));
+            tempThirdArray.shift()
+            tempThirdArray.forEach(element => {
+                thirdArray.push(parseInt(element[1]))
+            });
+        }
+        //Fourth Array
+        if (sessionStorage.getItem("hams_right")) {
+            var tempFourthArray = CSVToArray(sessionStorage.getItem("hams_right"));
+            tempFourthArray.shift()
+            tempFourthArray.forEach(element => {
+                fourthArray.push(parseInt(element[1]))
+            });
+        }
+        quadLMax = getGreatest(firstArray, quadLMax);
+        quadRMax = getGreatest(secondArray, quadRMax);
+        hamsLMax = getGreatest(thirdArray, hamsLMax);
+        hamsRMax = getGreatest(fourthArray, hamsRMax);
+
+        quadLAvg = getAverage(firstArray);
+        quadRAvg = getAverage(secondArray);
+        hamsLAvg = getAverage(thirdArray);
+        hamsRAvg = getAverage(fourthArray);
+
+        quadLStDev = getStDev(firstArray, quadLAvg);
+        quadRStDev = getStDev(secondArray, quadRAvg);
+        hamsLStDev = getStDev(thirdArray, hamsLAvg);
+        hamsRStDev = getStDev(fourthArray, hamsRAvg);
+        //}
+        console.log(quadLMax);
+    return (
+        
+        <p> Quad Left Max Activation:  {quadLMax} <br />
+            Quad Right Max Activation:  {quadRMax} <br />
+            Hamstring Left Max Activation: {hamsLMax} <br />
+            Hamstring Right Max Activation: {hamsRMax} <br />
+            <br />
+            Quad Left Avg. Activation:  {quadLAvg} <br />
+            Quad Right Avg. Activation:  {quadRAvg} <br />
+            Hamstring Left Avg. Activation: {hamsLAvg} <br />
+            Hamstring Right Avg. Activation: {hamsRAvg} <br />
+            <br />
+            Quad Left Avg. Std. Deviation:  {quadLStDev} <br />
+            Quad Right Avg. Std. Deviation:  {quadRStDev} <br />
+            Hamstring Left Avg. Std. Deviation: {hamsLStDev} <br />
+            Hamstring Right Avg. Std. Deviation: {hamsRStDev} <br />
+        </p>);
+    function getGreatest(activationsArray, areaMax) {
+        // If there is an array of activations in local
+        if (activationsArray != null) {
+            // Go through each entry of the array, and find the biggest number, and return it. It is the athlete's personal activation record
+            for (var i = 0; i < activationsArray.length; i++) {
+                if (areaMax < parseInt(activationsArray[i])) {
+                    areaMax = activationsArray[i];
+                }
+            }
+            //localStorage.setItem("Max1", Max1)
+            return areaMax;
+        }
+        return -1;
+    }
+
+    function getAverage(activationsArray) {
+        // If there is an array of activations in local
+        let avgCount = 0;
+        if (activationsArray != null) {
+            // Go through each entry of the array, and find the biggest number, and return it. It is the athlete's personal activation record
+            for (var i = 0; i < activationsArray.length; i++) {
+                if (!isNaN(parseInt(activationsArray[i]))) {
+                    avgCount = (parseInt(activationsArray[i]) + avgCount);
+                }
+
+            }
+            //localStorage.setItem("Max1", Max1)
+            return parseInt(avgCount / activationsArray.length);
+        }
+        return -1;
+    }
+
+    function getStDev(activationsArray, avg) {
+        // If there is an array of activations in local
+        let stDev = 0;
+        let sum = 0;
+        if (activationsArray != null) {
+            // Go through each entry of the array, and find the biggest number, and return it. It is the athlete's personal activation record
+            for (var i = 0; i < activationsArray.length; i++) {
+                if (!isNaN(parseInt(activationsArray[i]))) {
+                    var value = parseInt(activationsArray[i]);
+                    var squared = (value - avg) ** 2;
+                    sum = sum + squared;
+                }
+            }
+            stDev = Math.sqrt((sum / activationsArray.length));
+            return Number(stDev.toPrecision(5));
+        }
+        return -1;
+    }
+};
+
 const FinishSession = () => {
     return (
         <header>
@@ -119,7 +260,11 @@ const FinishSession = () => {
                 </div>
                 </Col>
                 <Col sm={4}>
-                <Button href="/progress">Complete Session</Button> </Col>
+                        <Button href="/progress">Complete Session</Button>
+                        <div>
+                            {heatmapStats()}
+                        </div>
+                    </Col>
             </Row>
         </Container>
 
