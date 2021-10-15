@@ -124,6 +124,9 @@ const TwoDHeatmap = () => {
         }
     };
 
+    
+
+
     return (
         <Container>
             <Row>
@@ -186,9 +189,11 @@ const TwoDHeatmap = () => {
                     />
                     <TealButton href="/finish" text="Finish Session"/>
                 </Col>
+                
             </Row>
         </Container>
     );
 };
+
 
 export default TwoDHeatmap;
