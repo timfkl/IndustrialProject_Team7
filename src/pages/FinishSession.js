@@ -1,7 +1,7 @@
 import React from "react";
-import { Carousel, Card, CardGroup, Container, Row, Col, Button, Nav } from "react-bootstrap";
-import { changeData, Line } from '../components/LineChartWellBeing';
-import CSVToArray from "../scripts/CSVToArray";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { changeData } from '../components/LineChartWellBeing';
+import TealButton from '../components/TealButton';
 
 function selectRandomTask(currentTask1, currentTask2, currentTask3) {
     //function selects a random task from a list & ensures that tasks aren't repeated and are different from previous
@@ -260,11 +260,11 @@ const FinishSession = () => {
                 </div>
                 </Col>
                 <Col sm={4}>
-                        <Button href="/progress">Complete Session</Button>
-                        <div>
-                            {heatmapStats()}
-                        </div>
-                    </Col>
+                    <TealButton text="Complete Session" href="/progress" />
+                    <div>
+                        {heatmapStats()}
+                    </div>
+                </Col>
             </Row>
         </Container>
 

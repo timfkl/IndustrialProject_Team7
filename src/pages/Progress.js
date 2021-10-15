@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ProgressBar, Dropdown, Container, Row, Col } from "react-bootstrap";
 import GoalUploadButton from "../components/GoalUploadButton";
 import CSVUploadButton from "../components/CSVUploadButton";
-import TealButton from "../components/TealButton";
 import CSVToArray from "../scripts/CSVToArray";
 import LineChartProgress from "../components/LineChart";
 import LineChartWellBeing from "../components/LineChartWellBeing";
