@@ -1,3 +1,4 @@
 # IndustrialProject_Team7
 
-https://docs.google.com/document/d/1J40FwYAGB9fcmM-6bKkkBiGvrfWUDZQpSNZ4pK_cva8/edit?usp=sharing
+See it in action
+[https://industrial-project-team7.vercel.app/](https://industrial-project-team7.vercel.app/)
